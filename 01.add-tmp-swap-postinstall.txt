@@ -1,15 +1,15 @@
-    3  lsblk -f
-    6  sudo fdisk /dev/sdh
-   15  sudo mkfs /dev/sdh1 
-   18  sudo dumpe2fs /dev/sdh1|less
-   26  sudo tune2fs -L tmp /dev/sdh1
-   36  sudo fdisk /dev/sdi 
-   37  sudo mkswap /dev/sdi1 
-   39  sudo tune2fs -L swap /dev/sdi1
-   43  echo UUID=$(lsblk -f|grep swap|awk '{print $3}') swap swap defaults 0 0|sudo tee -a /etc/fstab 
-   44  echo UUID=$(lsblk -f|grep tmp|awk '{print $4}') /tmp ext2 defaults 0 2|sudo tee -a /etc/fstab 
-   46  sudo sed -i "/UUID.*swap/s/^/# swap is currently on \/dev\/sdi1\n/" /etc/fstab 
-   47  sudo sed -i "/UUID.*tmp/s/^/# /tmp is currently on \/dev\/sdh1\n/" /etc/fstab 
-   55  sudo mount -a
-   58  sudo swapon -a
-   74  sudo chmod 1777 /tmp
+lsblk -f
+sudo fdisk /dev/sdh
+sudo mkfs /dev/sdh1 
+sudo dumpe2fs /dev/sdh1|less
+sudo tune2fs -L tmp /dev/sdh1
+sudo fdisk /dev/sdi 
+sudo mkswap /dev/sdi1 
+sudo tune2fs -L swap /dev/sdi1
+echo UUID=$(lsblk -f|grep swap|awk '{print $3}') swap swap defaults 0 0|sudo tee -a /etc/fstab 
+echo UUID=$(lsblk -f|grep tmp|awk '{print $4}') /tmp ext2 defaults 0 2|sudo tee -a /etc/fstab 
+sudo sed -i "/UUID.*swap/s/^/# swap is currently on \/dev\/sdi1\n/" /etc/fstab 
+sudo sed -i "/UUID.*tmp/s/^/# /tmp is currently on \/dev\/sdh1\n/" /etc/fstab 
+sudo mount -a
+sudo swapon -a
+sudo chmod 1777 /tmp
