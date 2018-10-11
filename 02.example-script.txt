@@ -1,0 +1,111 @@
+#############
+set -x
+F=$HOME/Folder
+[ -d $F ]||mkdir -p $F
+A0=field1
+A1=field2
+A2=field3
+A3=field4
+A4=field5
+A="$A2, $A3, $A4"
+lA=$(echo $A|wc -w)
+echo "title1;title2;$A2;$A3;$A4" 1>$F/$A0.csv
+for x in $(cat $F/list1)
+do 
+	V=$(grep ^$x$ $HOME/list2|cut -d. -f3)
+	U=$(echo title2)
+	mysql --user=$USER --password=$PASSWORD --host=$HOST --execute="select $A from $A0" $DBNAME 1>$F/.x
+	z=0
+	while [ $z -lt $lA ]
+	do 
+		z=$((1+$z))
+		awk '{print $'$z'}' $F/.x 1>$F/.a$z
+	done
+	l=$(wc -l $F/.a1|cut -d' ' -f1)
+	printf '%*s' "$l"|sed "s@ @$x;$U\n@g" 1>$F/.a0
+	paste -d\; $F/.a* 1>>$F/$A0.csv
+done
+rm $F/.x $F/.a*
+set +x
+############
+set -x
+F=$HOME/Folder
+[ -d $F ]||mkdir -p $F
+A0=field1
+A1=field2
+A="$A1"
+lA=$(echo $A|wc -w)
+echo "title1;title2;$A1" 1>$F/$A0.csv
+for x in $(cat $F/list1)
+do 
+	V=$(grep ^$x$ $HOME/list2|cut -d. -f3)
+	U=$(echo title2)
+	mysql --user=$USER --password=$PASSWORD --host=$HOST --execute="select $A from $A0" 1>$F/.x
+	z=0
+	while [ $z -lt $lA ]
+	do 
+		z=$((1+$z))
+		awk '{print $'$z'}' $F/.x 1>$F/.a$z
+	done
+	l=$(wc -l $F/.a1|cut -d' ' -f1)
+	printf '%*s' "$l"|sed "s@ @$x;$U\n@g" 1>$F/.a0
+	paste -d\; $F/.a* 1>>$F/$A0.csv
+done
+rm $F/.x $F/.a*
+set +x
+############
+set -x
+F=$HOME/Folder
+[ -d $F ]||mkdir -p $F
+A0=field1
+A1=field2
+A2=field3
+A3=field4
+A4=field5
+A="$A1, $A2, $A3, $A4"
+B0=field6
+B1=field7
+B2=field8
+B3=field9
+B4=fieldA
+B="$B1, $B2, $B3, $B4"
+C=fieldB
+lA=$(echo $A|wc -w)
+lB=$(echo $B|wc -w)
+lBcount=$((1+$lB))
+echo "title1;title2;$A1;$A2;$A3;$A4;$B1;$B2;$B3;$B4;count" 1>$F/$A0.csv
+for x in $(cat $F/list1)
+do 
+	V=$(grep ^$x$ $HOME/list2|cut -d. -f3)
+	U=$(echo title2)
+	mysql --user=$USER --password=$PASSWORD --host=$HOST --execute="select $A from $A0" 1>$F/.x
+	z=0
+	while [ $z -lt $lA ]
+	do 
+		z=$((1+$z))
+		awk '{print $'$z'}' $F/.x 1>$F/.a$z
+	done
+	z=0
+	Z=$(wc -l $F/.a1|awk '{print $1}')
+	while [ $z -lt $Z ]
+	do 
+		z=$((1+$z))
+		count=$(mysql --user=$USER --password=$PASSWORD --host=$HOST --execute="select FIELD1 from FIELD2_$(sed -n ${z}p $F/.a2) where $A4="\'"$(sed -n ${z}p $F/.a4)"\'|sort -n|uniq|wc -l)
+		y=$(sed -n ${z}p $F/.a1)
+		BB=$(mysql --user=$USER --password=$PASSWORD --host=$HOST --execute="select $B from $B0 where $C="\'"$y"\')
+		echo "$BB $count" 1>$F/.x
+		zz=0
+		while [ $zz -lt $lBcount ]
+		do 
+			zz=$((1+$zz))
+			awk '{print $'$zz'}' $F/.x 1>>$F/.b$zz
+		done
+	done
+	l=$(wc -l $F/.a1|cut -d' ' -f1)
+	printf '%*s' "$l"|sed "s@ @$x;$U\n@g" 1>$F/.a0
+	paste -d\; $F/.a* $F/.b* 1>>$F/$A0.csv
+	rm $F/.b*
+done
+rm $F/.x $F/.a*
+set +x
+############
