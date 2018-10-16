@@ -1,0 +1,7 @@
+# As root
+mount -o remount,rw /
+cp /etc/shadow /etc/shadow.bak
+passwd
+sed -i /^SELINUX=/s/enforcing/permissive/ /etc/selinux/config
+sync
+exec /sbin/init 6
