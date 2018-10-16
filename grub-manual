@@ -2,6 +2,7 @@ insmod part_msdos
 insmod gzio
 insmod ext2
 linux (hd1,msdos1)/vmlinuz root=/dev/sda1 ro 1
+linux (hd1,msdos1)/vmlinuz root=/dev/sda1 ro single
 #linux (hd1,msdos1)/vmlinuz root=/dev/sda1 ro init=/bin/bash
 initrd (hd1,msdos1)/initrd.img
 boot
