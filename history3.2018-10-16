@@ -1,0 +1,601 @@
+    1  2018-10-16 09:11:40 lshw 
+    2  2018-10-16 09:11:40 lsblk
+    3  2018-10-16 09:11:40 blkid 
+    4  2018-10-16 09:11:40 sudo blkid 
+    5  2018-10-16 09:11:40 lsblk -f
+    6  2018-10-16 09:11:40 lsmem 
+    7  2018-10-16 09:11:40 sudo yum update -y
+    8  2018-10-16 09:11:40 yum search ssh
+    9  2018-10-16 09:11:40 sudo yum -y install openssh-server
+   10  2018-10-16 09:11:40 ls /etc/sudoers.d/
+   11  2018-10-16 09:11:40 sudo ls /etc/sudoers.d/
+   12  2018-10-16 09:11:40 cat /etc/sudoers
+   13  2018-10-16 09:11:40 sudo cat /etc/sudoers
+   14  2018-10-16 09:11:40 sudo grep wheel /etc/sudoers
+   15  2018-10-16 09:11:40 sudo grep %wheel /etc/sudoers
+   16  2018-10-16 09:11:40 sudo grep %wheel.*NOPASSWD /etc/sudoers
+   17  2018-10-16 09:11:40 sudo sed -i "/%wheel.*NOPASSWD/s/#//" /etc/sudoers
+   18  2018-10-16 09:11:40 sudo grep %wheel /etc/sudoers
+   19  2018-10-16 09:11:40 sudo grep ^%wheel /etc/sudoers
+   20  2018-10-16 09:11:40 sudo sed -i "/^%wheel/s/^/#/" /etc/sudoers
+   21  2018-10-16 09:11:40 sudo grep ^%wheel /etc/sudoers
+   22  2018-10-16 09:11:40 sudo grep %wheel /etc/sudoers
+   23  2018-10-16 09:11:40 fc -l
+   24  2018-10-16 09:11:40 yum search sysvinit
+   25  2018-10-16 09:11:40 sudo yum -y install openssh-server-sysvinit sysvinit-tools
+   26  2018-10-16 09:11:40 yum search bash-completion
+   27  2018-10-16 09:11:40 sudo yum install bash-completion -y
+   28  2018-10-16 09:11:40 exit
+   29  2018-10-16 09:11:40 sudo service sshd status
+   30  2018-10-16 09:11:40 grep -i password /etc/ssh/sshd_config 
+   31  2018-10-16 09:11:40 sudo grep -i password /etc/ssh/sshd_config 
+   32  2018-10-16 09:11:40 openssl rand -base64 999|tr -d '/+='
+   33  2018-10-16 09:11:40 openssl rand -base64 99|tr -d '/+='
+   34  2018-10-16 09:11:40 openssl rand -base64 99|tr -d '/+='|cut -c1-32
+   35  2018-10-16 09:11:40 openssl rand -base64 9|tr -d '/+='|cut -c1-32
+   36  2018-10-16 09:11:40 yum list installed
+   37  2018-10-16 09:11:40 yum list installed|grep nm
+   38  2018-10-16 09:11:40 yum list installed|grep Network
+   39  2018-10-16 09:11:40 sudo nmtui
+   40  2018-10-16 09:11:40 sudo init 0
+   41  2018-10-16 09:11:40 yum check-update
+   42  2018-10-16 09:11:40 man yum check-update
+   43  2018-10-16 09:11:40 yum provides /usr/bin/host
+   44  2018-10-16 09:11:40 yum provides which
+   45  2018-10-16 09:11:40 man yum
+   46  2018-10-16 09:11:40 No se puede crear la carpeta de la máquina Danysoft en la carpeta padre C:/Users/user/VirtualBox VMs.
+   47  2018-10-16 09:11:40 Esta carpeta ya existe y posiblemente pertenezca a otra máquina.
+   48  2018-10-16 09:11:40 No se puede crear la carpeta de la máquina Danysoft en la carpeta padre C:/Users/user/VirtualBox VMs.
+   49  2018-10-16 09:11:40 Esta carpeta ya existe y posiblemente pertenezca a otra máquina.
+   50  2018-10-16 09:11:40 ssh-keygen
+   51  2018-10-16 09:11:40 cd .ssh
+   52  2018-10-16 09:11:40 ls
+   53  2018-10-16 09:11:40 grep author
+   54  2018-10-16 09:11:40 exit
+   55  2018-10-16 09:11:40 exit
+   56  2018-10-16 09:11:40 cat .ssh/known_hosts 
+   57  2018-10-16 09:11:40 cat .ssh/id_rsa 
+   58  2018-10-16 09:11:40 ls
+   59  2018-10-16 09:11:40 diff .ssh/id_rsa .ssh/danysoft.txt 
+   60  2018-10-16 09:11:40 ls
+   61  2018-10-16 09:11:40 cp .ssh/danysoft.txt .ssh/danysoft.txt.bak
+   62  2018-10-16 09:11:40 sudo yum install -y dos2unix
+   63  2018-10-16 09:11:40 dos2unix .ssh/danysoft.txt
+   64  2018-10-16 09:11:40 diff .ssh/id_rsa .ssh/danysoft.txt 
+   65  2018-10-16 09:11:40 ls .ssh/
+   66  2018-10-16 09:11:40 shred -u .ssh/danysoft.txt* .ssh/id_rsa 
+   67  2018-10-16 09:11:40 ls .ssh/
+   68  2018-10-16 09:11:40 ls
+   69  2018-10-16 09:11:40 exit
+   70  2018-10-16 09:11:40 grep author /etc/ssh/sshd_config
+   71  2018-10-16 09:11:40 sudo grep author /etc/ssh/sshd_config
+   72  2018-10-16 09:11:40 ls .ssh/
+   73  2018-10-16 09:11:40 ls /etc/ssh/
+   74  2018-10-16 09:11:40 ip a
+   75  2018-10-16 09:11:40 sshd-keygen --help
+   76  2018-10-16 09:11:40 sudo sshd-keygen --help
+   77  2018-10-16 09:11:40 sudo man sshd-keygen
+   78  2018-10-16 09:11:40 sudo su
+   79  2018-10-16 09:11:40 ls
+   80  2018-10-16 09:11:40 ls .ssh/
+   81  2018-10-16 09:11:40 sudo grep author /etc/ssh/sshd_config
+   82  2018-10-16 09:11:40 mv .ssh/id_rsa.pub .ssh/authorized_keys
+   83  2018-10-16 09:11:40 ls .ssh/
+   84  2018-10-16 09:11:40 cat .ssh/authorized_keys 
+   85  2018-10-16 09:11:40 ssh localhost
+   86  2018-10-16 09:11:40 mv .ssh/authorized_keys .ssh/authorized_keys.bak
+   87  2018-10-16 09:11:40 ssh localhost
+   88  2018-10-16 09:11:40 ls .ssh/
+   89  2018-10-16 09:11:40 mv .ssh/authorized_keys.bak .ssh/authorized_keys
+   90  2018-10-16 09:11:40 ssh localhost
+   91  2018-10-16 09:11:40 cat .ssh/known_hosts 
+   92  2018-10-16 09:11:40 hostname
+   93  2018-10-16 09:11:40 ssh centos.danysoft.gotdns.org
+   94  2018-10-16 09:11:40 cat /etc/hosts
+   95  2018-10-16 09:11:40 ip a
+   96  2018-10-16 09:11:40 echo 192.168.43.100 centos.danysoft.gotdns.org|sudo tee -a /etc/hosts 
+   97  2018-10-16 09:11:40 ssh centos.danysoft.gotdns.org
+   98  2018-10-16 09:11:40 exit
+   99  2018-10-16 09:11:40 sudo init 0
+  100  2018-10-16 09:11:40 ssh-keygen 
+  101  2018-10-16 09:11:40 ls .ssh/
+  102  2018-10-16 09:11:40 grep author /etc/ssh/sshd_config 
+  103  2018-10-16 09:11:40 sudo grep author /etc/ssh/sshd_config 
+  104  2018-10-16 09:11:40 cd .ssh
+  105  2018-10-16 09:11:40 ls
+  106  2018-10-16 09:11:40 mv .ssh/id_rsa.pub .ssh/authorized_keys
+  107  2018-10-16 09:11:40 cd ./ssh
+  108  2018-10-16 09:11:40 pwd
+  109  2018-10-16 09:11:40 ls
+  110  2018-10-16 09:11:40 mv id_rsa.pub .ssh/authorized_keys
+  111  2018-10-16 09:11:40 mv id_rsa.pub ssh/authorized_keys
+  112  2018-10-16 09:11:40 cd ..
+  113  2018-10-16 09:11:40 mv .ssh/id_rsa.pub .ssh/authorized_keys
+  114  2018-10-16 09:11:40 ls
+  115  2018-10-16 09:11:40 cd ./ssh
+  116  2018-10-16 09:11:40 ls
+  117  2018-10-16 09:11:40 cd .ssh
+  118  2018-10-16 09:11:40 ls
+  119  2018-10-16 09:11:40 ssh localhost
+  120  2018-10-16 09:11:40 echo 192.168.43.101 centos.danysoft.gotdns.org¦tee -a /etc/hosts
+  121  2018-10-16 09:11:40 cat known_hosts 
+  122  2018-10-16 09:11:40 ls
+  123  2018-10-16 09:11:40 cat known_hosts id_rsa 
+  124  2018-10-16 09:11:40 sudo yum install -y dos2unix
+  125  2018-10-16 09:11:40 shred -u ./ssh/danysoft.txt* .ssh/id_rsa
+  126  2018-10-16 09:11:40 ls
+  127  2018-10-16 09:11:40 pwd
+  128  2018-10-16 09:11:40 yum list installed|more
+  129  2018-10-16 09:11:40 sudo yum -y remove nano alsa postfix python
+  130  2018-10-16 09:11:40 sudo yum -y remove nano alsa postfix
+  131  2018-10-16 09:11:40 sudo yum -y install net-tools
+  132  2018-10-16 09:11:40 history 
+  133  2018-10-16 09:11:40 echo $HISTSIZE 
+  134  2018-10-16 09:11:40 echo HISTSIZE=1000000 1>>$HOME/.bashrc
+  135  2018-10-16 09:11:40 grep -r HISTSIZE /etc/
+  136  2018-10-16 09:11:40 grep -r HISTSIZE /etc/ 2>/dev/null 
+  137  2018-10-16 09:11:40 grep HISTSIZE= /etc/profile
+  138  2018-10-16 09:11:40 sudo sed -i "/HISTSIZE=/s/1000/1000000/" /etc/profile
+  139  2018-10-16 09:11:40 grep HISTSIZE= /etc/profile
+  140  2018-10-16 09:11:40 grep HIST.*SIZE= /etc/profile
+  141  2018-10-16 09:11:40 grep HIST /etc/profile
+  142  2018-10-16 09:11:40 echo $HISTFILESIZE 
+  143  2018-10-16 09:11:40 grep -r HISTFILESIZE /etc/
+  144  2018-10-16 09:11:40 sudo grep -r HISTFILESIZE /etc/ 
+  145  2018-10-16 09:11:40 grep -r HISTFILESIZE .*
+  146  2018-10-16 09:11:40 sudo grep -r HISTFILESIZE .*
+  147  2018-10-16 09:11:40 echo $HISTFILESIZE 
+  148  2018-10-16 09:11:40 exit
+  149  2018-10-16 09:11:40 echo $HISTSIZE 
+  150  2018-10-16 09:11:40 echo $HISTFILESIZE 
+  151  2018-10-16 09:11:40 echo $HISTTIMEFORMAT
+  152  2018-10-16 09:11:40 history 
+  153  2018-10-16 09:11:40 cat|sudo tee -a /etc/profile
+  154  2018-10-16 09:11:40 grep HIST /etc/profile
+  155  2018-10-16 09:11:40 exit
+  156  2018-10-10 17:14:27 history 
+  157  2018-10-10 17:15:02 sudo netstat -putana
+  158  2018-10-10 17:17:06 sudo vi /etc/ssh/sshd_config 
+  159  2018-10-10 17:41:09 sudo cp /etc/ssh/sshd_config $HOME
+  160  2018-10-10 17:42:30 sudo chown danysoft sshd_config 
+  161  2018-10-10 17:43:10 sudo shred -u sshd_config 
+  162  2018-10-10 17:44:43 sudo vi /etc/ssh/sshd_config
+  163  2018-10-10 17:48:22 man sshd_config
+  164  2018-10-10 17:50:35 sudo init 0
+  165  2018-10-10 17:19:18 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.OLD
+  166  2018-10-11 06:10:03 ls
+  167  2018-10-11 06:11:19 cd .ssh/
+  168  2018-10-11 06:11:19 ls
+  169  2018-10-11 06:11:26 dos2unix sshd_config.txt 
+  170  2018-10-11 06:11:33 mv sshd_config.txt id_rsa
+  171  2018-10-11 06:11:37 ls -l
+  172  2018-10-11 06:11:50 chmod 600 id_rsa 
+  173  2018-10-11 06:11:50 ls
+  174  2018-10-11 06:11:52 ls -l
+  175  2018-10-11 06:12:40 cp authorized_keys id_rsa.pub
+  176  2018-10-11 06:12:42 ls -l
+  177  2018-10-11 06:12:54 cat id_rsa.pub 
+  178  2018-10-11 06:14:14 cd
+  179  2018-10-11 06:14:26 ssh git@github.com
+  180  2018-10-11 06:14:55 ssh localhost
+  181  2018-10-11 06:15:12 ssh 192.168.43.100
+  182  2018-10-11 06:15:24 rm .ssh/known_hosts 
+  183  2018-10-11 06:15:26 ssh 192.168.43.100
+  184  2018-10-11 06:15:47 cat .ssh/id_rsa
+  185  2018-10-11 06:18:02 cp id_rsa .ssh/id_rsa
+  186  2018-10-11 06:18:05 ls -l .ssh/id_rsa
+  187  2018-10-11 06:18:14 ssh git@github.com
+  188  2018-10-11 06:19:16 git@github.com:secobau/linux.git
+  189  2018-10-11 06:19:26 git clone git@github.com:secobau/linux.git
+  190  2018-10-11 06:19:34 sudo yum install -y git
+  191  2018-10-11 06:19:56 git clone git@github.com:secobau/linux.git
+  192  2018-10-11 06:20:02 ls
+  193  2018-10-11 06:20:04 cd linux/
+  194  2018-10-11 06:20:05 ls
+  195  2018-10-11 06:20:08 cd ..
+  196  2018-10-11 06:20:08 ls
+  197  2018-10-11 06:20:13 shred -u id_rsa 
+  198  2018-10-11 06:20:14 cd linux/
+  199  2018-10-11 06:20:15 ls
+  200  2018-10-11 06:24:54 vi 02.example-script.txt
+  201  2018-10-11 07:21:07 ls
+  202  2018-10-11 07:21:13 git add 02.example-script.txt 
+  203  2018-10-11 07:21:29 git commit -m 'Add example of script'
+  204  2018-10-11 07:21:46 git config --global user.name "Sebastian Colomar"
+  205  2018-10-11 07:21:57 git config --global user.email nomail
+  206  2018-10-11 07:22:17 git commit --amend --reset-author
+  207  2018-10-11 07:22:33 git push
+  208  2018-10-11 07:24:32 ls
+  209  2018-10-11 07:24:43 sudo init 0
+  210  2018-10-11 09:11:08 lsblk -f
+  211  2018-10-11 09:11:17 sudo init 0
+  212  2018-10-11 09:10:36 df
+  213  2018-10-11 09:10:42 lsblk
+  214  2018-10-11 09:10:57 lsblk -f
+  215  2018-10-11 09:25:18 sudo init 0
+  216  2018-10-11 09:31:58 lsblk 
+  217  2018-10-11 09:35:21 sudo yum -y install git
+  218  2018-10-11 09:35:32 ls
+  219  2018-10-11 09:35:39 cd linux/
+  220  2018-10-11 09:35:40 ls
+  221  2018-10-11 09:35:45 cd
+  222  2018-10-11 09:35:49 cd /tmp/
+  223  2018-10-11 09:35:50 ls
+  224  2018-10-11 09:36:59 git https://github.com/secobau/linux
+  225  2018-10-11 09:37:42 git clone https://github.com/secobau/linux 
+  226  2018-10-11 09:37:48 cd linux/
+  227  2018-10-11 09:37:48 ls
+  228  2018-10-11 09:39:10 cat 1>test
+  229  2018-10-11 09:39:49 git status
+  230  2018-10-11 09:40:30 cd ..
+  231  2018-10-11 09:40:34 git status
+  232  2018-10-11 09:40:37 cd -
+  233  2018-10-11 09:41:03 cd ../
+  234  2018-10-11 09:41:10 cd -
+  235  2018-10-11 09:42:29 git add test
+  236  2018-10-11 09:45:27 cat 1>test2
+  237  2018-10-11 09:45:35 cat test2 
+  238  2018-10-11 09:45:42 ls -l
+  239  2018-10-11 09:46:53 stat test2
+  240  2018-10-11 09:52:16 stat /tmp/
+  241  2018-10-11 09:58:26 mkdir Material
+  242  2018-10-11 09:58:27 ls
+  243  2018-10-11 09:59:22 which groupadd
+  244  2018-10-11 09:59:31 sudo which groupadd
+  245  2018-10-11 09:59:58 sudo groupadd clase
+  246  2018-10-11 10:00:12 cat /etc/group
+  247  2018-10-11 10:00:23 grep clase /etc/group
+  248  2018-10-11 10:01:50 sudo sed -i "/clase/s/$/danysoft/" /etc/group 
+  249  2018-10-11 10:01:53 grep clase /etc/group
+  250  2018-10-11 10:03:22 sudo sed -i "/clase/s/$/,danysoft2/" /etc/group 
+  251  2018-10-11 10:03:24 grep clase /etc/group
+  252  2018-10-11 10:05:51 sudo sed -i "/clase/s/,.*$//" /etc/group
+  253  2018-10-11 10:05:53 grep clase /etc/group
+  254  2018-10-11 10:06:12 man sed
+  255  2018-10-11 10:07:02 sudo sed -ic "/clase/s/$/,danysoft2/" /etc/group 
+  256  2018-10-11 10:07:05 grep clase /etc/group
+  257  2018-10-11 10:07:17 ls /etc/gr*
+  258  2018-10-11 10:07:38 grep clase /etc/groupc
+  259  2018-10-11 10:07:48 fc -l
+  260  2018-10-11 10:09:06 ls -l /etc/groupc /etc/group
+  261  2018-10-11 10:10:56 diff /etc/groupc /etc/group
+  262  2018-10-11 10:11:19 sudo mv /etc/groupc /etc/group
+  263  2018-10-11 10:11:35 cd /
+  264  2018-10-11 10:11:36 ls
+  265  2018-10-11 10:18:51 cd -
+  266  2018-10-11 10:18:52 ls
+  267  2018-10-11 10:19:01 ls -l
+  268  2018-10-11 10:19:58 chown danysoft.clase Material/
+  269  2018-10-11 10:21:02 sudo chgrp clase Material/
+  270  2018-10-11 10:21:03 ls
+  271  2018-10-11 10:21:05 ls -l
+  272  2018-10-11 10:21:17 sudo chown danysoft.clase Material/
+  273  2018-10-11 10:21:20 ls -l
+  274  2018-10-11 10:21:39 stat Material/
+  275  2018-10-11 10:22:20 sudo chmod 2775 Material/
+  276  2018-10-11 10:22:22 stat Material/
+  277  2018-10-11 10:22:37 sudo chmod g+s Material/
+  278  2018-10-11 10:22:39 stat Material/
+  279  2018-10-11 10:22:58 ls -l
+  280  2018-10-11 10:23:13 man ls
+  281  2018-10-11 10:28:43 less /etc/selinux/config 
+  282  2018-10-11 10:29:53 sudo less /var/log/secure 
+  283  2018-10-11 10:30:49 less /etc/selinux/config 
+  284  2018-10-11 10:32:18 grep SELINUX= /etc/selinux/config 
+  285  2018-10-11 10:32:40 grep "^SELINUX=" /etc/selinux/config 
+  286  2018-10-11 10:33:48 sed -i "/^SELINUX=/s/enforcing/permissive/" /etc/selinux/config 
+  287  2018-10-11 10:33:55 sudo sed -i "/^SELINUX=/s/enforcing/permissive/" /etc/selinux/config 
+  288  2018-10-11 10:34:01 grep "^SELINUX=" /etc/selinux/config 
+  289  2018-10-11 10:38:46 ls
+  290  2018-10-11 10:38:58 ls -l Material/
+  291  2018-10-11 10:39:25 ls -l Material/ -d
+  292  2018-10-11 10:39:58 cd Material/
+  293  2018-10-11 10:39:59 ls
+  294  2018-10-11 10:40:16 cat>texto
+  295  2018-10-11 10:40:23 ls -l texto 
+  296  2018-10-11 10:43:06 cd /tmp/
+  297  2018-10-11 10:43:12 ls -ld .
+  298  2018-10-11 10:43:29 ls
+  299  2018-10-11 10:46:30 cd -
+  300  2018-10-11 10:46:32 ls
+  301  2018-10-11 10:46:38 ls -ld .
+  302  2018-10-11 10:46:41 stat .
+  303  2018-10-11 10:46:59 sudo chmod 3775 .
+  304  2018-10-11 10:47:02 stat .
+  305  2018-10-11 10:47:26 sudo chmod o+t .
+  306  2018-10-11 10:47:28 stat .
+  307  2018-10-11 10:47:42 cd ..
+  308  2018-10-11 10:47:43 ls
+  309  2018-10-11 10:47:55 git status 
+  310  2018-10-11 10:49:11 git add Material/
+  311  2018-10-11 10:49:16 git status
+  312  2018-10-11 10:50:11 git reset HEAD test
+  313  2018-10-11 10:50:15 git status
+  314  2018-10-11 10:51:12 git add test
+  315  2018-10-11 10:51:15 git status
+  316  2018-10-11 10:52:12 git reset HEAD Material/texto
+  317  2018-10-11 10:52:32 git status
+  318  2018-10-11 10:55:32 git commit -m 'Add an example of GIT'
+  319  2018-10-11 10:55:52 git add Material/
+  320  2018-10-11 10:55:56 git status
+  321  2018-10-11 10:56:36 git commit -m 'Add an example to explain SUID, SGID and sticky bits'
+  322  2018-10-11 10:56:41 git status
+  323  2018-10-11 10:57:16 git log
+  324  2018-10-11 11:01:23 git show
+  325  2018-10-11 11:02:48 git log
+  326  2018-10-11 11:03:30 git commit --amend -m 'Add an example to explain SUID, SGID and Sticky bits'
+  327  2018-10-11 11:03:33 git log
+  328  2018-10-11 11:53:16 ls
+  329  2018-10-11 11:53:22 cd linux/
+  330  2018-10-11 11:53:23 l
+  331  2018-10-11 11:53:24 ls
+  332  2018-10-11 11:53:40 cat 01.add-tmp-swap-postinstall.txt 
+  333  2018-10-11 11:53:57 lsblk -f
+  334  2018-10-11 11:54:15 ls -ld /tmp/
+  335  2018-10-11 11:54:27 df
+  336  2018-10-11 11:55:39 lsblk -f
+  337  2018-10-11 11:56:26 lsblk 
+  338  2018-10-11 11:56:30 blkid
+  339  2018-10-11 11:56:37 sudo blkid
+  340  2018-10-11 11:57:14 man blkid
+  341  2018-10-11 11:58:09 sudo blkid -k
+  342  2018-10-11 11:58:18 sudo blkid
+  343  2018-10-11 11:58:36 fdisk -l
+  344  2018-10-11 11:58:44 sudo fdisk -l
+  345  2018-10-11 11:59:05 sudo blkid
+  346  2018-10-11 12:00:39 ls /
+  347  2018-10-11 12:01:37 lsinitrd /boot/initramfs-3.10.0-862.14.4.el7.x86_64.img 
+  348  2018-10-11 12:01:47 sudo lsinitrd /boot/initramfs-3.10.0-862.14.4.el7.x86_64.img 
+  349  2018-10-11 12:02:00 sudo lsinitrd /boot/initramfs-3.10.0-862.14.4.el7.x86_64.img |less
+  350  2018-10-11 12:04:29 lsblk 
+  351  2018-10-11 12:04:58 sudo fdisk /dev/sdf -l
+  352  2018-10-11 12:05:44 man sfdisk
+  353  2018-10-11 12:06:13 sudo sfdisk -l /dev/sdf
+  354  2018-10-11 12:06:17 sudo sfdisk -l /dev/sda
+  355  2018-10-11 12:07:21 sudo fdisk /dev/sdf
+  356  2018-10-11 12:10:14 sudo fdisk /dev/sdf -l
+  357  2018-10-11 12:10:23 sudo blkid
+  358  2018-10-11 12:10:41 sudo blkid -o device
+  359  2018-10-11 12:13:58 sudo dd if=/dev/sdf count=1
+  360  2018-10-11 12:14:29 sudo dd if=/dev/sdf count=1|od -Ad -txz
+  361  2018-10-11 12:18:10 sudo dd if=/dev/zero of=/dev/sdf bs=1 count=16 
+  362  2018-10-11 12:18:14 sudo dd if=/dev/sdf count=1|od -Ad -txz
+  363  2018-10-11 12:19:12 sudo dd if=/dev/zero of=/dev/sdf bs=1 count=16 skip=440
+  364  2018-10-11 12:19:15 sudo dd if=/dev/sdf count=1|od -Ad -txz
+  365  2018-10-11 12:19:37 sudo dd if=/dev/zero of=/dev/sdf bs=1 count=16 seek=440
+  366  2018-10-11 12:19:39 sudo dd if=/dev/sdf count=1|od -Ad -txz
+  367  2018-10-11 12:20:24 dd
+  368  2018-10-11 12:24:16 sudo dd of=/dev/sdf bs=1 count=16 seek=440
+  369  2018-10-11 12:24:25 o
+  370  2018-10-11 12:24:51 sudo dd if=/dev/sdf count=1|od -Ad -txz
+  371  2018-10-11 12:28:03 gpg
+  372  2018-10-11 12:28:22 gpg -c
+  373  2018-10-11 12:28:56 gpc -ca
+  374  2018-10-11 12:29:00 gpg -ca
+  375  2018-10-11 12:30:11 echo hola|gpg -ca
+  376  2018-10-11 12:31:07 gpg -ca|sudo dd of=/dev/sdf count=1 seek=2
+  377  2018-10-11 12:32:02 sudo dd if=/dev/sdf count=1 skip=2|strings 
+  378  2018-10-11 12:34:29 sudo dd if=/dev/zero count=1000 of=/dev/sdf
+  379  2018-10-11 12:35:11 sudo dd if=/dev/sdf count=1000|od -Ad -txz
+  380  2018-10-11 12:39:21 sudo dd if=/dev/sda of=/root/mbr.bak count=4 
+  381  2018-10-11 12:40:23 sudo strings /root/mbr.bak
+  382  2018-10-11 12:41:17 sudo dd if=/dev/sda count=4|strings
+  383  2018-10-11 12:41:28 sudo strings /root/mbr.bak|head
+  384  2018-10-11 12:41:34 sudo dd if=/dev/sda count=4|strings|head
+  385  2018-10-11 12:41:56 man dd
+  386  2018-10-11 12:42:36 sudo dd if=/dev/sda count=4 status=none|strings|head
+  387  2018-10-11 12:42:41 sudo dd if=/dev/sda count=4|strings|head
+  388  2018-10-11 12:42:48 sudo dd if=/dev/sda count=4 status=none|strings|head
+  389  2018-10-11 12:42:54 sudo strings /root/mbr.bak|head
+  390  2018-10-11 12:43:41 sudo dd count=4 of=/dev/sda status=none
+  391  2018-10-11 12:44:14 sudo dd if=/dev/sda count=4 status=none|strings
+  392  2018-10-11 12:44:42 sudo fdisk -l /dev/sda
+  393  2018-10-11 12:45:08 sudo dd count=4 of=/dev/sda status=none if=/dev/zero
+  394  2018-10-11 12:45:11 sudo fdisk -l /dev/sda
+  395  2018-10-11 12:46:53 sudo dd count=4 status=none if=/root/mbr.bak of=/dev/sda
+  396  2018-10-11 12:46:56 sudo fdisk -l /dev/sda
+  397  2018-10-11 12:49:49 lsblk -f
+  398  2018-10-11 12:50:04 sudo blkid -o device
+  399  2018-10-11 12:50:32 sudo fdisk /dev/sdf
+  400  2018-10-11 12:50:46 lsblk 
+  401  2018-10-11 12:51:46 sudo mkfs /dev/sdf1
+  402  2018-10-11 12:54:54 sudo tune2fs -L tmp /dev/sdf1 
+  403  2018-10-11 12:55:01 lsblk 
+  404  2018-10-11 12:55:09 lsblk -f
+  405  2018-10-11 12:57:37 sudo tune2fs -t ext4 /dev/sdf1 
+  406  2018-10-11 12:57:52 sudo tune2fs -j /dev/sdf1 
+  407  2018-10-11 12:58:25 lsblk -f
+  408  2018-10-11 13:00:55 man tune2fs
+  409  2018-10-11 13:07:48 cat /etc/fstab 
+  410  2018-10-11 13:08:07 sudo blkid
+  411  2018-10-11 13:08:14 lsblk -f
+  412  2018-10-11 13:08:37 lsblk -f|grep tmp
+  413  2018-10-11 13:12:52 lsblk -f|grep tmp|awk -F'-' '{print $2}'
+  414  2018-10-11 13:14:10 lsblk -f|grep tmp|awk '{print $4}'
+  415  2018-10-11 13:14:36 tail -1 /etc/fstab 
+  416  2018-10-11 13:14:43 tail -2 /etc/fstab 
+  417  2018-10-11 13:24:54 echo UUID=$(lsblk -f|grep tmp|awk '{print $4}') /tmp ext2 defaults 1 2|sudo tee -a /etc/fstab 
+  418  2018-10-11 13:25:03 tail /etc/fstab 
+  419  2018-10-11 13:26:56 df
+  420  2018-10-11 13:27:23 ls -ld /tmp/
+  421  2018-10-11 13:28:59 df -h
+  422  2018-10-11 13:30:09 sudo mount /tmp/
+  423  2018-10-11 13:30:13 df -h
+  424  2018-10-11 13:30:33 ls
+  425  2018-10-11 13:30:53 cat>texto
+  426  2018-10-11 13:31:00 ls
+  427  2018-10-11 13:31:05 cp texto /tmp
+  428  2018-10-11 13:32:22 ls -ld /tmp
+  429  2018-10-11 13:34:20 sudo chmod 1777 /tmp
+  430  2018-10-11 13:34:23 cp texto /tmp
+  431  2018-10-11 13:34:47 stat /mnt
+  432  2018-10-11 13:35:01 sudo chmod 1777 /mnt/
+  433  2018-10-11 13:35:03 stat /mnt
+  434  2018-10-11 13:35:59 mount -o ro /dev/sda3 /mnt/ 
+  435  2018-10-11 13:36:04 sudo mount -o ro /dev/sda3 /mnt/ 
+  436  2018-10-11 13:36:20 sudo mount -o ro /dev/sda1 /mnt/ 
+  437  2018-10-11 13:36:31 ls /mnt/
+  438  2018-10-11 13:36:36 findmnt 
+  439  2018-10-11 13:36:42 findmnt |grep mnt
+  440  2018-10-11 13:36:55 sudo mount -o ro /dev/sdb1 /mnt/ 
+  441  2018-10-11 13:37:02 sudo mount -o ro /dev/sdf1 /mnt/ 
+  442  2018-10-11 13:37:20 sudo mount -o /dev/sdf1 /mnt/ 
+  443  2018-10-11 13:37:33 sudo mount /dev/sdf1 /mnt/ 
+  444  2018-10-11 13:37:48 sudo umount /tmp
+  445  2018-10-11 13:37:55 sudo mount /dev/sdf1 /mnt/ 
+  446  2018-10-11 13:38:02 ls -ld /mnt
+  447  2018-10-11 13:38:46 sudo umount /mnt/
+  448  2018-10-11 13:38:52 sudo mount /tmp
+  449  2018-10-11 13:39:00 stat /tmp/
+  450  2018-10-11 16:46:32 ls
+  451  2018-10-11 16:46:35 cd linux/
+  452  2018-10-11 16:46:35 ls
+  453  2018-10-11 16:46:53 cat>03.alarma.txt
+  454  2018-10-11 16:47:05 vi 03.alarma.txt 
+  455  2018-10-11 17:31:40 git add 03.alarma.txt
+  456  2018-10-11 17:31:42 git status
+  457  2018-10-11 17:32:13 git commit -m 'Add alarm script'
+  458  2018-10-11 17:32:16 git push
+  459  2018-10-11 17:32:32 sudo init 0
+  460  2018-10-11 17:21:06 top
+  461  2018-10-15 16:55:47 ls
+  462  2018-10-15 16:57:40 sudo yum search openssh-server
+  463  2018-10-15 17:04:44 sudo yum install openssh-server
+  464  2018-10-15 17:32:25 sudo init 0
+  465  2018-10-16 08:26:05 sudo nmtui
+  466  2018-10-16 08:26:48 sudo init 0
+  467  2018-10-16 08:30:48 sudo nmtui
+  468  2018-10-16 08:31:46 sudo init 0
+  469  2018-10-16 08:32:59 ip a
+  470  2018-10-16 08:33:12 sudo ifdown enp0s3
+  471  2018-10-16 08:33:18 sudo ifup enp0s3
+  472  2018-10-16 08:33:21 ip a
+  473  2018-10-16 08:33:37 sudo nmtui
+  474  2018-10-16 08:36:06 sudo service network restart
+  475  2018-10-16 08:36:08 ip a
+  476  2018-10-16 08:36:19 sudo ifdown enp0s3
+  477  2018-10-16 08:36:24 sudo ifup enp0s3
+  478  2018-10-16 08:36:27 ip a
+  479  2018-10-16 08:36:40 host 8.8.8.8
+  480  2018-10-16 08:37:05 ping 192.168.2.44
+  481  2018-10-16 08:37:10 ping 192.168.2.43
+  482  2018-10-16 08:37:20 ping 192.168.2.1
+  483  2018-10-16 08:37:31 ping 8.8.8.8
+  484  2018-10-16 08:37:45 sudo init 6
+  485  2018-10-16 08:38:32 ip a
+  486  2018-10-16 08:38:36 ping 8.8.8.8
+  487  2018-10-16 08:38:48 sudo init 0
+  488  2018-10-16 08:40:10 ip a
+  489  2018-10-16 08:40:21 cat /etc/resolv.conf 
+  490  2018-10-16 08:40:41 ping 8.8.8.8
+  491  2018-10-16 08:40:54 ping google.es
+  492  2018-10-16 08:41:10 ping 192.168.2.1
+  493  2018-10-16 08:41:22 sudo route -n
+  494  2018-10-16 08:42:07 sudo init 0
+  495  2018-10-16 08:44:07 sudo nmtui
+  496  2018-10-16 08:44:55 sudo init 6
+  497  2018-10-16 08:45:25 ip a
+  498  2018-10-16 08:45:52 ping 192.168.43.186
+  499  2018-10-16 08:46:05 sudo vi /etc/selinux/config 
+  500  2018-10-16 08:46:16 ping 8.8.8.8
+  501  2018-10-16 08:46:33 ip a
+  502  2018-10-16 08:47:01 sudo init 0
+  503  2018-10-16 08:48:39 sudo nmtui
+  504  2018-10-16 08:49:48 sudo init 0
+  505  2018-10-16 08:57:33 sudo nmtui
+  506  2018-10-16 08:57:58 sudo init 0
+  507  2018-10-16 09:03:15 ip a
+  508  2018-10-16 09:03:23 sudo init 6
+  509  2018-10-16 09:04:40 ip a
+  510  2018-10-16 09:05:04 sudo nmtui
+  511  2018-10-16 09:05:18 sudo init 0
+  512  2018-10-16 09:07:47 ip a
+  513  2018-10-16 09:07:54 sudo service sshd status -l
+  514  2018-10-16 09:08:11 sudo service sshd stop
+  515  2018-10-16 09:08:15 sudo service sshd start
+  516  2018-10-16 09:08:21 sudo service sshd status -l
+  517  2018-10-16 09:08:45 sudo journalctl -xe
+  518  2018-10-16 09:09:17 sudo netstat -putana
+  519  2018-10-16 09:09:30 sudo vi /etc/ssh/sshd_config
+  520  2018-10-16 09:09:51 sudo service sshd restart
+  521  2018-10-16 09:10:04 sudo journalctl -xe
+  522  2018-10-16 09:10:18 sudo vi /etc/ssh/sshd_config
+  523  2018-10-16 09:10:46 sudo service sshd restart
+  524  2018-10-16 09:10:52 sudo init 0
+  525  2018-10-16 09:34:23 ls
+  526  2018-10-16 09:34:35 top
+  527  2018-10-16 10:02:48 ls
+  528  2018-10-16 10:03:11 sudo yum install httpd
+  529  2018-10-16 10:03:46 sudo service httpd status
+  530  2018-10-16 10:04:03 sudo service httpd start
+  531  2018-10-16 10:04:06 sudo service httpd status
+  532  2018-10-16 10:04:20 fc -l
+  533  2018-10-16 10:04:52 history |tail
+  534  2018-10-16 10:05:55 cd /etc/httpd/
+  535  2018-10-16 10:05:57 ls
+  536  2018-10-16 10:06:08 ls conf.modules.d/
+  537  2018-10-16 10:06:26 cat conf.modules.d/00-mpm.conf 
+  538  2018-10-16 10:06:38 ls
+  539  2018-10-16 10:06:41 cd modules/
+  540  2018-10-16 10:06:47 cd
+  541  2018-10-16 10:06:54 ls /etc/httpd/modules/
+  542  2018-10-16 10:07:02 ls /etc/httpd/modules/*conf
+  543  2018-10-16 10:08:02 grep -r MaxRequestWorkers /etc/httpd/
+  544  2018-10-16 10:08:50 sudo yum search mpm
+  545  2018-10-16 10:11:14 grep -r mpm /etc/httpd/
+  546  2018-10-16 10:11:45 httpd -m
+  547  2018-10-16 10:11:55 httpd -M
+  548  2018-10-16 10:12:27 httpd -M|grep mpm
+  549  2018-10-16 10:24:10 grep -r mpm /etc/httpd/
+  550  2018-10-16 10:24:34 cat /etc/httpd/conf.modules.d/00-mpm.conf 
+  551  2018-10-16 10:25:04 grep -r mpm /etc/httpd/
+  552  2018-10-16 10:25:20 vi /etc/httpd/conf.modules.d/00-mpm.conf 
+  553  2018-10-16 10:28:26 sudo vi /etc/httpd/conf.modules.d/00-mpm.conf 
+  554  2018-10-16 10:29:48 sudo vi /etc/httpd/conf.modules.d/01-cgi.conf 
+  555  2018-10-16 10:30:14 fg
+  556  2018-10-16 10:30:47 sudo vi /etc/httpd/conf.modules.d/01-cgi.conf 
+  557  2018-10-16 10:31:31 fg
+  558  2018-10-16 10:40:24 sudo service httpd restart
+  559  2018-10-16 10:40:29 top
+  560  2018-10-16 10:41:29 sudo vi /etc/httpd/conf.modules.d/01-cgi.conf 
+  561  2018-10-16 10:44:01 sudo service httpd restart
+  562  2018-10-16 10:44:05 top
+  563  2018-10-16 10:44:38 ps -ef|grep apache|wc -l
+  564  2018-10-16 10:44:54 free
+  565  2018-10-16 10:45:11 sudo vi /etc/httpd/conf.modules.d/01-cgi.conf 
+  566  2018-10-16 10:46:50 ps -ef|grep apache|wc -l
+  567  2018-10-16 10:47:03 sudo vi /etc/httpd/conf.modules.d/01-cgi.conf 
+  568  2018-10-16 10:47:24 sudo service httpd restart
+  569  2018-10-16 10:47:28 ps -ef|grep apache|wc -l
+  570  2018-10-16 10:48:19 sudo yum search siege
+  571  2018-10-16 10:48:35 sudo yum install epel-release
+  572  2018-10-16 10:48:48 sudo yum update
+  573  2018-10-16 10:49:50 sudo yum search siege
+  574  2018-10-16 10:50:39 sudo yum -y install siege
+  575  2018-10-16 10:51:19 siege --help
+  576  2018-10-16 10:51:25 man siege
+  577  2018-10-16 10:56:03 top
+  578  2018-10-16 10:57:28 grep -r MaxReq /etc/httpd/
+  579  2018-10-16 10:57:37 sudo vi /etc/httpd/conf.modules.d/01-cgi.conf
+  580  2018-10-16 11:00:34 sudo service httpd restart
+  581  2018-10-16 11:00:40 top 
+  582  2018-10-16 11:01:55 ps -ef|grep apache|wc -l
+  583  2018-10-16 11:05:47 top 
+  584  2018-10-16 11:06:32 fc -l
+  585  2018-10-16 11:06:37 sudo vi /etc/httpd/conf.modules.d/01-cgi.conf
+  586  2018-10-16 11:06:51 sudo service httpd restart
+  587  2018-10-16 11:07:09 ps -ef|grep apache|wc -l
+  588  2018-10-16 11:07:20 nice top
+  589  2018-10-16 13:57:34 sudo yum -y install gdb gcc
+  590  2018-10-16 13:59:13 cd
+  591  2018-10-16 13:59:31 git clone https://github.com/secobau/linux
+  592  2018-10-16 13:59:34 ls
+  593  2018-10-16 13:59:36 cd linux/
+  594  2018-10-16 13:59:41 git pull
+  595  2018-10-16 14:00:01 cat zombie.c 
+  596  2018-10-16 14:01:49 gcc zombie.c 
+  597  2018-10-16 14:01:58 ls
+  598  2018-10-16 14:02:21 ./a.out 
+  599  2018-10-16 14:24:44 ps -efww
+  600  2018-10-16 14:27:54 ./a.out 
+  601  2018-10-16 14:44:24 history >history3.$(date +%F)
