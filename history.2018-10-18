@@ -1,0 +1,179 @@
+    1  sudo ls
+    2  ls
+    3  lsblk 
+    4  free 
+    5  sudo fdisk /dev/sdf 
+    6  dd
+    7  dd status=none
+    8  sudo dd if=/dev/sdf count=1 status=none|od -Ad -txz
+    9  sudo grep wheel /etc/sudoers
+   10  sudo grep "wheel.*NOPASSWD" /etc/sudoers
+   11  sudo sed -ic "/wheel.*NOPASSWD/s/#//" /etc/sudoers
+   12  sudo grep "wheel.*NOPASSWD" /etc/sudoers
+   13  sudo grep wheel /etc/sudoers
+   14  sudo grep "^%wheel" /etc/sudoers
+   15  sudo sed -i "/^%wheel/s/^/#/" /etc/sudoers
+   16  sudo grep "^%wheel" /etc/sudoers
+   17  sudo grep wheel /etc/sudoers
+   18  sudo service sudo restart
+   19  sudo su
+   20  sudo yum sysvinit-core
+   21  sudo yum install sysvinit-core
+   22  sudo yum install sysvinit
+   23  sudo yum search sysvinit
+   24  sudo yum install sysvinit-tools
+   25  sudo yum search sysvinit
+   26  sudo yum provides /etc/inittab
+   27  sudo yum install initscripts
+   28  service --status-all
+   29  sudo service --status-all
+   30  sudo init 6
+   31  fc -l
+   32  fc -l -20
+   33  history 
+   34  history |grep dd
+   35  sudo dd if=/dev/sdf count=2 status=none|od -Ad -txz
+   36  sudo dd if=/dev/sda count=1 status=none|od -Ad -txz
+   37  sudo init 0
+   38  sudo init 6
+   39  ps -f
+   40  exit
+   41  sudo grub-install /dev/sda
+   42  sudo grub2-install /dev/sda
+   43  ps -f
+   44  bash
+   45  exit
+   46  passwd 
+   47  sudo passwd ibertech
+   48  sudo init 6
+   49  su
+   50  exit
+   51  ip a
+   52  exit
+   53  ip a
+   54  sudo netstat -putana 
+   55  sudo yum provides netstat
+   56  sudo service ssh status
+   57  sudo service sshd status
+   58  sudo service sshd status -l
+   59  ssh localhost
+   60  sudo init 0
+   61  ls
+   62  git clone https://github.com/secobau/linux
+   63  sudo  yum -y install git
+   64  git clone https://github.com/secobau/linux
+   65  cd linux/
+   66  cd
+   67  ls
+   68  git clone https://github.com/secobau/cloud9
+   69  ls
+   70  cd linux/
+   71  ls
+   72  git pull
+   73  git fetch
+   74  git merge
+   75  cat >test
+   76  ls
+   77  git status
+   78  git add test 
+   79  git status
+   80  cat >test2
+   81  git add test2
+   82  git status
+   83  git commit -m 'Add test'
+   84  cat>test3
+   85  git add test3
+   86  git commit --amend -m 'Add test'
+   87  cd 
+   88  lls
+   89  ls 
+   90  mkdir Scripts
+   91  cd Scripts/
+   92  git init
+   93  cat >script1
+   94  cat>script2
+   95  git add script*
+   96  git commit -m 'Add script1 & 2'
+   97  cd ..
+   98  cd linux/
+   99  git remote -v
+  100  cd ../Scripts/
+  101  ls
+  102  git log
+  103  ls
+  104  touch script3
+  105  git add script3
+  106  git commit -m 'Add script3'
+  107  git log
+  108  cd /
+  109  git init
+  110  sudo vi .gitignore
+  111  ls
+  112  cat|sudo tee -a .gitignore 
+  113  cat .gitignore 
+  114  sudo git init
+  115  git status
+  116  sudo git add .
+  117  sudo git commit -m 'OS install'
+  118  git status
+  119  sudo git status
+  120  sudo yum -y install elinks
+  121  sudo git status
+  122  git add .
+  123  sudo git add .
+  124  sudo git commit -m 'Install elinks'
+  125  cd
+  126  cd cloud9/
+  127  git log --graph --decorate 
+  128  git log --graph --decorate -q
+  129  git log --graph --decorate -1
+  130  git log --graph --decorate -c
+  131  git log --graph --decorate 
+  132  sudo init 0
+  133  sudo nmtui
+  134  sudo init 6
+  135  sudo yum -y install net-tools
+  136  sudo yum -y install tcpdump
+  137  sudo yum provides /usr/bin/host
+  138  sudo yum -y install bind-utils
+  139  sudo route -n
+  140  sudo netstat -putana
+  141  sudo host google.es
+  142  sudo host www.upm.es
+  143  ss -putana
+  144  sudo ss -putana
+  145  sudo tcpdump
+  146  sudo init 0
+  147  sudo nmtui
+  148  pwd
+  149  sudo vi /etc/rc.local 
+  150  cd linux/
+  151  git pull
+  152  git status
+  153  cd ..
+  154  ls
+  155  ln -s linux/iptables-pedro iptables
+  156  sudo chmod +x /etc/rc.local 
+  157  cp linux/iptables-pedro linux/iptables-mgmt
+  158  rm iptables 
+  159  ln -s linux/iptables-mgmt iptables
+  160  vi linux/iptables-mgmt 
+  161  ls -l
+  162  sudo init 6
+  163  host www.upm.es
+  164  ip a
+  165  sudo route -n
+  166  sudo tail /var/log/messages 
+  167  sudo iptables -S
+  168  sudo tail /var/log/messages 
+  169  sudo route -n
+  170  ssh 10.255.255.1
+  171  host www.upm.es
+  172  sudo tail /var/log/messages 
+  173  ssh 10.255.255.1
+  174  sudo route -n
+  175  ssh 10.255.255.1
+  176  host www.upm.es
+  177  ls
+  178  cd linux/
+  179  history >> history.$(date +%F)
