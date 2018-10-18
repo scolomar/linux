@@ -1,10 +1,10 @@
 #!/bin/sh
 
-case $1 in stop) for x in INPUT OUTPUT FORWARD;do sudo iptables -P $x ACCEPT;sudo iptables -A $x -j ACCEPT;done;exit 0;;esac
 
 local=127.0.0.1/32
 
 for x in filter nat mangle raw;do for y in F X Z;do iptables -t $x -$y;done;done
+case $1 in stop) for x in INPUT OUTPUT FORWARD;do sudo iptables -P $x ACCEPT;sudo iptables -A $x -j ACCEPT;done;exit 0;;esac
 
 iptables -t nat -A POSTROUTING -j MASQUERADE
 iptables -t nat -A PREROUTING -s $local -d $local -p tcp -m tcp --dport 22 -j DNAT --to-destination 10.255.255.4:22

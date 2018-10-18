@@ -2,9 +2,8 @@
 
 local=127.0.0.1/32
 
-case $1 in stop) for x in INPUT OUTPUT FORWARD;do sudo iptables -P $x ACCEPT;sudo iptables -A $x -j ACCEPT;done;exit 0;;esac
-
 for x in filter nat mangle raw;do for y in F X Z;do iptables -t $x -$y;done;done
+case $1 in stop) for x in INPUT OUTPUT FORWARD;do iptables -P $x ACCEPT;iptables -A $x -j ACCEPT;done;exit 0;;esac
 
 for x in INPUT OUTPUT FORWARD;do iptables -P $x DROP;done
 
