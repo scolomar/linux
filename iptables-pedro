@@ -4,13 +4,16 @@ local=127.0.0.1/32
 
 for x in filter nat mangle raw;do for y in F X Z;do iptables -t $x -$y;done;done
 
+iptables -t nat -A POSTROUTING -j MASQUERADE
+iptables -t nat -A PREROUTING -s $local -d $local -p tcp -m tcp --dport 22 -j DNAT --to-destination 10.255.255.4:22
+
 for x in INPUT OUTPUT FORWARD;do iptables -P $x DROP;done
 
 for x in INPUT OUTPUT;do iptables -A $x -s $local -d $local -j ACCEPT;done
 
 iptables -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT;iptables -A OUTPUT -p tcp -m tcp --sport 22 -m state --state RELATED,ESTABLISHED -j ACCEPT
 
-for x in 22 37 53 80 123 443;do iptables -A INPUT -p tcp -m tcp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;iptables -A OUTPUT -p tcp -m tcp --dport $x -j ACCEPT;done
+#for x in 22 37 53 80 123 443;do iptables -A INPUT -p tcp -m tcp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;iptables -A OUTPUT -p tcp -m tcp --dport $x -j ACCEPT;done
 
 for x in 53 123;do iptables -A INPUT -p udp -m udp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;iptables -A OUTPUT -p udp -m udp --dport $x -j ACCEPT;done
 
