@@ -1161,8 +1161,12 @@
 1257     sudo sed -i "/quiet/s/quiet/ipv6.disable=1/" /etc/default/grub
 1260     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 1261     sudo yum -y install net-tools bind-utils
+1305     sudo yum autoremove
+1307     sudo yum clean all
+1308     sudo rm -rf /var/cache/yum
  1207  2018-10-21 19:01:37 cd /
  1208  2018-10-21 19:01:40 sudo git status
  1209  2018-10-21 19:02:00 sudo git add .
  1210  2018-10-21 19:03:58 sudo git commit -m 'Initial commit rootfs'
+
 
