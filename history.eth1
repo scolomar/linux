@@ -2,4 +2,3 @@
  1326  2018-10-21 21:28:02 sudo nmcli connection modify uuid $(sudo nmcli connection show|grep "Wired connection 2"|awk '{print $4}') ipv4.address 10.255.255.1/24
  1364  2018-10-21 21:46:38 sudo nmcli connection modify uuid $(sudo nmcli connection show|grep "Wired connection 2"|awk '{print $4}') ipv4.never-default true
  1373  2018-10-21 21:52:55 sudo nmcli connection modify uuid $(sudo nmcli connection show|grep "Wired connection 2"|awk '{print $4}') ipv4.method manual
- 1368  2018-10-21 21:48:16 sudo nmcli connection up uuid $(sudo nmcli connection show|grep "Wired connection 2"|awk '{print $4}') 
