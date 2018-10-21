@@ -1,0 +1,11 @@
+.gitignore
+var/
+tmp/
+sys/
+run/
+proc/
+mnt/
+media/
+lost+found/
+home/
+dev/
