@@ -1,0 +1,16 @@
+[Unit]
+Description=IP tables
+Before=network.target
+#Wants=network-pre.target
+#After=dbus.service
+#After=polkit.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/home/danysoft/Scripts/iptables
+ExecStop=/home/danysoft/Scripts/iptables stop
+
+[Install]
+WantedBy=multi-user.target
+

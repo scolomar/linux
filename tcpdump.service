@@ -1,0 +1,12 @@
+[Unit]
+Description=TCP dump
+After=network.target
+
+[Service]
+ExecStart=/home/danysoft/Scripts/tcpdump
+ExecStop=/home/danysoft/Scripts/tcpdump stop
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,15 @@
+AllowUsers danysoft@10.0.2.2 danysoft@127.0.0.0/8
+AddressFamily inet
+ListenAddress 0.0.0.0:22
+HostKey /etc/ssh/ssh_host_rsa_key
+SyslogFacility AUTHPRIV
+PermitRootLogin no
+PasswordAuthentication no
+PrintLastLog no
+ClientAliveInterval 1
+UseDNS no
+AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
+AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
+AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
+AcceptEnv XMODIFIERS
+Subsystem sftp /usr/libexec/openssh/sftp-server
