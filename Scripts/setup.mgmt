@@ -1,0 +1,40 @@
+#!/bin/sh -x
+
+machine=mgmt;
+local=127.0.0.0/8;
+vpn=10.0.2.0/24;
+you=$vpn;
+me=0.0.0.0;
+mgmt=10.255.255.0/24;
+
+me_net=10.255.255.2/24;
+him=10.255.255.1;
+default1=TRUE;
+default2=FALSE;
+hostname=MGMT;
+domain=DANYSOFT.GOTDNS.ORG;
+net_name1="Wired connection 1";
+net_name2="Wired connection 2";
+
+sudo nmcli general hostname $hostname.$domain;
+x=$(sudo nmcli connection show|grep "$net_name1"|awk '{print $4}');
+sudo nmcli connection modify uuid $x ipv4.never-default $default1;
+x=$(sudo nmcli connection show|grep "$net_name2"|awk '{print $4}');
+sudo nmcli connection modify uuid $x ipv4.never-default $default2;
+sudo nmcli connection modify uuid $x ipv4.address $me_net;
+sudo nmcli connection modify uuid $x ipv4.gateway $him;
+sudo nmcli connection modify uuid $x ipv4.method manual;
+
+cp $HOME/linux/Scripts/sshd_config $HOME/Scripts/sshd_config;
+cp $HOME/linux/Scripts/iptables.$machine $HOME/Scripts/iptables;
+for x in iptables sshd_config;
+	do
+		sed -i "s@_LOCAL_@$local@g" $HOME/Scripts/$x;
+		sed -i "s@_YOU_@$you@g" $HOME/Scripts/$x;
+		sed -i "s@_ME_@$me@g" $HOME/Scripts/$x;
+		sed -i "s@_MGMT_@$mgmt@g" $HOME/Scripts/$x;
+	done;
+sudo cp $HOME/Scripts/sshd_config /etc/ssh;
+
+sudo init 6;
+

@@ -27,6 +27,7 @@ case $1
 
 sysctl net.ipv4.ip_forward=1;
 iptables -t nat -A POSTROUTING -j MASQUERADE;
+#iptables -t nat -A PREROUTING -s $local -d $local -p tcp -m tcp --dport 2244 -j DNAT --to-destination 10.255.255.4:22
 
 for x in INPUT OUTPUT FORWARD;
 	do 
@@ -38,23 +39,23 @@ for x in INPUT OUTPUT;
 		iptables -A $x -s $local -d $local -j ACCEPT;
 	done;
 
-iptables -A INPUT -i eth1 -s $you -d $me -p tcp -m tcp --dport 22 -j ACCEPT;
-iptables -A OUTPUT -o eth1 -s $me -d $you -p tcp -m tcp --sport 22 -m state --state RELATED,ESTABLISHED -j ACCEPT;
+iptables -A INPUT -i eth0 -s $you -p tcp -m tcp --dport 22 -j ACCEPT;
+iptables -A OUTPUT -o eth0 -d $you -p tcp -m tcp --sport 22 -m state --state RELATED,ESTABLISHED -j ACCEPT;
 
 for x in 22 37 53 80 123 443;
 	do 
-		iptables -A OUTPUT -o eth0 -p tcp -m tcp --dport $x -j ACCEPT;
-		iptables -A INPUT -i eth0 -p tcp -m tcp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
+		iptables -A OUTPUT -o eth1 -p tcp -m tcp --dport $x -j ACCEPT;
+		iptables -A INPUT -i eth1 -p tcp -m tcp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
 	done;
 
 for x in 53 123;
 	do 
-		iptables -A OUTPUT -o eth0 -p udp -m udp --dport $x -j ACCEPT;
-		iptables -A INPUT -i eth0 -p udp -m udp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
+		iptables -A OUTPUT -o eth1 -p udp -m udp --dport $x -j ACCEPT;
+		iptables -A INPUT -i eth1 -p udp -m udp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
 	done;
 
-iptables -A FORWARD -o eth0 -s $mgmt -j ACCEPT;
-iptables -A FORWARD -o eth1 -d $mgmt -m state --state RELATED,ESTABLISHED -j ACCEPT;
+iptables -A FORWARD -o eth1 -d $mgmt -j ACCEPT;
+iptables -A FORWARD -o eth0 -s $mgmt -m state --state RELATED,ESTABLISHED -j ACCEPT;
 
 for x in INPUT OUTPUT FORWARD;
 	do 
