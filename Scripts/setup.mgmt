@@ -36,5 +36,7 @@ for x in iptables sshd_config;
 	done;
 sudo cp $HOME/Scripts/sshd_config /etc/ssh;
 
+sudo sed -i /net.ipv4.ip_forward=0/s/0/1/ /etc/sysctl.d/99-sysctl.conf
+
 sudo init 6;
 
