@@ -1,4 +1,4 @@
-AllowUsers danysoft@_YOU_ danysoft@_LOCAL_
+AllowUsers danysoft@_YOU_
 AddressFamily inet
 ListenAddress _ME_:22
 HostKey /etc/ssh/ssh_host_rsa_key

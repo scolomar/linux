@@ -38,23 +38,23 @@ for x in INPUT OUTPUT;
 		iptables -A $x -s $local -d $local -j ACCEPT;
 	done;
 
-iptables -A INPUT -s $you -d $me -p tcp -m tcp --dport 22 -j ACCEPT;
-iptables -A OUTPUT -s $me -d $you -p tcp -m tcp --sport 22 -m state --state RELATED,ESTABLISHED -j ACCEPT;
+iptables -A INPUT -i eth1 -s $you -d $me -p tcp -m tcp --dport 22 -j ACCEPT;
+iptables -A OUTPUT -o eth1 -s $me -d $you -p tcp -m tcp --sport 22 -m state --state RELATED,ESTABLISHED -j ACCEPT;
 
 for x in 22 37 53 80 123 443;
 	do 
-		iptables -A OUTPUT -s $me -p tcp -m tcp --dport $x -j ACCEPT;
-		iptables -A INPUT -d $me -p tcp -m tcp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
+		iptables -A OUTPUT -o eth0 -p tcp -m tcp --dport $x -j ACCEPT;
+		iptables -A INPUT -i eth0 -p tcp -m tcp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
 	done;
 
 for x in 53 123;
 	do 
-		iptables -A OUTPUT -s $me -p udp -m udp --dport $x -j ACCEPT;
-		iptables -A INPUT -d $me -p udp -m udp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
+		iptables -A OUTPUT -o eth0 -p udp -m udp --dport $x -j ACCEPT;
+		iptables -A INPUT -i eth0 -p udp -m udp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
 	done;
 
-iptables -A FORWARD -s $mgmt -j ACCEPT;
-iptables -A FORWARD -d $mgmt -m state --state RELATED,ESTABLISHED -j ACCEPT;
+iptables -A FORWARD -i eth1 -o eth0 -s $mgmt -j ACCEPT;
+iptables -A FORWARD -i eth0 -o eth1 -d $mgmt -m state --state RELATED,ESTABLISHED -j ACCEPT;
 
 for x in INPUT OUTPUT FORWARD;
 	do 
