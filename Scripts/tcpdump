@@ -1,5 +1,7 @@
 #!/bin/sh
+
 set -e
+
 I="any"
 C="tcpdump"
 Z="gzip"
@@ -10,5 +12,16 @@ S=100
 T=$($D +%F.%Hh%Mm)
 N="$T.pcap"
 O="-i $I -C $S -z $Z -w $F/$N"
-case "$1" in stop) killall tcpdump;exit 0;;esac
-[ -d $F ]||mkdir -p $F;$C $O
+
+case "$1" 
+	in 
+		stop) 
+			killall tcpdump;
+			exit 0
+			;;
+	esac
+
+[ -d $F ]||mkdir -p $F;
+
+$C $O
+

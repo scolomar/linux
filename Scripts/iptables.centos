@@ -6,22 +6,22 @@ me=_ME_;
 
 
 for x in filter nat mangle raw;
-	do
+	do 
 		for y in F X Z;
-			do
+			do 
 				iptables -t $x -$y;
 			done;
 	done;
 
-case $1
+case $1 
 	in 
-		stop)
+		stop) 
 			for x in INPUT OUTPUT FORWARD;
-				do
+				do 
 					sudo iptables -P $x ACCEPT;
 					sudo iptables -A $x -j ACCEPT;
 				done;
-			exit 0
+			exit 0;
 			;;
 	esac;
 

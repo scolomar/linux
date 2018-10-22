@@ -1,6 +1,6 @@
-AllowUsers danysoft@10.0.2.2 danysoft@127.0.0.0/8
+AllowUsers danysoft@_YOU_ danysoft@_LOCAL_
 AddressFamily inet
-ListenAddress 0.0.0.0:22
+ListenAddress _ME_:22
 HostKey /etc/ssh/ssh_host_rsa_key
 SyslogFacility AUTHPRIV
 PermitRootLogin no

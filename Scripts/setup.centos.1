@@ -1,0 +1,49 @@
+#!/bin/sh -x
+
+me=0.0.0.0;
+you=10.0.2.2;
+local=127.0.0.0/8;
+
+sudo yum -y install epel-release;
+sudo yum -y update;
+sudo yum -y install openssh-server sysvinit-core sysvinit-tools initscripts elinks net-tools tcpdump bind-utils bash-completion openssh-server-sysvinit dos2unix git psmisc;
+sudo yum -y remove nano alsa postfix alsa-firmware alsa-lib btrfs-progs firewalld firewalld-filesystem httpd kernel gcc gdb httpd-tools siege make;
+sudo yum -y autoremove;
+sudo yum -y clean all;
+sudo rm -rf /var/cache/yum;
+
+sudo sed -i "/%wheel.*NOPASSWD/s/#//" /etc/sudoers;
+sudo sed -i "/^%wheel/s/^/#/" /etc/sudoers;
+
+ssh-keygen;
+cp .ssh/id_rsa.pub .ssh/authorized_keys;
+
+echo HISTSIZE=1000000 1>>$HOME/.bashrc;
+sudo sed -i "/HISTSIZE=/s/1000/1000000/" /etc/profile;
+
+sudo sed -i "/^SELINUX=/s/enforcing/permissive/" /etc/selinux/config;
+
+[ -d $HOME/Scripts ]||mkdir -p $HOME/Scripts;
+for x in iptables sshd_config;
+	do
+		cp $HOME/linux/Scripts/$x.centos $HOME/Scripts/$x;
+		sed -i "s@_ME_@$me@g" $HOME/Scripts/$x;
+		sed -i "s@_YOU_@$you@g" $HOME/Scripts/$x;
+		sed -i "s@_LOCAL_@$local@g" $HOME/Scripts/$x;
+	done
+cp $HOME/linux/Scripts/*.service $HOME/Scripts;
+sed -i s/danysoft/$USER/g $HOME/Scripts/*;
+
+chmod 640 $HOME/Scripts/*;
+sudo cp $HOME/Scripts/*.service /etc/systemd/system/;
+sudo cp $HOME/Scripts/rootfs.gitignore /.gitignore;
+sudo cp $HOME/Scripts/sshd_config /etc/ssh;
+chmod 700 $HOME/Scripts/*;
+
+sudo systemctl enable iptables tmp.mount;
+
+sudo sed -i "/quiet/s/quiet/ipv6.disable=1/" /etc/default/grub;
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+
+sudo init 6
+

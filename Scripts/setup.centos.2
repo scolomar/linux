@@ -1,0 +1,17 @@
+#!/bin/sh
+
+mkdir $HOME/System_Backup;
+sudo cat /boot/grub2/grub.cfg 1>$HOME/System_Backup/grub.cfg;
+sudo dd count=4 if=/dev/sda 1>$HOME/System_Backup/sda;
+sudo fdisk /dev/sd? -l 1>$HOME/System_Backup/fdisk;
+sudo blkid 1>$HOME/System_Backup/blkid;
+lsblk 1>$HOME/System_Backup/lsblk;
+cp /etc/fstab $HOME/System_Backup;
+cp /etc/mtab $HOME/System_Backup;
+
+cd /;
+sudo rm -rf .git;
+sudo git init;
+sudo git add .;
+sudo git commit -m 'Initial commit rootfs';
+
