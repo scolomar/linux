@@ -1,0 +1,12 @@
+#!/bin/sh
+sudo yum -y install epel-release;sudo yum -y update;sudo yum -y install openssh-server sysvinit-core sysvinit-tools initscripts elinks net-tools tcpdump bind-utils bash-completion openssh-server-sysvinit dos2unix git psmisc;sudo yum -y remove nano alsa postfix alsa-firmware alsa-lib btrfs-progs firewalld firewalld-filesystem httpd kernel gcc gdb httpd-tools siege make;sudo yum -y autoremove;sudo yum -y clean all;sudo rm -rf /var/cache/yum
+sudo sed -i "/%wheel.*NOPASSWD/s/#//" /etc/sudoers;sudo sed -i "/^%wheel/s/^/#/" /etc/sudoers
+ssh-keygen;cp .ssh/id_rsa.pub .ssh/authorized_keys
+echo HISTSIZE=1000000 1>>$HOME/.bashrc;sudo sed -i "/HISTSIZE=/s/1000/1000000/" /etc/profile
+sudo sed -i "/^SELINUX=/s/enforcing/permissive/" /etc/selinux/config 
+cp -r $HOME/linux/Scripts $HOME;sed -i s/danysoft/$USER/g $HOME/Scripts/*;chmod 640 $HOME/Scripts/*;sudo cp $HOME/Scripts/*.service /etc/systemd/system/;sudo cp $HOME/Scripts/rootfs.gitignore /.gitignore;sudo cp $HOME/Scripts/sshd_config /etc/ssh;chmod 700 $HOME/Scripts/*
+sudo systemctl enable iptables tmp.mount
+sudo sed -i "/quiet/s/quiet/ipv6.disable=1/" /etc/default/grub;sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+sudo init 6
+mkdir $HOME/System_Backup;sudo cat /boot/grub2/grub.cfg 1>$HOME/System_Backup/grub.cfg;sudo dd count=4 if=/dev/sda 1>$HOME/System_Backup/sda;sudo fdisk /dev/sd? -l 1>$HOME/System_Backup/fdisk;sudo blkid 1>$HOME/System_Backup/blkid;lsblk 1>$HOME/System_Backup/lsblk;cp /etc/fstab $HOME/System_Backup;cp /etc/mtab $HOME/System_Backup
+cd /;sudo rm -rf .git;sudo git init;sudo git add .;sudo git commit -m 'Initial commit rootfs'
