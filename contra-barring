@@ -1,0 +1,1 @@
+DIR=http://www.upm.es/user;echo DIR|sed "s/DIR/$(echo $DIR|sed 's/\//\\\//g')/"
