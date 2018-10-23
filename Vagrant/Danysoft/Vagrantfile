@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
     out.vm.network "private_network",
       virtualbox__intnet: "mgmt_net",
       ip: "10.255.255.1",
-      netmask: "24",
+      netmask: "24"
 #      nic_type: "virtio"
 #    out.vm.provision "shell", inline: <<-HASTAQUI
 #       curl -I www.upm.es
@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
     mgmt.vm.network "private_network",
       virtualbox__intnet: "mgmt_net",
       ip: "10.255.255.2",
-      netmask: "24",
+      netmask: "24"
 #      nic_type: "virtio"
 #    mgmt.vm.provision "shell", inline: <<-HASTAQUI
 #       curl -I www.upm.es
@@ -46,12 +46,12 @@ Vagrant.configure("2") do |config|
     int.vm.network "private_network",
       virtualbox__intnet: "mgmt_net",
       ip: "10.255.255.3",
-      netmask: "24",
+      netmask: "24"
 #      nic_type: "virtio"
     int.vm.network "private_network",
       virtualbox__intnet: "dmz_net",
       ip: "192.168.255.1",
-      netmask: "24",
+      netmask: "24"
 #      nic_type: "virtio"
 #    int.vm.provision "shell", inline: <<-HASTAQUI
 #       curl -I www.upm.es
@@ -70,12 +70,12 @@ Vagrant.configure("2") do |config|
     nginx.vm.network "private_network",
       virtualbox__intnet: "mgmt_net",
       ip: "10.255.255.4",
-      netmask: "24",
+      netmask: "24"
 #      nic_type: "virtio"
     nginx.vm.network "private_network",
       virtualbox__intnet: "dmz_net",
       ip: "192.168.255.3",
-      netmask: "24",
+      netmask: "24"
 #      nic_type: "virtio"
 #    nginx.vm.provision "shell", inline: <<-HASTAQUI
 #       curl -I www.upm.es
@@ -94,17 +94,17 @@ Vagrant.configure("2") do |config|
     back.vm.network "private_network",
       virtualbox__intnet: "mgmt_net",
       ip: "10.255.255.5",
-      netmask: "24",
+      netmask: "24"
 #      nic_type: "virtio"
     back.vm.network "private_network",
       virtualbox__intnet: "dmz_net",
       ip: "192.168.255.2",
-      netmask: "24",
+      netmask: "24"
 #      nic_type: "virtio"
     back.vm.network "private_network",
       virtualbox__intnet: "back_net",
       ip: "172.31.255.1",
-      netmask: "24",
+      netmask: "24"
 #      nic_type: "virtio"
 #    back.vm.provision "shell", inline: <<-HASTAQUI
 #      curl -I www.upm.es
@@ -123,12 +123,12 @@ Vagrant.configure("2") do |config|
     php.vm.network "private_network",
       virtualbox__intnet: "mgmt_net",
       ip: "10.255.255.6",
-      netmask: "24",
+      netmask: "24"
 #      nic_type: "virtio"
     php.vm.network "private_network",
       virtualbox__intnet: "back_net",
       ip: "172.31.255.3",
-      netmask: "24",
+      netmask: "24"
 #      nic_type: "virtio"
 #    php.vm.provision "shell", inline: <<-HASTAQUI
 #      curl -I www.upm.es
