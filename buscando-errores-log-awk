@@ -1,0 +1,1 @@
+m="error";awk 'BEGIN{a=1}{if(a==1)b=$2;a=0}/success/{a=1;next}/'"$m"'/{a=1;print b}' /tmp/salida.log|sort|uniq;
