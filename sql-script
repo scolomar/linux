@@ -1,0 +1,52 @@
+set -x;
+F=$HOME/NEW;
+[ -d $F ]||mkdir -p $F;
+A0=f1;
+A1=f2;
+A2=f3;
+A3=f4;
+A4=f5;
+A="$A1, $A2, $A3, $A4";
+B0=f6;
+B1=f3;
+B2=f7;
+B3=f8;
+B4=f9;
+B="$B1, $B2, $B3, $B4";
+C=id;
+
+lA=$(echo $A|wc -w);
+lB=$(echo $B|wc -w);
+lBcount=$((1+$lB));
+echo "st;base;$A1;$A2;$A3;$A4;$B1;$B2;$B3;$B4;count" 1>$F/$A0.csv;
+for x in $(cat $F/lista);do 
+	V=$(grep ^$x$ $HOME/file|cut -d. -f3);
+	U=$(cd;cd $x;drush status);
+	cd;
+	drush $x sqlq "SELECT $A FROM $A0" 1>$F/.x;
+	z=0;
+	while [ $z -lt $lA ];do 
+		z=$((1+$z));
+		awk '{'print' $'$z'}' $F/.x 1>$F/.a$z;
+	done;
+	z=0;
+	Z=$(wc -l $F/.a1|awk '{print $1}');
+	while [ $z -lt $Z ];do 
+		z=$((1+$z));
+		count=$(drush $x sqlq "SELECT g1 FROM f_$(sed -n ${z}p $F/.a2) WHERE $A4="\'"$(sed -n ${z}p $F/.a4)"\'|sort -n|uniq|wc -l);
+		y=$(sed -n ${z}p $F/.a1);
+		BB=$(drush $x sqlq "SELECT $B FROM $B0 WHERE $C="\'"$y"\');
+		echo "$BB $count" 1>$F/.x;
+		zz=0;
+		while [ $zz -lt $lBcount ];do 
+			zz=$((1+$zz));
+			awk '{'print' $'$zz'}' $F/.x 1>>$F/.b$zz;
+		done;
+	done;
+	L=$(wc -l $F/.a1|cut -d' ' -f1);
+	printf '%*s' "$L"|sed "s@ @$x;$U\n@g" 1>$F/.a0;
+	paste -d\; $F/.a* $F/.b* 1>>$F/$A0.csv;
+	rm $F/.b*;
+done;
+rm $F/.x $F/.a*;
+set +x
