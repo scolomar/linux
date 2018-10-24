@@ -1,0 +1,7 @@
+118      dd if=/dev/zero of=ejemplo.disk count=10000
+119      ls -l
+120      mkfs ejemplo.disk
+121      sudo mount -o loop ejemplo.disk /media/
+122      df
+123      lsblk -f
+124      tune2fs /home/vagrant/ejemplo.disk -l
