@@ -4,12 +4,12 @@ Vagrant.configure("2") do |config|
       v.name = "vagrant_out"
       v.linked_clone = true
     end
-    out.vm.box = "centos/7"
+    out.vm.box = "centos/6"
     out.vm.network "private_network",
       virtualbox__intnet: "mgmt_net",
       ip: "10.255.255.1",
-      netmask: "24"
-#      nic_type: "virtio"
+      nic_type: "virtio",
+      netmask: "255.255.255.0"
 #    out.vm.provision "shell", inline: <<-HASTAQUI
 #       curl -I www.upm.es
 #      sudo yum -y install git
@@ -23,12 +23,12 @@ Vagrant.configure("2") do |config|
       v.name = "vagrant_mgmt"
       v.linked_clone = true
     end
-    mgmt.vm.box = "centos/7"
+    mgmt.vm.box = "centos/6"
     mgmt.vm.network "private_network",
       virtualbox__intnet: "mgmt_net",
       ip: "10.255.255.2",
-      netmask: "24"
-#      nic_type: "virtio"
+      netmask: "255.255.255.0",
+      nic_type: "virtio"
 #    mgmt.vm.provision "shell", inline: <<-HASTAQUI
 #       curl -I www.upm.es
 #      sudo yum -y install git
@@ -42,17 +42,17 @@ Vagrant.configure("2") do |config|
       v.name = "vagrant_int"
       v.linked_clone = true
     end
-    int.vm.box = "centos/7"
+    int.vm.box = "centos/6"
     int.vm.network "private_network",
       virtualbox__intnet: "mgmt_net",
       ip: "10.255.255.3",
-      netmask: "24"
-#      nic_type: "virtio"
+      netmask: "255.255.255.0",
+      nic_type: "virtio"
     int.vm.network "private_network",
       virtualbox__intnet: "dmz_net",
       ip: "192.168.255.1",
-      netmask: "24"
-#      nic_type: "virtio"
+      netmask: "255.255.255.0",
+      nic_type: "virtio"
 #    int.vm.provision "shell", inline: <<-HASTAQUI
 #       curl -I www.upm.es
 #      sudo yum -y install git
@@ -66,17 +66,17 @@ Vagrant.configure("2") do |config|
       v.name = "vagrant_nginx"
       v.linked_clone = true
     end
-    nginx.vm.box = "centos/7"
+    nginx.vm.box = "centos/6"
     nginx.vm.network "private_network",
       virtualbox__intnet: "mgmt_net",
       ip: "10.255.255.4",
-      netmask: "24"
-#      nic_type: "virtio"
+      netmask: "255.255.255.0",
+      nic_type: "virtio"
     nginx.vm.network "private_network",
       virtualbox__intnet: "dmz_net",
       ip: "192.168.255.3",
-      netmask: "24"
-#      nic_type: "virtio"
+      netmask: "255.255.255.0",
+      nic_type: "virtio"
 #    nginx.vm.provision "shell", inline: <<-HASTAQUI
 #       curl -I www.upm.es
 #      sudo yum -y install git
@@ -90,22 +90,22 @@ Vagrant.configure("2") do |config|
       v.name = "vagrant_back"
       v.linked_clone = true
     end
-    back.vm.box = "centos/7"
+    back.vm.box = "centos/6"
     back.vm.network "private_network",
       virtualbox__intnet: "mgmt_net",
       ip: "10.255.255.5",
-      netmask: "24"
-#      nic_type: "virtio"
+      netmask: "255.255.255.0",
+      nic_type: "virtio"
     back.vm.network "private_network",
       virtualbox__intnet: "dmz_net",
       ip: "192.168.255.2",
-      netmask: "24"
-#      nic_type: "virtio"
+      netmask: "255.255.255.0",
+      nic_type: "virtio"
     back.vm.network "private_network",
       virtualbox__intnet: "back_net",
       ip: "172.31.255.1",
-      netmask: "24"
-#      nic_type: "virtio"
+      netmask: "255.255.255.0",
+      nic_type: "virtio"
 #    back.vm.provision "shell", inline: <<-HASTAQUI
 #      curl -I www.upm.es
 #      sudo yum -y install git
@@ -119,17 +119,17 @@ Vagrant.configure("2") do |config|
       v.name = "vagrant_php"
       v.linked_clone = true
     end
-    php.vm.box = "centos/7"
+    php.vm.box = "centos/6"
     php.vm.network "private_network",
       virtualbox__intnet: "mgmt_net",
       ip: "10.255.255.6",
-      netmask: "24"
-#      nic_type: "virtio"
+      netmask: "255.255.255.0",
+      nic_type: "virtio"
     php.vm.network "private_network",
       virtualbox__intnet: "back_net",
       ip: "172.31.255.3",
-      netmask: "24"
-#      nic_type: "virtio"
+      netmask: "255.255.255.0",
+      nic_type: "virtio"
 #    php.vm.provision "shell", inline: <<-HASTAQUI
 #      curl -I www.upm.es
 #      sudo yum -y install git
@@ -138,5 +138,101 @@ Vagrant.configure("2") do |config|
 #      linux/Scripts/setup.vagrant.centos.7.php
 #    HASTAQUI
   end
+  config.vm.define "dns" do |dns|
+    dns.vm.provider "virtualbox" do |v|
+      v.name = "vagrant_dns"
+      v.linked_clone = true
+    end
+    dns.vm.box = "centos/6"
+    dns.vm.network "private_network",
+      virtualbox__intnet: "mgmt_net",
+      ip: "10.255.255.7",
+      netmask: "255.255.255.0",
+      nic_type: "virtio"
+#    dns.vm.provision "shell", inline: <<-HASTAQUI
+#      curl -I www.upm.es
+#      sudo yum -y install git
+#      git clone https://github.com/secobau/linux
+#      linux/Scripts/setup.vagrant.centos.7
+#      linux/Scripts/setup.vagrant.centos.7.dns
+#    HASTAQUI
+  end
+  config.vm.define "dhcp" do |dhcp|
+    dhcp.vm.provider "virtualbox" do |v|
+      v.name = "vagrant_dhcp"
+      v.linked_clone = true
+    end
+    dhcp.vm.box = "centos/6"
+    dhcp.vm.network "private_network",
+      virtualbox__intnet: "mgmt_net",
+      ip: "10.255.255.8",
+      netmask: "255.255.255.0",
+      nic_type: "virtio"
+#    dhcp.vm.provision "shell", inline: <<-HASTAQUI
+#      curl -I www.upm.es
+#      sudo yum -y install git
+#      git clone https://github.com/secobau/linux
+#      linux/Scripts/setup.vagrant.centos.7
+#      linux/Scripts/setup.vagrant.centos.7.dhcp
+#    HASTAQUI
+  end
+  config.vm.define "ntp" do |ntp|
+    ntp.vm.provider "virtualbox" do |v|
+      v.name = "vagrant_ntp"
+      v.linked_clone = true
+    end
+    ntp.vm.box = "centos/6"
+    ntp.vm.network "private_network",
+      virtualbox__intnet: "mgmt_net",
+      ip: "10.255.255.9",
+      netmask: "255.255.255.0",
+      nic_type: "virtio"
+#    ntp.vm.provision "shell", inline: <<-HASTAQUI
+#      curl -I www.upm.es
+#      sudo yum -y install git
+#      git clone https://github.com/secobau/linux
+#      linux/Scripts/setup.vagrant.centos.7
+#      linux/Scripts/setup.vagrant.centos.7.ntp
+#    HASTAQUI
+  end
+  config.vm.define "mysql" do |mysql|
+    mysql.vm.provider "virtualbox" do |v|
+      v.name = "vagrant_mysql"
+      v.linked_clone = true
+    end
+    mysql.vm.box = "centos/6"
+    mysql.vm.network "private_network",
+      virtualbox__intnet: "mgmt_net",
+      ip: "10.255.255.10",
+      netmask: "255.255.255.0",
+      nic_type: "virtio"
+#    mysql.vm.provision "shell", inline: <<-HASTAQUI
+#      curl -I www.upm.es
+#      sudo yum -y install git
+#      git clone https://github.com/secobau/linux
+#      linux/Scripts/setup.vagrant.centos.7
+#      linux/Scripts/setup.vagrant.centos.7.mysql
+#    HASTAQUI
+  end
+  config.vm.define "tomcat" do |tomcat|
+    tomcat.vm.provider "virtualbox" do |v|
+      v.name = "vagrant_tomcat"
+      v.linked_clone = true
+    end
+    tomcat.vm.box = "centos/6"
+    tomcat.vm.network "private_network",
+      virtualbox__intnet: "mgmt_net",
+      ip: "10.255.255.11",
+      netmask: "255.255.255.0",
+      nic_type: "virtio"
+#    tomcat.vm.provision "shell", inline: <<-HASTAQUI
+#      curl -I www.upm.es
+#      sudo yum -y install git
+#      git clone https://github.com/secobau/linux
+#      linux/Scripts/setup.vagrant.centos.7
+#      linux/Scripts/setup.vagrant.centos.7.tomcat
+#    HASTAQUI
+  end
 end
       
+
