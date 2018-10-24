@@ -1,0 +1,21 @@
+$ORIGIN MGMT.NET.
+$TTL 86400
+@ IN SOA DNS.MGMT.NET. root.DNS.MGMT.NET. (
+                        2001062501 ; serial
+                        21600      ; refresh after 6 hours
+                        3600       ; retry after 1 hour
+                        604800     ; expire after 1 week
+                        86400 )    ; minimum TTL of 1 day
+
+        IN NS DNS.MGMT.NET.
+OUT     IN A 10.255.255.1
+MGMT    IN A 10.255.255.2
+INT     IN A 10.255.255.3
+NGINX   IN A 10.255.255.4
+BACK    IN A 10.255.255.5
+PHP     IN A 10.255.255.6
+DNS     IN A 10.255.255.7
+DHCP    IN A 10.255.255.8
+NTP     IN A 10.255.255.9
+MYSQL   IN A 10.255.255.10
+TOMCAT  IN A 10.255.255.11
