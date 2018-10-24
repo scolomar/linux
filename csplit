@@ -1,0 +1,5 @@
+set -x;k=1;while grep -q -m1 ^commit a1;do N=$(grep -n -m1 ^commit a1|cut -d: -f1);sed -n "1,${N}p" a1 1>$k.sql;sed -i "1,${N}d" a1;k=$((1+$k));done;cp a1 $k.sql;set +x
+csplit a0 '/^commit/+1' {*}
+csplit -n3 -f yy xx246 '/^INSERT/' {*}
+split -l 500 xx246
+for x in xx*;do drush sql-cli 0<$x;done
