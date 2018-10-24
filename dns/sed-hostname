@@ -1,0 +1,1 @@
+sudo sed -i "/HOSTNAME/s/l.*n/DHCP.MGMT.NET/"    /etc/sysconfig/network
