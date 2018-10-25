@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -x
 
 service_ports="53"
 service_proto="tcp udp"
@@ -13,6 +13,7 @@ cdr=$(ip a|grep "inet.*eth1"|cut -d/ -f2|awk '{print $1}')
 net=$(ipcalc -n $ip/$cdr|cut -d= -f2)/$cdr
 me=${ip:-0.0.0.0}
 service_net=${net:-0.0.0.0}
+mynet=$service_net
 
 ip=$(host MGMT|awk '{print $4}')
 you=${ip:-0.0.0.0}
@@ -77,8 +78,10 @@ for x in 53 67 68 123;
                 iptables -A INPUT -d $me -p udp -m udp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
         done;
 
-
-
+for x in 67 68;
+        do
+                iptables -A INPUT -s $mynet -d $me -p udp -m udp --sport $x -j ACCEPT;
+        done;
 
 for x in INPUT OUTPUT FORWARD;
         do
@@ -89,4 +92,3 @@ for x in INPUT OUTPUT FORWARD;
         do
                 iptables -A $x -j DROP;
         done;
-
