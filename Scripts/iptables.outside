@@ -1,68 +1,107 @@
-#!/bin/sh
+#!/bin/sh -x
 
-local=_LOCAL_;
-you=_YOU_;
-me=_ME_;
-mgmt=_MGMT_;
+service_ports=""
+service_proto="tcp udp"
+
+ip=$(ip a|grep "inet.*lo$"|cut -d/ -f1|awk '{print $2}')
+cdr=$(ip a|grep "inet.*lo$"|cut -d/ -f2|awk '{print $1}')
+net=$(ipcalc -n $ip/$cdr|cut -d= -f2)/$cdr
+localnet=${net:-127.0.0.0}
+
+ip=$(ip a|grep "inet.*eth0"|cut -d/ -f1|awk '{print $2}')
+cdr=$(ip a|grep "inet.*eth0"|cut -d/ -f2|awk '{print $1}')
+net=$(ipcalc -n $ip/$cdr|cut -d= -f2)/$cdr
+service_me=${ip:-0.0.0.0}
+service_net=${net:-0.0.0.0}
+
+ip=$(ip a|grep "inet.*eth1"|cut -d/ -f1|awk '{print $2}')
+cdr=$(ip a|grep "inet.*eth1"|cut -d/ -f2|awk '{print $1}')
+net=$(ipcalc -n $ip/$cdr|cut -d= -f2)/$cdr
+me=${ip:-0.0.0.0}
+mynet=${net:-0.0.0.0}
+you=$mynet
 
 for x in filter nat mangle raw;
-	do 
-		for y in F X Z;
-			do 
-				iptables -t $x -$y;
-			done;
-	done;
+        do
+                for y in F X Z;
+                        do
+                                iptables -t $x -$y;
+                        done;
+        done;
 
-case $1 
-	in 
-		stop) 
-			for x in INPUT OUTPUT FORWARD;
-				do 
-					sudo iptables -P $x ACCEPT;
-					sudo iptables -A $x -j ACCEPT;
-				done;
-			exit 0;
-			;;
-	esac;
+case $1
+        in
+                stop)
+                        for x in INPUT OUTPUT FORWARD;
+                                do
+                                        sudo iptables -P $x ACCEPT;
+                                        sudo iptables -A $x -j ACCEPT;
+                                done;
+                        exit 0;
+                        ;;
+        esac;
+
 
 sysctl net.ipv4.ip_forward=1;
 iptables -t nat -A POSTROUTING -j MASQUERADE;
 
 for x in INPUT OUTPUT FORWARD;
-	do 
-		iptables -P $x DROP;
-	done;
+        do
+                iptables -P $x DROP;
+        done;
 
 for x in INPUT OUTPUT;
-	do 
-		iptables -A $x -s $local -d $local -j ACCEPT;
-	done;
+        do
+                iptables -A $x -s $localnet -d $localnet -j ACCEPT;
+        done;
 
-iptables -A INPUT -i eth1 -s $you -d $me -p tcp -m tcp --dport 22 -j ACCEPT;
-iptables -A OUTPUT -o eth1 -s $me -d $you -p tcp -m tcp --sport 22 -m state --state RELATED,ESTABLISHED -j ACCEPT;
+for x in INPUT OUTPUT;
+        do
+                iptables -A $x -s $mynet -d $mynet -p icmp -j ACCEPT;
+        done;
 
-for x in 22 37 53 80 123 443;
-	do 
-		iptables -A OUTPUT -o eth0 -p tcp -m tcp --dport $x -j ACCEPT;
-		iptables -A INPUT -i eth0 -p tcp -m tcp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
-	done;
+#iptables -A OUTPUT -s $service_me -d 8.8.8.8 -p icmp -j ACCEPT;
+#iptables -A INPUT -s 8.8.8.8 -d $service_me -p icmp -j ACCEPT;
 
-for x in 53 123;
-	do 
-		iptables -A OUTPUT -o eth0 -p udp -m udp --dport $x -j ACCEPT;
-		iptables -A INPUT -i eth0 -p udp -m udp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
-	done;
+iptables -A INPUT -s $you -d $me -p tcp -m tcp --dport 22 -j ACCEPT;
+iptables -A OUTPUT -s $me -d $you -p tcp -m tcp --sport 22 -m state --state RELATED,ESTABLISHED -j ACCEPT;
 
-iptables -A FORWARD -o eth0 -s $mgmt -j ACCEPT;
-iptables -A FORWARD -o eth1 -d $mgmt -m state --state RELATED,ESTABLISHED -j ACCEPT;
+if [ -n "$service_ports" ]
+        then
+                for x in $service_proto
+                        do
+                                for y in $service_ports
+                                        do
+                                                iptables -A INPUT -s $service_net -d $me -p $x -m $x --dport $y -j ACCEPT;
+                                                iptables -A OUTPUT -s $me -d $service_net -p $x -m $x --sport $y -m state --state RELATED,ESTABLISHED -j ACCEPT;
+                                        done
+                        done
+        fi
+
+for y in $me $service_me
+        do
+                for x in 22 37 53 80 123 443;
+                        do
+                                iptables -A OUTPUT -s $y -p tcp -m tcp --dport $x -j ACCEPT;
+                                iptables -A INPUT -d $y -p tcp -m tcp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
+                        done;
+                for x in 53 67 68 123;
+                        do
+                                iptables -A OUTPUT -s $y -p udp -m udp --dport $x -j ACCEPT;
+                                iptables -A INPUT -d $y -p udp -m udp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
+                        done;
+        done;
+
+iptables -A FORWARD -s $mynet -j ACCEPT;
+iptables -A FORWARD -d $mynet -m state --state RELATED,ESTABLISHED -j ACCEPT;
 
 for x in INPUT OUTPUT FORWARD;
-	do 
-		iptables -A $x -j LOG;
-	done;
+        do
+                iptables -A $x -j LOG;
+        done;
 
 for x in INPUT OUTPUT FORWARD;
-	do 
-		iptables -A $x -j DROP;
-	done;
-
+        do
+                iptables -A $x -j DROP;
+        done;
+	
