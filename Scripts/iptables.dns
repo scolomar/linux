@@ -71,7 +71,7 @@ for x in 22 37 53 80 123 443;
                 iptables -A INPUT -d $me -p tcp -m tcp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
         done;
 
-for x in 53 123;
+for x in 53 67 68 123;
         do
                 iptables -A OUTPUT -s $me -p udp -m udp --dport $x -j ACCEPT;
                 iptables -A INPUT -d $me -p udp -m udp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
