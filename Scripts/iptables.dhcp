@@ -49,6 +49,11 @@ for x in INPUT OUTPUT;
                 iptables -A $x -s $localnet -d $localnet -j ACCEPT;
         done;
 
+for x in INPUT OUTPUT;
+        do
+                iptables -A $x -s $mynet -d $mynet -p icmp -j ACCEPT;
+        done;
+
 iptables -A INPUT -s $you -d $me -p tcp -m tcp --dport 22 -j ACCEPT;
 iptables -A OUTPUT -s $me -d $you -p tcp -m tcp --sport 22 -m state --state RELATED,ESTABLISHED -j ACCEPT;
 
