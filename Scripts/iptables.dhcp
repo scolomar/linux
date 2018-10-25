@@ -13,6 +13,7 @@ cdr=$(ip a|grep "inet.*eth1"|cut -d/ -f2|awk '{print $1}')
 net=$(ipcalc -n $ip/$cdr|cut -d= -f2)/$cdr
 me=${ip:-0.0.0.0}
 service_net=${net:-0.0.0.0}
+mynet=$service_net
 
 you=$mynet
 
@@ -77,12 +78,10 @@ for x in 22 37 53 80 123 443;
 
 for x in 53 67 68 123;
         do
+                iptables -A INPUT -s $mynet -d $me -p udp -m udp --sport $x -j ACCEPT;
                 iptables -A OUTPUT -s $me -p udp -m udp --dport $x -j ACCEPT;
                 iptables -A INPUT -d $me -p udp -m udp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
         done;
-
-
-
 
 for x in INPUT OUTPUT FORWARD;
         do
