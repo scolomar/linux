@@ -14,8 +14,7 @@ net=$(ipcalc -n $ip/$cdr|cut -d= -f2)/$cdr
 me=${ip:-0.0.0.0}
 service_net=${net:-0.0.0.0}
 
-ip=$(host MGMT|awk '{print $4}')
-you=${ip:-0.0.0.0}
+you=$mynet
 
 for x in filter nat mangle raw;
         do
