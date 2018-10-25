@@ -2,7 +2,7 @@ https://www.vmware.com/support/developer/ovf/
 Enable TMS-SSH at ui/#/host/manage/services
 Copy to your folder the content of C:\Program Files\VMware\VMware OVF Tool
 vagrant plugin install vagrant-vmware-esxi
-vagrant plugin install vagrant-vbguest
+#vagrant plugin install vagrant-vbguest
 vagrant init
 Copy to your folder the file Vagrantfile
 Configure the file with your VMware credentials (hostname, user & password)
