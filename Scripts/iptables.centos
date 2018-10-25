@@ -1,68 +1,77 @@
 #!/bin/sh
 
-local=_LOCAL_;
-you=_YOU_;
-me=_ME_;
+ip=$(ip a|grep "inet.*lo$"|cut -d/ -f1|awk '{print $2}')
+cdr=$(ip a|grep "inet.*lo$"|cut -d/ -f2|awk '{print $1}')
+net=$(ipcalc -n $ip/$cdr|cut -d= -f2)/$cdr
+localnet=${net:-127.0.0.0}
 
+ip=$(ip a|grep "inet.*eth1"|cut -d/ -f1|awk '{print $2}')
+cdr=$(ip a|grep "inet.*eth1"|cut -d/ -f2|awk '{print $1}')
+net=$(ipcalc -n $ip/$cdr|cut -d= -f2)/$cdr
+me=${ip:-0.0.0.0}
+mynet=${net:-0.0.0.0}
+
+ip=$(host MGMT|awk '{print $4}')
+you=${ip:-0.0.0.0}
 
 for x in filter nat mangle raw;
-	do 
-		for y in F X Z;
-			do 
-				iptables -t $x -$y;
-			done;
-	done;
+        do
+                for y in F X Z;
+                        do
+                                iptables -t $x -$y;
+                        done;
+        done;
 
-case $1 
-	in 
-		stop) 
-			for x in INPUT OUTPUT FORWARD;
-				do 
-					sudo iptables -P $x ACCEPT;
-					sudo iptables -A $x -j ACCEPT;
-				done;
-			exit 0;
-			;;
-	esac;
+case $1
+        in
+                stop)
+                        for x in INPUT OUTPUT FORWARD;
+                                do
+                                        sudo iptables -P $x ACCEPT;
+                                        sudo iptables -A $x -j ACCEPT;
+                                done;
+                        exit 0;
+                        ;;
+        esac;
 
 sysctl net.ipv4.ip_forward=0;
 
 
 for x in INPUT OUTPUT FORWARD;
-	do 
-		iptables -P $x DROP;
-	done;
+        do
+                iptables -P $x DROP;
+        done;
 
 for x in INPUT OUTPUT;
-	do 
-		iptables -A $x -s $local -d $local -j ACCEPT;
-	done;
+        do
+                iptables -A $x -s $localnet -d $localnet -j ACCEPT;
+        done;
 
 iptables -A INPUT -s $you -d $me -p tcp -m tcp --dport 22 -j ACCEPT;
 iptables -A OUTPUT -s $me -d $you -p tcp -m tcp --sport 22 -m state --state RELATED,ESTABLISHED -j ACCEPT;
 
 for x in 22 37 53 80 123 443;
-	do 
-		iptables -A OUTPUT -s $me -p tcp -m tcp --dport $x -j ACCEPT;
-		iptables -A INPUT -d $me -p tcp -m tcp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
-	done;
+        do
+                iptables -A OUTPUT -s $me -p tcp -m tcp --dport $x -j ACCEPT;
+                iptables -A INPUT -d $me -p tcp -m tcp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
+        done;
 
 for x in 53 123;
-	do 
-		iptables -A OUTPUT -s $me -p udp -m udp --dport $x -j ACCEPT;
-		iptables -A INPUT -d $me -p udp -m udp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
-	done;
+        do
+                iptables -A OUTPUT -s $me -p udp -m udp --dport $x -j ACCEPT;
+                iptables -A INPUT -d $me -p udp -m udp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
+        done;
 
 
 
 
 for x in INPUT OUTPUT FORWARD;
-	do 
-		iptables -A $x -j LOG;
-	done;
+        do
+                iptables -A $x -j LOG;
+        done;
 
 for x in INPUT OUTPUT FORWARD;
-	do 
-		iptables -A $x -j DROP;
-	done;
+        do
+                iptables -A $x -j DROP;
+        done;
 
