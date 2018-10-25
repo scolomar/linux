@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -x
 
 service_ports="22"
 service_proto="tcp"
@@ -11,8 +11,14 @@ localnet=${net:-127.0.0.0}
 ip=$(ip a|grep "inet.*eth0"|cut -d/ -f1|awk '{print $2}')
 cdr=$(ip a|grep "inet.*eth0"|cut -d/ -f2|awk '{print $1}')
 net=$(ipcalc -n $ip/$cdr|cut -d= -f2)/$cdr
-me=${ip:-0.0.0.0}
+service_me=${ip:-0.0.0.0}
 service_net=${net:-0.0.0.0}
+
+ip=$(ip a|grep "inet.*eth1"|cut -d/ -f1|awk '{print $2}')
+cdr=$(ip a|grep "inet.*eth1"|cut -d/ -f2|awk '{print $1}')
+net=$(ipcalc -n $ip/$cdr|cut -d= -f2)/$cdr
+me=${ip:-0.0.0.0}
+mynet=${net:-0.0.0.0}
 
 #ip=$(host MGMT|awk '{print $4}')
 #you=${ip:-0.0.0.0}
@@ -59,8 +65,8 @@ if [ -n "$service_ports" ]
                         do
                                 for y in $service_ports
                                         do
-                                                iptables -A INPUT -s $service_net -d $me -p $x -m $x --dport $y -j ACCEPT;
-                                                iptables -A OUTPUT -s $me -d $service_net -p $x -m $x --sport $y -m state --state RELATED,ESTABLISHED -j ACCEPT;
+                                                iptables -A INPUT -s $service_net -d $service_me -p $x -m $x --dport $y -j ACCEPT;
+                                                iptables -A OUTPUT -s $service_me -d $service_net -p $x -m $x --sport $y -m state --state RELATED,ESTABLISHED -j ACCEPT;
                                         done
                         done
         fi
