@@ -1,0 +1,36 @@
+sudo yum -y remove firewalld firewalld-filesystem;
+sudo yum -y install net-tools
+sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-selinux \
+                  docker-engine-selinux \
+                  docker-engine -y
+sudo yum install -y yum-utils \
+  device-mapper-persistent-data \
+  lvm2
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo  
+sudo yum install docker-ce -y
+sudo usermod -aG docker $USER
+sudo systemctl enable docker
+hostname=W1; ##############################################################
+domain=DANYSOFT.GOTDNS.ORG;
+sudo nmcli general hostname $hostname.$domain;
+net_name1="Wired connection 1";
+x=$(sudo nmcli connection show|grep "$net_name1"|awk '{print $4}');
+default1=TRUE;
+sudo nmcli connection modify uuid $x ipv4.never-default $default1;
+me_net=10.2.2.6/24; ################################################################
+sudo nmcli connection modify uuid $x ipv4.address $me_net;
+sudo nmcli connection modify uuid $x ipv4.method manual;
+sudo init 6
+
+# docker swarm init --advertise-addr 10.2.2.1
+# docker swarm join --token SWMTKN-1-443hrleitroblw5b21s47tdyilvib2kfz4ftn73s444nq0sb5x-e8ai826ualeuw6lj97c9xf8n2 10.2.2.1:2377
+docker swarm join --token SWMTKN-1-443hrleitroblw5b21s47tdyilvib2kfz4ftn73s444nq0sb5x-31dqvmxhp706uhla7dsdo9mpg 10.2.2.1:2377 
