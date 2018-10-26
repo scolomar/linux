@@ -1,6 +1,6 @@
 version: "3"
 services:
-    mysql:
+    db:
       image: mysql
       command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
       environment:
@@ -19,7 +19,7 @@ services:
         - mysql
       image: brandonstevens/mirth-connect
       environment:
-        JDBC_URL: jdbc:mysql://mysql:3306/mirthdb?connectTimeout=0&amp;socketTimeout=0&amp;autoReconnect=true
+        JDBC_URL: jdbc:mysql://db:3306/mirthdb?connectTimeout=0&amp;socketTimeout=0&amp;autoReconnect=true
         JDBC_USER: mirth
         JDBC_PASS: mirth
       ports:
