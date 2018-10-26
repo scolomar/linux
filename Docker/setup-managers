@@ -35,3 +35,4 @@ sudo init 6
 # docker swarm init --advertise-addr 10.2.2.1
 docker swarm join --token SWMTKN-1-443hrleitroblw5b21s47tdyilvib2kfz4ftn73s444nq0sb5x-e8ai826ualeuw6lj97c9xf8n2 10.2.2.1:2377
 #docker swarm join --token SWMTKN-1-443hrleitroblw5b21s47tdyilvib2kfz4ftn73s444nq0sb5x-31dqvmxhp706uhla7dsdo9mpg 10.2.2.1:2377 
+git clone https://github.com/secobau/linux/Docker/mirth
