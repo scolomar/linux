@@ -89,7 +89,7 @@ if [ -n "$service_ports" ];
                         done;
         fi;
 
-for y in $me $service_me;
+for y in $me $service_me $vpn_me;
         do
                 for x in 22 37 53 80 123 443;
                         do
