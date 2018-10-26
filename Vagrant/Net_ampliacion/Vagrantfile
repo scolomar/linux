@@ -1,0 +1,12 @@
+Vagrant.configure("2") do |config|
+  config.vm.define "docker" do |docker|
+    docker.vm.provider "virtualbox" do |v|
+      v.name = "vagrant_docker"
+      v.linked_clone = true
+    end
+    docker.vm.box = "centos/6"
+    docker.vm.network "private_network",
+      virtualbox__intnet: "mgmt_net",
+      nic_type: "virtio"
+  end
+end 
