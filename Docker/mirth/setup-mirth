@@ -1,2 +1,3 @@
 for x in $(docker node ls -f name=M -q);do docker node update --availability drain $x;done
+# for x in $(docker node ls -f name=W -q);do docker node update --availability active $x;done
 docker stack deploy -c $HOME/linux/Docker/mirth/mirth-stack.yml mirth
