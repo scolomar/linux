@@ -1,0 +1,62 @@
+Vagrant.configure("2") do |config|
+  config.vm.define "out" do |out|
+    out.vm.provider "virtualbox" do |v|
+      v.name = "vagrant_out"
+      v.linked_clone = true
+    end
+    out.vm.box = "centos/6"
+    out.vm.network "private_network",
+      virtualbox__intnet: "mgmt_net",
+      nic_type: "virtio",
+  end
+  config.vm.define "mgmt" do |mgmt|
+    mgmt.vm.provider "virtualbox" do |v|
+      v.name = "v1_mgmt"
+      v.linked_clone = true
+    end
+    mgmt.vm.box = "centos/6"
+    mgmt.vm.network "private_network",
+      virtualbox__intnet: "mgmt_net",
+      nic_type: "virtio"
+  end
+  config.vm.define "dns" do |dns|
+    dns.vm.provider "virtualbox" do |v|
+      v.name = "v1_dns"
+      v.linked_clone = true
+    end
+    dns.vm.box = "centos/6"
+    dns.vm.network "private_network",
+      virtualbox__intnet: "mgmt_net",
+      nic_type: "virtio"
+  end
+  config.vm.define "dhcp" do |dhcp|
+    dhcp.vm.provider "virtualbox" do |v|
+      v.name = "v1_dhcp"
+      v.linked_clone = true
+    end
+    dhcp.vm.box = "centos/6"
+    dhcp.vm.network "private_network",
+      virtualbox__intnet: "mgmt_net",
+      nic_type: "virtio"
+  end
+  config.vm.define "ntp" do |ntp|
+    ntp.vm.provider "virtualbox" do |v|
+      v.name = "v1_ntp"
+      v.linked_clone = true
+    end
+    ntp.vm.box = "centos/6"
+    ntp.vm.network "private_network",
+      virtualbox__intnet: "mgmt_net",
+      nic_type: "virtio"
+  end
+  config.vm.define "vpn" do |vpn|
+    vpn.vm.provider "virtualbox" do |v|
+      v.name = "v1_vpn"
+      v.linked_clone = true
+    end
+    vpn.vm.box = "centos/6"
+    vpn.vm.network "private_network",
+      virtualbox__intnet: "vpn_net",
+      nic_type: "virtio"
+  end
+end
