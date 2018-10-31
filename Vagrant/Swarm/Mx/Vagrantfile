@@ -1,0 +1,7 @@
+sudo yum install -y docker
+sudo systemctl enable docker
+sudo systemctl start docker
+# ahora pego la linea obtenida de M1
+sudo docker swarm join \
+    --token SWMTKN-1-037yuvjf7bewi8nnya9pu85li9pftobzj793l4y8s13lzczf6g-eof2rzarn1jivf10eu2257k60 \
+    139.59.21.132:2377
