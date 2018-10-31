@@ -1,0 +1,6 @@
+sudo yum install -y docker
+sudo systemctl enable docker
+sudo systemctl start docker
+public_ip=$(ip route|grep eth0|grep -v /16|grep -v default|awk '{print $9}')
+sudo docker swarm init --advertise-addr $public_ip
+# vagrant ssh "sudo docker swarm join-token manager|awk '/token/{print $2}'"
