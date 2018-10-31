@@ -1,0 +1,14 @@
+version: "3"
+services:
+    jboss:
+      image: jboss/wildfly
+      networks:
+        - frontend
+      deploy:
+        replicas: 1
+        restart_policy:
+          condition: on-failure
+      ports:
+        - 80:8080
+networks:
+    frontend:
