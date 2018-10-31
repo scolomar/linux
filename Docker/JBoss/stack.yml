@@ -1,0 +1,15 @@
+version: "3"
+services:
+    jboss:
+      image: secobau/wildfly-ejemplo
+      networks:
+        - frontend
+      deploy:
+        replicas: 1
+        restart_policy:
+          condition: on-failure
+      ports:
+        - 8080:8080
+        - 9990:9990
+networks:
+    frontend:
