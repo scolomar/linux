@@ -1,3 +1,5 @@
+#!/bin/sh -x
+
 me_net=10.255.255.2/24;
 him=10.255.255.11;
 default1=TRUE;
