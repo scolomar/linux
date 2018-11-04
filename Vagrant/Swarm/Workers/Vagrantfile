@@ -1,9 +1,72 @@
-sudo yum install -y docker
-sudo systemctl enable docker
-sudo systemctl start docker
-# vagrant ssh M1 -c "for x in $(sudo docker node ls -q);do sudo docker node update --availability drain $x;done"
-# vagrant ssh M1 -c "sudo docker swarm join-token worker"
-sudo docker swarm join \
-    --token SWMTKN-1-037yuvjf7bewi8nnya9pu85li9pftobzj793l4y8s13lzczf6g-4kf7apyqpbed1fqmg6j98qj7z \
-    139.59.21.132:2377
-# vagrant ssh M1 -c "sudo docker stack deploy -c stack.yml jboss"
+Vagrant.configure("2") do |config|
+  config.vm.define "W1" do |m|
+    m.vm.provider "virtualbox" do |v|
+      v.name = "swarm_w1"
+      v.linked_clone = true
+    end
+    m.vm.box = "centos/7"
+    m.vm.network "private_network",
+      virtualbox__intnet: "swarm",
+      nic_type: "virtio"
+    m.vm.provision "shell",
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx/setup.network.w1"
+    m.vm.provision "shell",
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx/setup.docker"
+  end
+  config.vm.define "W2" do |m|
+    m.vm.provider "virtualbox" do |v|
+      v.name = "swarm_w2"
+      v.linked_clone = true
+    end
+    m.vm.box = "centos/7"
+    m.vm.network "private_network",
+      virtualbox__intnet: "swarm",
+      nic_type: "virtio"
+    m.vm.provision "shell",
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx/setup.network.w2"
+    m.vm.provision "shell",
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx/setup.docker"
+  end
+  config.vm.define "W3" do |m|
+    m.vm.provider "virtualbox" do |v|
+      v.name = "swarm_w3"
+      v.linked_clone = true
+    end
+    m.vm.box = "centos/7"
+    m.vm.network "private_network",
+      virtualbox__intnet: "swarm",
+      nic_type: "virtio"
+    m.vm.provision "shell",
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx/setup.network.w3"
+    m.vm.provision "shell",
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx/setup.docker"
+  end
+  config.vm.define "W4" do |m|
+    m.vm.provider "virtualbox" do |v|
+      v.name = "swarm_w4"
+      v.linked_clone = true
+    end
+    m.vm.box = "centos/7"
+    m.vm.network "private_network",
+      virtualbox__intnet: "swarm",
+      nic_type: "virtio"
+    m.vm.provision "shell",
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx/setup.network.w4"
+    m.vm.provision "shell",
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx/setup.docker"
+  end
+  config.vm.define "W5" do |m|
+    m.vm.provider "virtualbox" do |v|
+      v.name = "swarm_w5"
+      v.linked_clone = true
+    end
+    m.vm.box = "centos/7"
+    m.vm.network "private_network",
+      virtualbox__intnet: "swarm",
+      nic_type: "virtio"
+    m.vm.provision "shell",
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx/setup.network.w5"
+    m.vm.provision "shell",
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx/setup.docker"
+  end
+end
