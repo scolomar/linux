@@ -7,7 +7,7 @@ domain=SWARM;
 net_name="eth0";
 
 sudo nmcli general hostname $hostname.$domain;
-x=$(sudo nmcli connection show|grep "$net_name"|awk '{print $4}');
+x=$(sudo nmcli connection show|grep "$net_name"|awk '{print $3}');
 sudo nmcli connection modify uuid $x ipv4.never-default $default;
 sudo nmcli connection modify uuid $x ipv4.address $me_net;
 sudo nmcli connection modify uuid $x ipv4.method manual;
