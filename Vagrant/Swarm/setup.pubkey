@@ -1,3 +1,0 @@
-#!/bin/sh -x
-
-curl -sSL https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/public.key|tee -a /home/vagrant/.ssh/authorized_keys
