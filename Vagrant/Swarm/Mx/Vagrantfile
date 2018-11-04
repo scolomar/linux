@@ -1,7 +1,16 @@
-sudo yum install -y docker
-sudo systemctl enable docker
-sudo systemctl start docker
-# vagrant ssh M1 -c "sudo docker swarm join-token manager"
-sudo docker swarm join \
-    --token SWMTKN-1-037yuvjf7bewi8nnya9pu85li9pftobzj793l4y8s13lzczf6g-eof2rzarn1jivf10eu2257k60 \
-    139.59.21.132:2377
+Vagrant.configure("2") do |config|
+  config.vm.define "M2" do |m|
+    m.vm.provider "virtualbox" do |v|
+      v.name = "swarm_m2"
+      v.linked_clone = true
+    end
+    m.vm.box = "centos/7"
+    m.vm.network "private_network",
+      virtualbox__intnet: "swarm",
+      nic_type: "virtio"
+    m.vm.provision "shell",
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Mx/setup.network.m2"
+    m.vm.provision "shell",
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Mx/setup.docker"
+  end
+end
