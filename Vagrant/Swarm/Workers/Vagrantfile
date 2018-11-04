@@ -1,7 +1,9 @@
 sudo yum install -y docker
 sudo systemctl enable docker
 sudo systemctl start docker
-# ahora pego el token obtenido en M1
+# vagrant ssh M1 -c "for x in $(sudo docker node ls -q);do sudo docker node update --availability drain $x;done"
+# vagrant ssh M1 -c "sudo docker swarm join-token worker"
 sudo docker swarm join \
     --token SWMTKN-1-037yuvjf7bewi8nnya9pu85li9pftobzj793l4y8s13lzczf6g-4kf7apyqpbed1fqmg6j98qj7z \
     139.59.21.132:2377
+# vagrant ssh M1 -c "sudo docker stack deploy -c stack.yml jboss"
