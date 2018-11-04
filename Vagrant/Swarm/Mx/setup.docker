@@ -2,4 +2,4 @@ sudo yum install -y docker
 sudo systemctl enable docker
 sudo systemctl start docker
 # vagrant ssh M1 -c "sudo docker swarm join-token manager"
-sudo docker swarm join --token SWMTKN-1-2di2jqdogpg9oxbcm4is43k278lstl0i2uzx3e571658cmdwj9-7azuge2n1g95zdvcxy0gufl0h 10.255.255.11:2377
+sudo docker swarm join --token SWMTKN-1-2di2jqdogpg9oxbcm4is43k278lstl0i2uzx3e571658cmdwj9-9tljwtldda6khsbvvzljnxka7 10.255.255.11:2377
