@@ -4,16 +4,11 @@ Vagrant.configure("2") do |config|
       v.name = "swarm_m1"
       v.linked_clone = true
     end
-    m.vm.box = "centos"
+    m.vm.box = "centos/7"
     m.vm.network "private_network",
       virtualbox__intnet: "swarm",
       nic_type: "virtio"
-    m.vm.provision "shell", inline: <<-HASTAQUI
-#      sudo yum -y install git
-#      git clone https://github.com/secobau/linux
-#      linux/Vagrant/Swarm/M1/setup.network
-    sh -c "$(curl -sSL https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/M1/setup.network)"
-    curl -sSL https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/public.key|tee -a /home/vagrant/.ssh/authorized_keys
-    HASTAQUI    
+    m.vm.provision "shell",
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/M1/setup.network"
   end
 end
