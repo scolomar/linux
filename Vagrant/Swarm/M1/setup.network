@@ -18,3 +18,5 @@ sudo nmcli connection modify uuid $x ipv4.address $me_net;
 sudo nmcli connection modify uuid $x ipv4.gateway $him;
 sudo nmcli connection modify uuid $x ipv4.method manual;
 sudo nmcli connection modify uuid $x ipv6.method disabled;
+
+sudo systemctl restart network;
