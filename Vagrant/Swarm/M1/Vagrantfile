@@ -1,9 +1,19 @@
-sudo yum install -y docker
-sudo systemctl enable docker
-sudo systemctl start docker
-public_ip=$(ip route|grep eth0|grep -v /16|grep -v default|awk '{print $9}')
-sudo docker swarm init --advertise-addr $public_ip
-# vagrant ssh "sudo docker swarm join-token manager"
-# vagrant ssh "for x in $(sudo docker node ls -q);do sudo docker node update --availability drain $x;done"
-# vagrant ssh "sudo docker swarm join-token worker"
-# vagrant ssh "sudo docker stack deploy -c stack.yml jboss"
+Vagrant.configure("2") do |config|
+  config.vm.define "M1" do |m|
+    m.vm.provider "virtualbox" do |v|
+      v.name = "swarm_m1"
+      v.linked_clone = true
+    end
+    m.vm.box = "centos"
+    m.vm.network "private_network",
+      virtualbox__intnet: "swarm",
+      nic_type: "virtio"
+    m.vm.provision "shell", inline: <<-HASTAQUI
+#      sudo yum -y install git
+#      git clone https://github.com/secobau/linux
+#      linux/Vagrant/Swarm/M1/setup.network
+    sh -c "$(curl -sSL https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/M1/setup.network)"
+    curl -sSL https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/public.key|tee -a /home/vagrant/.ssh/authorized_keys
+    HASTAQUI    
+  end
+end
