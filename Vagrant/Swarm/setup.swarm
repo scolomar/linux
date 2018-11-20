@@ -1,0 +1,12 @@
+#!/bin/sh
+
+for x in M1 Mx Wx;do
+ mkdir -p Swarm/$x;
+ cd Swarm/$x;
+ curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/$x/Vagrantfile -O;
+ vagrant up;
+ cd -;
+ done
+vagrant ssh M1 -c "for x in $(sudo docker node ls -q -f name=M);do sudo docker node update --availability drain $x;done";
+curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/stack.yml -O;
+vagrant ssh M1 -c "sudo docker stack deploy -c stack.yml MyStack";
