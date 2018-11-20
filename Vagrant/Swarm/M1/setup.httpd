@@ -1,0 +1,10 @@
+#!/bin/sh
+sudo yum -y install httpd
+sudo systemctl stop httpd
+public_ip=$(ip route|grep eth0|grep -v /16|grep -v default|awk '{print $9}')
+sudo sed -i "/Listen 80/s/80/$public_ip:80/" /etc/httpd/conf/httpd.conf
+for x in manager worker;do
+ sudo docker swarm join-token $x|grep -v "To add"|sed "s/docker/sudo docker/"|sudo tee /var/www/html/join.$x;
+ done
+sudo systemctl enable httpd
+sudo systemctl start httpd
