@@ -12,5 +12,7 @@ Vagrant.configure("2") do |config|
       path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/M1/setup.network"
     m.vm.provision "shell",
       path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/M1/setup.docker"
+    m.vm.provision "shell",
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/M1/setup.httpd"
   end
 end
