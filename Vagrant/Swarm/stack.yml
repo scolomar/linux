@@ -1,7 +1,7 @@
 version: "3"
 services:
-    jboss:
-      image: jboss/wildfly
+    php:
+      image: secobau/php:apache
       networks:
         - frontend
       deploy:
@@ -9,6 +9,6 @@ services:
         restart_policy:
           condition: on-failure
       ports:
-        - 80:8080
+        - 80:80
 networks:
     frontend:
