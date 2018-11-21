@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
       virtualbox__intnet: "swarm",
       nic_type: "virtio"
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.network.w110"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.network.w10"
     m.vm.provision "shell",
       path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.docker"
   end
