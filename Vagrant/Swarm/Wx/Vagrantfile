@@ -41,6 +41,7 @@ Vagrant.configure("2") do |config|
     m.vm.provision "shell",
       path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx/setup.docker"
   end
+<<<<<<< HEAD
 #  config.vm.define "w3" do |m|
 #    m.vm.provider "virtualbox" do |v|
 #      v.name = "swarm_w3"
@@ -55,6 +56,22 @@ Vagrant.configure("2") do |config|
 #    m.vm.provision "shell",
 #      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx/setup.docker"
 #  end
+=======
+  config.vm.define "w3" do |m|
+    m.vm.provider "virtualbox" do |v|
+      v.name = "swarm_w3"
+      v.linked_clone = true
+    end
+    m.vm.box = "centos/7"
+    m.vm.network "private_network",
+      virtualbox__intnet: "swarm",
+      nic_type: "virtio"
+    m.vm.provision "shell",
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx/setup.network.w3"
+    m.vm.provision "shell",
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx/setup.docker"
+  end
+>>>>>>> 43f5fa307a78a874919145b1ce3c4b72dbbe1574
 #  config.vm.define "w4" do |m|
 #    m.vm.provider "virtualbox" do |v|
 #      v.name = "swarm_w4"
