@@ -9,9 +9,9 @@ Vagrant.configure("2") do |config|
       virtualbox__intnet: "swarm",
       nic_type: "virtio"
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.network.w10"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Virtualbox/Swarm/Wx2/setup.network.w10"
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.docker"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Virtualbox/Swarm/Wx2/setup.docker"
   end
   config.vm.define "w11" do |m|
     m.vm.provider "virtualbox" do |v|
@@ -23,9 +23,9 @@ Vagrant.configure("2") do |config|
       virtualbox__intnet: "swarm",
       nic_type: "virtio"
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.network.w11"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Virtualbox/Swarm/Wx2/setup.network.w11"
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.docker"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Virtualbox/Swarm/Wx2/setup.docker"
   end
   config.vm.define "w12" do |m|
     m.vm.provider "virtualbox" do |v|
@@ -37,9 +37,9 @@ Vagrant.configure("2") do |config|
       virtualbox__intnet: "swarm",
       nic_type: "virtio"
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.network.w12"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Virtualbox/Swarm/Wx2/setup.network.w12"
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.docker"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Virtualbox/Swarm/Wx2/setup.docker"
   end
 #  config.vm.define "w13" do |m|
 #    m.vm.provider "virtualbox" do |v|
@@ -51,9 +51,9 @@ Vagrant.configure("2") do |config|
 #      virtualbox__intnet: "swarm",
 #      nic_type: "virtio"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.network.w13"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Virtualbox/Swarm/Wx2/setup.network.w13"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.docker"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Virtualbox/Swarm/Wx2/setup.docker"
 #  end
 #  config.vm.define "w14" do |m|
 #    m.vm.provider "virtualbox" do |v|
@@ -65,9 +65,9 @@ Vagrant.configure("2") do |config|
 #      virtualbox__intnet: "swarm",
 #      nic_type: "virtio"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.network.w14"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Virtualbox/Swarm/Wx2/setup.network.w14"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.docker"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Virtualbox/Swarm/Wx2/setup.docker"
 #  end
 #  config.vm.define "w15" do |m|
 #    m.vm.provider "virtualbox" do |v|
@@ -79,9 +79,9 @@ Vagrant.configure("2") do |config|
 #      virtualbox__intnet: "swarm",
 #      nic_type: "virtio"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.network.w15"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Virtualbox/Swarm/Wx2/setup.network.w15"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.docker"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Virtualbox/Swarm/Wx2/setup.docker"
 #  end
 #  config.vm.define "w16" do |m|
 #    m.vm.provider "virtualbox" do |v|
@@ -93,9 +93,9 @@ Vagrant.configure("2") do |config|
 #      virtualbox__intnet: "swarm",
 #      nic_type: "virtio"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.network.w16"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Virtualbox/Swarm/Wx2/setup.network.w16"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.docker"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Virtualbox/Swarm/Wx2/setup.docker"
 #  end
 #  config.vm.define "w17" do |m|
 #    m.vm.provider "virtualbox" do |v|
@@ -107,9 +107,9 @@ Vagrant.configure("2") do |config|
 #      virtualbox__intnet: "swarm",
 #      nic_type: "virtio"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.network.w17"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Virtualbox/Swarm/Wx2/setup.network.w17"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.docker"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Virtualbox/Swarm/Wx2/setup.docker"
 #  end
 #  config.vm.define "w18" do |m|
 #    m.vm.provider "virtualbox" do |v|
@@ -121,9 +121,9 @@ Vagrant.configure("2") do |config|
 #      virtualbox__intnet: "swarm",
 #      nic_type: "virtio"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.network.w18"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Virtualbox/Swarm/Wx2/setup.network.w18"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.docker"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Virtualbox/Swarm/Wx2/setup.docker"
 #  end
 #  config.vm.define "w19" do |m|
 #    m.vm.provider "virtualbox" do |v|
@@ -135,8 +135,8 @@ Vagrant.configure("2") do |config|
 #      virtualbox__intnet: "swarm",
 #      nic_type: "virtio"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.network.w19"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Virtualbox/Swarm/Wx2/setup.network.w19"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Wx2/setup.docker"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Virtualbox/Swarm/Wx2/setup.docker"
 #  end
 end
