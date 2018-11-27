@@ -1,6 +1,6 @@
 vagrant plugin install vagrant-digitalocean
 SETLOCAL EnableDelayedExpansion
-FOR /F %%z IN (token.txt) DO (
+FOR /F %%z IN (token) DO (
  SET z=%%x
  )
 FOR %%x IN (M1,Mx,Wx) DO (
