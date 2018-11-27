@@ -1,7 +1,7 @@
 Vagrant.configure("2") do |config|
   config.vm.define "M1" do |m|
     m.vm.provider "virtualbox" do |v|
-      v.token = xxx
+      v.token = "xxx"
       v.name = "swarm_m1"
       v.linked_clone = true
     end
