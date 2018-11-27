@@ -9,9 +9,9 @@ Vagrant.configure("2") do |config|
       virtualbox__intnet: "swarm",
       nic_type: "virtio"
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/DigitalOcean/Swarm/Mx/setup.network.m2"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Mx/setup.network.m2"
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/DigitalOcean/Swarm/Mx/setup.docker"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Mx/setup.docker"
   end
   config.vm.define "M3" do |m|
     m.vm.provider "virtualbox" do |v|
@@ -23,9 +23,9 @@ Vagrant.configure("2") do |config|
       virtualbox__intnet: "swarm",
       nic_type: "virtio"
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/DigitalOcean/Swarm/Mx/setup.network.m3"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Mx/setup.network.m3"
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/DigitalOcean/Swarm/Mx/setup.docker"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Mx/setup.docker"
   end
 #  config.vm.define "M4" do |m|
 #    m.vm.provider "virtualbox" do |v|
@@ -37,9 +37,9 @@ Vagrant.configure("2") do |config|
 #      virtualbox__intnet: "swarm",
 #      nic_type: "virtio"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/DigitalOcean/Swarm/Mx/setup.network.m4"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Mx/setup.network.m4"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/DigitalOcean/Swarm/Mx/setup.docker"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Mx/setup.docker"
 #  end
 #  config.vm.define "M5" do |m|
 #    m.vm.provider "virtualbox" do |v|
@@ -51,8 +51,8 @@ Vagrant.configure("2") do |config|
 #      virtualbox__intnet: "swarm",
 #      nic_type: "virtio"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/DigitalOcean/Swarm/Mx/setup.network.m5"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Mx/setup.network.m5"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/DigitalOcean/Swarm/Mx/setup.docker"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Mx/setup.docker"
 #  end
 end
