@@ -1,19 +1,19 @@
 Vagrant.configure("2") do |config|
   config.vm.define "M1" do |m|
-    m.vm.provider "virtualbox" do |v|
-      v.token = "xxx"
-      v.name = "swarm_m1"
-      v.linked_clone = true
+    m.vm.provider "digital_ocean" do |d|
+      d.token = 'xxx'
+      d.image = 'centos-7-x64'
+      d.region = 'fra1'
+      d.size = '512mb'
     end
-    m.vm.box = "centos/7"
-    m.vm.network "private_network",
-      virtualbox__intnet: "swarm",
-      nic_type: "virtio"
-    m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/M1/setup.network"
-    m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/M1/setup.docker"
-    m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/M1/setup.httpd"
+    m.ssh.private_key_path = '..\id_rsa'
+    m.vm.box = "digital_ocean"
+    m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
+#    m.vm.provision "shell",
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/M1/setup.network"
+#    m.vm.provision "shell",
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/M1/setup.docker"
+#    m.vm.provision "shell",
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/M1/setup.httpd"
   end
 end
