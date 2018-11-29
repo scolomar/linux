@@ -1,7 +1,29 @@
 #!/bin/sh
 vagrant plugin install vagrant-digitalocean;
 token_vagrant=$(cat token);
-list_IPs=$(cat list_IPs);
+rm -f list_IPs;
+for x in M0;do
+ cd $x;
+ ip=$(vagrant ssh $y -c "ip route|grep eth0|grep -v /16|grep -v default|awk '{print \$9}'");
+ echo $ip 1>>../list_IPs;
+ cd -;
+ done
+for x in Mx;do
+ cd $x;
+ for y in $(vagrant status|awk '/digital_ocean/{print $1}');do
+  ip=$(vagrant ssh $y -c "ip route|grep eth0|grep -v /16|grep -v default|awk '{print \$9}'");
+  echo $ip 1>>../list_IPs;
+  done;
+ cd -;
+ done
+for x in Wx;do
+ cd $x;
+ for y in $(vagrant status|awk '/digital_ocean/{print $1}');do
+  ip=$(vagrant ssh $y -c "ip route|grep eth0|grep -v /16|grep -v default|awk '{print \$9}'");
+  echo $ip 1>>../list_IPs;
+  done;
+ cd -;
+ done
 for x in Siege;do
  mkdir $x;
  cd $x;
@@ -13,3 +35,4 @@ for x in Siege;do
 cd Siege;
 vagrant ssh -c "echo $(cat list_IPs) 1>list_IPs";
 #vagrant ssh -c "for x in \$(cat list_IPs);do sudo siege -c200 -q -b -t1M http://\$x\& done";
+cd -
