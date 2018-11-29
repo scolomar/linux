@@ -5,7 +5,7 @@ for x in Wx2;do
  mkdir $x;
  cd $x;
  curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/$x/Vagrantfile -O;
- sed s/token_vagrant/$token_vagrant/ Vagrantfile;
+ sed -i s/token_vagrant/$token_vagrant/ Vagrantfile;
  vagrant up --parallel;
  cd -;
  done
