@@ -1,7 +1,6 @@
 #!/bin/sh
 vagrant plugin install vagrant-digitalocean;
 token_vagrant=$(cat token);
-rm -f list_IPs;
 for x in M0;do
  mkdir $x;
  cd $x;
@@ -29,28 +28,6 @@ for x in Wx;do
  curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/$x/Vagrantfile -O;
  sed -i s/token_vagrant/$token_vagrant/ Vagrantfile;
  vagrant up --parallel;
- cd -;
- done
-for x in M0;do
- cd $x;
- ip=$(vagrant ssh $y -c "ip route|grep eth0|grep -v /16|grep -v default|awk '{print \$9}'");
- echo $ip 1>>../list_IPs;
- cd -;
- done
-for x in Mx;do
- cd $x;
- for y in $(vagrant status|awk '/digital_ocean/{print $1}');do
-  ip=$(vagrant ssh $y -c "ip route|grep eth0|grep -v /16|grep -v default|awk '{print \$9}'");
-  echo $ip 1>>../list_IPs;
-  done;
- cd -;
- done
-for x in Wx;do
- cd $x;
- for y in $(vagrant status|awk '/digital_ocean/{print $1}');do
-  ip=$(vagrant ssh $y -c "ip route|grep eth0|grep -v /16|grep -v default|awk '{print \$9}'");
-  echo $ip 1>>../list_IPs;
-  done;
  cd -;
  done
 cd M0;
