@@ -1,0 +1,11 @@
+#!/bin/sh
+vagrant plugin install vagrant-digitalocean;
+token_vagrant=$(cat token);
+for x in Siege;do
+ mkdir $x;
+ cd $x;
+ curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/$x/Vagrantfile -O;
+ sed -i s/token_vagrant/$token_vagrant/ Vagrantfile;
+ vagrant up --parallel;
+ cd -;
+ done
