@@ -1,6 +1,7 @@
 #!/bin/sh
 vagrant plugin install vagrant-digitalocean;
 token_vagrant=$(cat token);
+list_IPs=$(cat list_IPs);
 for x in Siege;do
  mkdir $x;
  cd $x;
@@ -10,4 +11,4 @@ for x in Siege;do
  cd -;
  done;
 cd Siege;
-vagrant ssh -c "for x in LISTofIPs;do sudo siege -c200 -b -t1M http://$x&done"
+vagrant ssh -c "for x in $list_IPs;do sudo siege -c200 -b -t1M http://\$x\&done";
