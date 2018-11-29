@@ -7,7 +7,7 @@ for x in M0;do
  ip=$(vagrant ssh $x -c "ip route|grep eth0|grep -v /16|grep -v default|awk '{print \$9}'");
  echo $ip 1>>../list_IPs;
  cd -;
- done
+ done;
 for x in Mx;do
  cd $x;
  for y in $(vagrant status|awk '/digital_ocean/{print $1}');do
@@ -15,7 +15,7 @@ for x in Mx;do
   echo $ip 1>>../list_IPs;
   done;
  cd -;
- done
+ done;
 for x in Wx;do
  cd $x;
  for y in $(vagrant status|awk '/digital_ocean/{print $1}');do
@@ -23,7 +23,7 @@ for x in Wx;do
   echo $ip 1>>../list_IPs;
   done;
  cd -;
- done
+ done;
 for x in Siege;do
  mkdir $x;
  cd $x;
