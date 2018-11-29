@@ -1,7 +1,7 @@
 #!/bin/sh
 vagrant plugin install vagrant-digitalocean;
 token_vagrant=$(cat token);
-rm list_IPs;
+rm -f list_IPs;
 for x in M0;do
  mkdir $x;
  cd $x;
