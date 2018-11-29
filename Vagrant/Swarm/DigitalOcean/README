@@ -1,0 +1,19 @@
+If you are using Windows then open CMD and execute the following commands:
+  curl -O https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/setup.swarm.cmd
+  setup.swarm.cmd
+
+If you are using Linux then open a terminal and execute the following commands:
+  curl -O https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/setup.swarm
+  source setup.swarm
+  
+These commands will start a Docker swarm with the services specified in the file stack.yml
+
+If you want to increase the swarm and deploy more replicas as specified in the file stack2.yml then you need to run the following commands:
+
+If you are using Windows then open CMD and execute the following commands:
+  curl -O https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/setup.swarm2.cmd
+  setup.swarm2.cmd
+
+If you are using Linux then open a terminal and execute the following commands:
+  curl -O https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/setup.swarm2
+  source setup.swarm2
