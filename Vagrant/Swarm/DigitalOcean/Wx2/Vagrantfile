@@ -1,142 +1,50 @@
 Vagrant.configure("2") do |config|
-  config.vm.define "w10" do |m|
-    m.vm.provider "virtualbox" do |v|
-      v.name = "swarm_w10"
-      v.linked_clone = true
+  config.vm.define "W10" do |m|
+    m.vm.provider "digital_ocean" do |d|
+      d.token = "xxx"
+      d.image = "centos-7-x64"
+      d.region = "ams3"
+      d.size = "1gb"
+      d.monitoring = true
+      d.private_networking = false
     end
-    m.vm.box = "centos/7"
-    m.vm.network "private_network",
-      virtualbox__intnet: "swarm",
-      nic_type: "virtio"
+    m.ssh.private_key_path = "~/.ssh/id_rsa"
+    m.vm.box = "digital_ocean"
+    m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
+    m.vm.synced_folder ".", "/vagrant", disabled: true
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.network.w10"
-    m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.docker"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx/setup.docker"
   end
-  config.vm.define "w11" do |m|
-    m.vm.provider "virtualbox" do |v|
-      v.name = "swarm_w11"
-      v.linked_clone = true
+  config.vm.define "W11" do |m|
+    m.vm.provider "digital_ocean" do |d|
+      d.token = "xxx"
+      d.image = "centos-7-x64"
+      d.region = "fra1"
+      d.size = "1gb"
+      d.monitoring = true
+      d.private_networking = false
     end
-    m.vm.box = "centos/7"
-    m.vm.network "private_network",
-      virtualbox__intnet: "swarm",
-      nic_type: "virtio"
+    m.ssh.private_key_path = "~/.ssh/id_rsa"
+    m.vm.box = "digital_ocean"
+    m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
+    m.vm.synced_folder ".", "/vagrant", disabled: true
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.network.w11"
-    m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.docker"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx/setup.docker"
   end
-  config.vm.define "w12" do |m|
-    m.vm.provider "virtualbox" do |v|
-      v.name = "swarm_w12"
-      v.linked_clone = true
+  config.vm.define "W12" do |m|
+    m.vm.provider "digital_ocean" do |d|
+      d.token = "xxx"
+      d.image = "centos-7-x64"
+      d.region = "lon1"
+      d.size = "1gb"
+      d.monitoring = true
+      d.private_networking = false
     end
-    m.vm.box = "centos/7"
-    m.vm.network "private_network",
-      virtualbox__intnet: "swarm",
-      nic_type: "virtio"
+    m.ssh.private_key_path = "~/.ssh/id_rsa"
+    m.vm.box = "digital_ocean"
+    m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
+    m.vm.synced_folder ".", "/vagrant", disabled: true
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.network.w12"
-    m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.docker"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx/setup.docker"
   end
-#  config.vm.define "w13" do |m|
-#    m.vm.provider "virtualbox" do |v|
-#      v.name = "swarm_w13"
-#      v.linked_clone = true
-#    end
-#    m.vm.box = "centos/7"
-#    m.vm.network "private_network",
-#      virtualbox__intnet: "swarm",
-#      nic_type: "virtio"
-#    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.network.w13"
-#    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.docker"
-#  end
-#  config.vm.define "w14" do |m|
-#    m.vm.provider "virtualbox" do |v|
-#      v.name = "swarm_w14"
-#      v.linked_clone = true
-#    end
-#    m.vm.box = "centos/7"
-#    m.vm.network "private_network",
-#      virtualbox__intnet: "swarm",
-#      nic_type: "virtio"
-#    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.network.w14"
-#    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.docker"
-#  end
-#  config.vm.define "w15" do |m|
-#    m.vm.provider "virtualbox" do |v|
-#      v.name = "swarm_w15"
-#      v.linked_clone = true
-#    end
-#    m.vm.box = "centos/7"
-#    m.vm.network "private_network",
-#      virtualbox__intnet: "swarm",
-#      nic_type: "virtio"
-#    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.network.w15"
-#    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.docker"
-#  end
-#  config.vm.define "w16" do |m|
-#    m.vm.provider "virtualbox" do |v|
-#      v.name = "swarm_w16"
-#      v.linked_clone = true
-#    end
-#    m.vm.box = "centos/7"
-#    m.vm.network "private_network",
-#      virtualbox__intnet: "swarm",
-#      nic_type: "virtio"
-#    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.network.w16"
-#    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.docker"
-#  end
-#  config.vm.define "w17" do |m|
-#    m.vm.provider "virtualbox" do |v|
-#      v.name = "swarm_w17"
-#      v.linked_clone = true
-#    end
-#    m.vm.box = "centos/7"
-#    m.vm.network "private_network",
-#      virtualbox__intnet: "swarm",
-#      nic_type: "virtio"
-#    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.network.w17"
-#    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.docker"
-#  end
-#  config.vm.define "w18" do |m|
-#    m.vm.provider "virtualbox" do |v|
-#      v.name = "swarm_w18"
-#      v.linked_clone = true
-#    end
-#    m.vm.box = "centos/7"
-#    m.vm.network "private_network",
-#      virtualbox__intnet: "swarm",
-#      nic_type: "virtio"
-#    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.network.w18"
-#    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.docker"
-#  end
-#  config.vm.define "w19" do |m|
-#    m.vm.provider "virtualbox" do |v|
-#      v.name = "swarm_w19"
-#      v.linked_clone = true
-#    end
-#    m.vm.box = "centos/7"
-#    m.vm.network "private_network",
-#      virtualbox__intnet: "swarm",
-#      nic_type: "virtio"
-#    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.network.w19"
-#    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.docker"
-#  end
 end
