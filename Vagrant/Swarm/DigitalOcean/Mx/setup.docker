@@ -2,4 +2,3 @@
 sudo yum install -y docker
 sudo systemctl enable docker
 sudo systemctl start docker
-curl 10.255.255.11:8888/join.manager|sh
