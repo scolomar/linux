@@ -1,5 +1,4 @@
 #!/bin/sh
-vagrant plugin install vagrant-digitalocean;
 for x in Wx2;do
  mkdir $x;
  cd $x;
