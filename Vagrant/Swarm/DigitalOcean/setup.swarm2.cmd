@@ -16,6 +16,6 @@ FOR %%x IN (Wx2) DO (
  vagrant up --parallel
  cd ..
  )
-cd M1
-vagrant ssh M1 -c "curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/stack2.yml -O";
-vagrant ssh M1 -c "sudo docker stack deploy -c stack2.yml my";
+cd M0
+vagrant ssh M0 -c "curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/stack2.yml -O";
+vagrant ssh M0 -c "sudo docker stack deploy -c stack2.yml my";

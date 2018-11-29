@@ -1,5 +1,5 @@
 Vagrant.configure("2") do |config|
-  config.vm.define "M1" do |m|
+  config.vm.define "M0" do |m|
     m.vm.provider "digital_ocean" do |d|
       d.token = 'xxx'
       d.image = 'centos-7-x64'
@@ -10,10 +10,10 @@ Vagrant.configure("2") do |config|
     m.vm.box = "digital_ocean"
     m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/M1/setup.network"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/M0/setup.network"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/M1/setup.docker"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/M0/setup.docker"
 #    m.vm.provision "shell",
-#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/M1/setup.httpd"
+#      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/M0/setup.httpd"
   end
 end

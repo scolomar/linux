@@ -2,7 +2,7 @@
 
 me_net=10.255.255.12/24;
 default=TRUE;
-hostname=M2;
+hostname=M1;
 domain=SWARM;
 net_name="eth0";
 
