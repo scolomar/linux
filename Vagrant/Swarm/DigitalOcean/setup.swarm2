@@ -7,12 +7,17 @@ for x in Wx2;do
  curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/$x/Vagrantfile -O;
  sed -i s/token_vagrant/$token_vagrant/ Vagrantfile;
  vagrant up --parallel;
+ cd -;
+ done
+for x in Wx2;do
+ cd $x;
  for y in $(vagrant status|awk '/digital_ocean/{print $1}');do
   ip=$(vagrant ssh $y -c "ip route|grep eth0|grep -v /16|grep -v default|awk '{print \$9}'");
   echo $ip 1>>../list_IPs;
   done;
  cd -;
- done
-cd M0
+ done;
+cd M0;
 vagrant ssh M0 -c "curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/stack2.yml -O";
 vagrant ssh M0 -c "sudo docker stack deploy -c stack2.yml my";
+cd -;
