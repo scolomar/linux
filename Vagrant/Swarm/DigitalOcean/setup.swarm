@@ -13,8 +13,6 @@ for x in M0;do
  ip=$(vagrant ssh -c "sudo docker swarm join-token manager|grep -v add|awk '/:/{print \$1}'");
  echo "sudo docker swarm join --token $token_manager $ip" 1>../join-manager;
  echo "sudo docker swarm join --token $token_worker  $ip" 1>../join-worker;
- ip=$(vagrant ssh $y -c "ip route|grep eth0|grep -v /16|grep -v default|awk '{print \$9}'");
- echo $ip 1>>../list_IPs;
  cd -;
  done
 for x in Mx;do
@@ -23,10 +21,6 @@ for x in Mx;do
  curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/$x/Vagrantfile -O;
  sed -i s/token_vagrant/$token_vagrant/ Vagrantfile;
  vagrant up --parallel;
- for y in $(vagrant status|awk '/digital_ocean/{print $1}');do
-  ip=$(vagrant ssh $y -c "ip route|grep eth0|grep -v /16|grep -v default|awk '{print \$9}'");
-  echo $ip 1>>../list_IPs;
-  done;
  cd -;
  done
 for x in Wx;do
@@ -35,13 +29,32 @@ for x in Wx;do
  curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/$x/Vagrantfile -O;
  sed -i s/token_vagrant/$token_vagrant/ Vagrantfile;
  vagrant up --parallel;
+ cd -;
+ done
+for x in M0;do
+ cd $x;
+ ip=$(vagrant ssh $y -c "ip route|grep eth0|grep -v /16|grep -v default|awk '{print \$9}'");
+ echo $ip 1>>../list_IPs;
+ cd -;
+ done
+for x in Mx;do
+ cd $x;
  for y in $(vagrant status|awk '/digital_ocean/{print $1}');do
   ip=$(vagrant ssh $y -c "ip route|grep eth0|grep -v /16|grep -v default|awk '{print \$9}'");
   echo $ip 1>>../list_IPs;
   done;
  cd -;
  done
-cd M0
+for x in Wx;do
+ cd $x;
+ for y in $(vagrant status|awk '/digital_ocean/{print $1}');do
+  ip=$(vagrant ssh $y -c "ip route|grep eth0|grep -v /16|grep -v default|awk '{print \$9}'");
+  echo $ip 1>>../list_IPs;
+  done;
+ cd -;
+ done
+cd M0;
 vagrant ssh M0 -c "for x in \$(sudo docker node ls -q -f name=M);do sudo docker node update --availability drain \$x;done";
 vagrant ssh M0 -c "curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/stack.yml -O";
 vagrant ssh M0 -c "sudo docker stack deploy -c stack.yml my";
+cd -;
