@@ -1,0 +1,12 @@
+#!/bin/sh
+vagrant plugin install vagrant-digitalocean;
+for x in Wx2;do
+ mkdir $x;
+ cd $x;
+ curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Virtualbox/$x/Vagrantfile -O;
+ vagrant up --parallel;
+ cd -;
+ done
+cd M1
+vagrant ssh M1 -c "curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Virtualbox/stack2.yml -O";
+vagrant ssh M1 -c "sudo docker stack deploy -c stack2.yml my";
