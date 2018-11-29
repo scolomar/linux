@@ -8,4 +8,6 @@ for x in Siege;do
  sed -i s/token_vagrant/$token_vagrant/ Vagrantfile;
  vagrant up --parallel;
  cd -;
- done
+ done;
+cd Siege;
+vagrant ssh -c "for x in LISTofIPs;do sudo siege -c200 -b -t1M http://$x&done"
