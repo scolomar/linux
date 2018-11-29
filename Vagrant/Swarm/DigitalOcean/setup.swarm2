@@ -7,6 +7,10 @@ for x in Wx2;do
  curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/$x/Vagrantfile -O;
  sed -i s/token_vagrant/$token_vagrant/ Vagrantfile;
  vagrant up --parallel;
+ for y in $(vagrant status|awk '/running/{print $1}');do
+  ip=$(vagrant ssh $y -c "ip route|grep eth0|grep -v /16|grep -v default|awk '{print \$9}'");
+  echo -n " $ip" 1>>../list_IPs;
+  done;
  cd -;
  done
 cd M0
