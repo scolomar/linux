@@ -1,6 +1,5 @@
 #!/bin/sh
 vagrant plugin install vagrant-digitalocean;
-token=$(cat token);
 for x in M1 Mx Wx;do
  mkdir $x;
  cd $x;
