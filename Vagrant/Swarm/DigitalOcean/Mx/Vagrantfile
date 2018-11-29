@@ -1,14 +1,14 @@
 Vagrant.configure("2") do |config|
   config.vm.define "M1" do |m|
     m.vm.provider "digital_ocean" do |d|
-      d.token = 'xxx'
-      d.image = 'centos-7-x64'
-      d.region = 'fra1'
-      d.size = '1gb'
+      d.token = "xxx"
+      d.image = "centos-7-x64"
+      d.region = "fra1"
+      d.size = "1gb"
       d.monitoring = true
       d.private_networking = false
     end
-    m.ssh.private_key_path = '..\id_rsa'
+    m.ssh.private_key_path = "~/.ssh/id_rsa"
     m.vm.box = "digital_ocean"
     m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
     m.vm.synced_folder ".", "/vagrant", disabled: true
@@ -17,14 +17,14 @@ Vagrant.configure("2") do |config|
   end
   config.vm.define "M2" do |m|
     m.vm.provider "digital_ocean" do |d|
-      d.token = 'xxx'
-      d.image = 'centos-7-x64'
-      d.region = 'lon1'
-      d.size = '1gb'
+      d.token = "xxx"
+      d.image = "centos-7-x64"
+      d.region = "lon1"
+      d.size = "1gb"
       d.monitoring = true
       d.private_networking = false
     end
-    m.ssh.private_key_path = '..\id_rsa'
+    m.ssh.private_key_path = "~/.ssh/id_rsa"
     m.vm.box = "digital_ocean"
     m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
     m.vm.synced_folder ".", "/vagrant", disabled: true
