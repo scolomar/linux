@@ -1,3 +1,18 @@
-sudo yum -y install epel-release
-sudo yum -y install siege
-# sudo siege -c200 -b -t1M http://139.59.21.132
+Vagrant.configure("2") do |config|
+  config.vm.define "Siege" do |m|
+    m.vm.provider "digital_ocean" do |d|
+      d.token = "token_vagrant"
+      d.image = "centos-7-x64"
+      d.region = "ams3"
+      d.size = "1gb"
+      d.monitoring = true
+      d.private_networking = false
+    end
+    m.ssh.private_key_path = "~/.ssh/id_rsa"
+    m.vm.box = "digital_ocean"
+    m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
+    m.vm.synced_folder ".", "/vagrant", disabled: true
+    m.vm.provision "shell",
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/M0/setup.siege"
+  end
+end
