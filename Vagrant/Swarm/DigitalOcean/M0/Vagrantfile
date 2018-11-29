@@ -3,10 +3,10 @@ Vagrant.configure("2") do |config|
     m.vm.provider "digital_ocean" do |d|
       d.token = 'xxx'
       d.image = 'centos-7-x64'
-      d.region = 'fra1'
-      d.size = '512mb'
+      d.region = 'ams3'
+      d.size = '1gb'
       d.monitoring = true
-      d.private_networking = true
+      d.private_networking = false
     end
     m.ssh.private_key_path = '..\id_rsa'
     m.vm.box = "digital_ocean"
