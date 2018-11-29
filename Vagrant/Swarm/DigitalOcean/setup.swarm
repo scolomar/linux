@@ -1,11 +1,30 @@
 #!/bin/sh
 vagrant plugin install vagrant-digitalocean;
 token=$(cat token);
-for x in M0 Mx Wx;do
+for x in M0;do
  mkdir $x;
  cd $x;
  curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/$x/Vagrantfile -O;
- sed s/xxx/$token/ Vagrantfile;
+ sed -i s/xxx/$token/ Vagrantfile;
+ vagrant up --parallel;
+ for x in manager worker;do
+  vagrant ssh -c 'sudo docker swarm join-token '$x'|grep -v "To add"|sed "s/docker/sudo docker/"'|tee ../join-$x
+  done
+ cd -;
+ done
+for x in Mx;do
+ mkdir $x;
+ cd $x;
+ curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/$x/Vagrantfile -O;
+ sed -i s/xxx/$token/ Vagrantfile;
+ vagrant up --parallel;
+ cd -;
+ done
+for x in Wx;do
+ mkdir $x;
+ cd $x;
+ curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/$x/Vagrantfile -O;
+ sed -i s/xxx/$token/ Vagrantfile;
  vagrant up --parallel;
  cd -;
  done
