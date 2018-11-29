@@ -9,7 +9,7 @@ for x in Wx2;do
  vagrant up --parallel;
  for y in $(vagrant status|awk '/running/{print $1}');do
   ip=$(vagrant ssh $y -c "ip route|grep eth0|grep -v /16|grep -v default|awk '{print \$9}'");
-  echo -n " $ip" 1>>../list_IPs;
+  echo $ip 1>>../list_IPs;
   done;
  cd -;
  done
