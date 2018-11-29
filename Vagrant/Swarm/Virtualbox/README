@@ -1,7 +1,7 @@
 If you are using Windows then open CMD and execute the following commands:
-curl -O https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Virtualbox/setup.swarm.cmd
-setup.swarm.cmd
+  curl -O https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Virtualbox/setup.swarm.cmd
+  setup.swarm.cmd
 
 If you are using Linux then open a terminal and execute the following commands:
-curl -O https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Virtualbox/setup.swarm
-source setup.swarm
+  curl -O https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Virtualbox/setup.swarm
+  source setup.swarm
