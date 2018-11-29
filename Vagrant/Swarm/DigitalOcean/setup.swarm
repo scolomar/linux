@@ -10,8 +10,8 @@ for x in M0;do
  token_manager=$(vagrant ssh -c "sudo docker swarm join-token manager|awk '/token/{print \$2}'");
  token_worker=$( vagrant ssh -c "sudo docker swarm join-token worker |awk '/token/{print \$2}'");
  ip=$(vagrant ssh -c "sudo docker swarm join-token manager|grep -v add|awk '/:/{print \$1}'");
- echo "sudo docker swarm join --token $token_manager $ip" 1>join-manager;
- echo "sudo docker swarm join --token $token_worker  $ip" 1>join-worker;
+ echo "sudo docker swarm join --token $token_manager $ip" 1>../join-manager;
+ echo "sudo docker swarm join --token $token_worker  $ip" 1>../join-worker;
  cd -;
  done
 for x in Mx;do
