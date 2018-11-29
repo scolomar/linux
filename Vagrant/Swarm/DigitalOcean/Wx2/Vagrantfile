@@ -14,6 +14,8 @@ Vagrant.configure("2") do |config|
     m.vm.synced_folder ".", "/vagrant", disabled: true
     m.vm.provision "shell",
       path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.docker"
+    m.vm.provision "shell",
+      path: "../join-worker"    
   end
   config.vm.define "W11" do |m|
     m.vm.provider "digital_ocean" do |d|
@@ -30,6 +32,8 @@ Vagrant.configure("2") do |config|
     m.vm.synced_folder ".", "/vagrant", disabled: true
     m.vm.provision "shell",
       path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.docker"
+    m.vm.provision "shell",
+      path: "../join-worker"    
   end
   config.vm.define "W12" do |m|
     m.vm.provider "digital_ocean" do |d|
@@ -46,5 +50,7 @@ Vagrant.configure("2") do |config|
     m.vm.synced_folder ".", "/vagrant", disabled: true
     m.vm.provision "shell",
       path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.docker"
+    m.vm.provision "shell",
+      path: "../join-worker"    
   end
 end
