@@ -12,4 +12,4 @@ for x in Siege;do
  done;
 cd Siege;
 vagrant ssh -c "echo $(cat list_IPs) 1>list_IPs";
-vagrant ssh -c "for x in \$(cat list_IPs);do sudo siege -c200 -q -b -t1M http://\$x\& done";
+#vagrant ssh -c "for x in \$(cat list_IPs);do sudo siege -c200 -q -b -t1M http://\$x\& done";
