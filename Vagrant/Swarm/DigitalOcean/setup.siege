@@ -4,7 +4,7 @@ token_vagrant=$(cat token);
 rm -f list_IPs;
 for x in M0;do
  cd $x;
- ip=$(vagrant ssh $y -c "ip route|grep eth0|grep -v /16|grep -v default|awk '{print \$9}'");
+ ip=$(vagrant ssh $x -c "ip route|grep eth0|grep -v /16|grep -v default|awk '{print \$9}'");
  echo $ip 1>>../list_IPs;
  cd -;
  done
