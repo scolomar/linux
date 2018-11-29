@@ -16,7 +16,7 @@ for x in Mx;do
  mkdir $x;
  cd $x;
  curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/$x/Vagrantfile -O;
- sed -i s/token_vagrant/$token/ Vagrantfile;
+ sed -i s/token_vagrant/$token_vagrant/ Vagrantfile;
  vagrant up --parallel;
  cd -;
  done
@@ -24,7 +24,7 @@ for x in Wx;do
  mkdir $x;
  cd $x;
  curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/$x/Vagrantfile -O;
- sed -i s/token_vagrant/$token/ Vagrantfile;
+ sed -i s/token_vagrant/$token_vagrant/ Vagrantfile;
  vagrant up --parallel;
  cd -;
  done
