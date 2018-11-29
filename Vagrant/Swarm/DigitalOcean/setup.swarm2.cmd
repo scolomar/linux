@@ -9,7 +9,7 @@ FOR %%x IN (Wx2) DO (
  curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/%%x/Vagrantfile -O
  FOR /F "tokens=* delims= " %%x IN (Vagrantfile) DO (
   SET y=%%x
-  SET y=!y:xxx=%z%!
+  SET y=!y:token_vagrant=%z%!
   ECHO !y!>>Vagrantfile.NEW
   MOVE Vagrantfile.NEW Vagrantfile
   )
