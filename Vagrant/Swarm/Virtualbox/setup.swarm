@@ -5,7 +5,6 @@ for x in M1 Mx Wx;do
  mkdir $x;
  cd $x;
  curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/Virtualbox/$x/Vagrantfile -O;
- sed s/xxx/$token/ Vagrantfile;
  vagrant up --parallel;
  cd -;
  done
