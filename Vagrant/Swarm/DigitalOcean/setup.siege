@@ -10,5 +10,5 @@ for x in Siege;do
  cd -;
  done;
 cd Siege;
-#vagrant ssh -c "for x in \$(cat list_IPs);do sudo siege -c200 -q -b -t1M http://\$x\& done";
+#vagrant ssh -c "sudo siege -c200 -t1M http://$ip";
 cd -
