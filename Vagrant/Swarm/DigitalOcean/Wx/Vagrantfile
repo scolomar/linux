@@ -4,7 +4,7 @@ Vagrant.configure("2") do |config|
       d.token = "token_vagrant"
       d.image = "centos-7-x64"
       d.region = "ams3"
-      d.size = "1gb"
+      d.size = "s-1vcpu-2gb"
       d.monitoring = true
       d.private_networking = false
     end
@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
       d.token = "token_vagrant"
       d.image = "centos-7-x64"
       d.region = "fra1"
-      d.size = "1gb"
+      d.size = "s-1vcpu-3gb"
       d.monitoring = true
       d.private_networking = false
     end
@@ -40,7 +40,7 @@ Vagrant.configure("2") do |config|
       d.token = "token_vagrant"
       d.image = "centos-7-x64"
       d.region = "lon1"
-      d.size = "1gb"
+      d.size = "s-2vcpu-2gb"
       d.monitoring = true
       d.private_networking = false
     end
