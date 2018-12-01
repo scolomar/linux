@@ -22,7 +22,7 @@ for x in Mx;do
  vagrant up --parallel;
  cd -;
  done
-for x in Wx;do
+for x in Wx0;do
  mkdir $x;
  cd $x;
  curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/$x/Vagrantfile -O;
@@ -32,6 +32,6 @@ for x in Wx;do
  done
 cd M0;
 vagrant ssh M0 -c "for x in \$(sudo docker node ls -q -f name=m);do sudo docker node update --availability drain \$x;done";
-vagrant ssh M0 -c "curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/stack.yml -O";
-vagrant ssh M0 -c "sudo docker stack deploy -c stack.yml my";
+vagrant ssh M0 -c "curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/stack0.yml -O";
+vagrant ssh M0 -c "sudo docker stack deploy -c stack0.yml my";
 cd -;
