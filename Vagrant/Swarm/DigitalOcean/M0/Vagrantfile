@@ -1,5 +1,5 @@
 Vagrant.configure("2") do |config|
-  config.vm.define "M0" do |m|
+  config.vm.define "m0" do |m|
     m.vm.provider "digital_ocean" do |d|
       d.token = "token_vagrant"
       d.image = "centos-7-x64"
