@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
     m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
     m.vm.synced_folder ".", "/vagrant", disabled: true
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.docker"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/w2X/setup.docker"
     m.vm.provision "shell",
       path: "../join-worker"    
   end
@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
     m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
     m.vm.synced_folder ".", "/vagrant", disabled: true
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.docker"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/w2X/setup.docker"
     m.vm.provision "shell",
       path: "../join-worker"    
   end
@@ -49,7 +49,7 @@ Vagrant.configure("2") do |config|
     m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
     m.vm.synced_folder ".", "/vagrant", disabled: true
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx2/setup.docker"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/w2X/setup.docker"
     m.vm.provision "shell",
       path: "../join-worker"    
   end

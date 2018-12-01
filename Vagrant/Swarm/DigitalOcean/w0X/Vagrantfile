@@ -1,10 +1,10 @@
 Vagrant.configure("2") do |config|
-  config.vm.define "w10" do |m|
+  config.vm.define "w00" do |m|
     m.vm.provider "digital_ocean" do |d|
       d.token = "token_vagrant"
       d.image = "centos-7-x64"
       d.region = "ams3"
-      d.size = "s-3vcpu-1gb"
+      d.size = "s-1vcpu-2gb"
       d.monitoring = true
       d.private_networking = false
     end
@@ -13,16 +13,16 @@ Vagrant.configure("2") do |config|
     m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
     m.vm.synced_folder ".", "/vagrant", disabled: true
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx1/setup.docker"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/w0X/setup.docker"
     m.vm.provision "shell",
-      path: "../join-worker"    
+      path: "../join-worker"
   end
-  config.vm.define "w11" do |m|
+  config.vm.define "w01" do |m|
     m.vm.provider "digital_ocean" do |d|
       d.token = "token_vagrant"
       d.image = "centos-7-x64"
       d.region = "fra1"
-      d.size = "2gb"
+      d.size = "s-1vcpu-3gb"
       d.monitoring = true
       d.private_networking = false
     end
@@ -31,16 +31,16 @@ Vagrant.configure("2") do |config|
     m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
     m.vm.synced_folder ".", "/vagrant", disabled: true
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx1/setup.docker"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/w0X/setup.docker"
     m.vm.provision "shell",
-      path: "../join-worker"    
+      path: "../join-worker"
   end
-  config.vm.define "w12" do |m|
+  config.vm.define "w02" do |m|
     m.vm.provider "digital_ocean" do |d|
       d.token = "token_vagrant"
       d.image = "centos-7-x64"
       d.region = "lon1"
-      d.size = "s-2vcpu-4gb"
+      d.size = "s-2vcpu-2gb"
       d.monitoring = true
       d.private_networking = false
     end
@@ -49,8 +49,8 @@ Vagrant.configure("2") do |config|
     m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
     m.vm.synced_folder ".", "/vagrant", disabled: true
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Wx1/setup.docker"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/w0X/setup.docker"
     m.vm.provision "shell",
-      path: "../join-worker"    
+      path: "../join-worker"
   end
 end

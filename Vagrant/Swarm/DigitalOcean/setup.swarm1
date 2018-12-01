@@ -1,7 +1,7 @@
 #!/bin/sh
 vagrant plugin install vagrant-digitalocean;
 token_vagrant=$(cat token);
-for x in Wx1;do
+for x in w1X;do
  mkdir $x;
  cd $x;
  curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/$x/Vagrantfile -O;
@@ -9,7 +9,7 @@ for x in Wx1;do
  vagrant up --parallel;
  cd -;
  done
-for x in Wx1;do
+for x in w1X;do
  cd $x;
  for y in $(vagrant status|awk '/digital_ocean/{print $1}');do
   ip=$(vagrant ssh $y -c "ip route|grep eth0|grep -v /16|grep -v default|awk '{print \$9}'");
@@ -17,7 +17,7 @@ for x in Wx1;do
   done;
  cd -;
  done;
-cd M0;
-vagrant ssh M0 -c "curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/stack1.yml -O";
-vagrant ssh M0 -c "sudo docker stack deploy -c stack1.yml my";
+cd m0;
+vagrant ssh m0 -c "curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/stack1.yml -O";
+vagrant ssh m0 -c "sudo docker stack deploy -c stack1.yml my";
 cd -;

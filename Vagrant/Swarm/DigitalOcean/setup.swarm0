@@ -1,7 +1,7 @@
 #!/bin/sh
 vagrant plugin install vagrant-digitalocean;
 token_vagrant=$(cat token);
-for x in M0;do
+for x in m0;do
  mkdir $x;
  cd $x;
  curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/$x/Vagrantfile -O;
@@ -14,7 +14,7 @@ for x in M0;do
  echo "sudo docker swarm join --token $token_worker  $ip" 1>../join-worker;
  cd -;
  done
-for x in Mx;do
+for x in mX;do
  mkdir $x;
  cd $x;
  curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/$x/Vagrantfile -O;
@@ -22,7 +22,7 @@ for x in Mx;do
  vagrant up --parallel;
  cd -;
  done
-for x in Wx0;do
+for x in w0X;do
  mkdir $x;
  cd $x;
  curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/$x/Vagrantfile -O;
@@ -30,8 +30,8 @@ for x in Wx0;do
  vagrant up --parallel;
  cd -;
  done
-cd M0;
-vagrant ssh M0 -c "for x in \$(sudo docker node ls -q -f name=m);do sudo docker node update --availability drain \$x;done";
-vagrant ssh M0 -c "curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/stack0.yml -O";
-vagrant ssh M0 -c "sudo docker stack deploy -c stack0.yml my";
+cd m0;
+vagrant ssh m0 -c "for x in \$(sudo docker node ls -q -f name=m);do sudo docker node update --availability drain \$x;done";
+vagrant ssh m0 -c "curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/stack0.yml -O";
+vagrant ssh m0 -c "sudo docker stack deploy -c stack0.yml my";
 cd -;
