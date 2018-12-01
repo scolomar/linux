@@ -1,5 +1,5 @@
 Vagrant.configure("2") do |config|
-  config.vm.define "W10" do |m|
+  config.vm.define "w10" do |m|
     m.vm.provider "digital_ocean" do |d|
       d.token = "token_vagrant"
       d.image = "centos-7-x64"
@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
     m.vm.provision "shell",
       path: "../join-worker"    
   end
-  config.vm.define "W11" do |m|
+  config.vm.define "w11" do |m|
     m.vm.provider "digital_ocean" do |d|
       d.token = "token_vagrant"
       d.image = "centos-7-x64"
@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
     m.vm.provision "shell",
       path: "../join-worker"    
   end
-  config.vm.define "W12" do |m|
+  config.vm.define "w12" do |m|
     m.vm.provider "digital_ocean" do |d|
       d.token = "token_vagrant"
       d.image = "centos-7-x64"
