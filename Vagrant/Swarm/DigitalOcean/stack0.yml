@@ -5,7 +5,7 @@ services:
       networks:
         - frontend
       deploy:
-        replicas: 126
+        replicas: 111
         restart_policy:
           condition: on-failure
       ports:
