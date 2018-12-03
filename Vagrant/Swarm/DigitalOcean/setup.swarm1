@@ -9,6 +9,4 @@ for x in w1X;do
  cd -;
  done
 cd m0;
-vagrant ssh m0 -c "curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/stack1.yml -O";
-vagrant ssh m0 -c "docker stack deploy -c stack1.yml my";
 cd -;
