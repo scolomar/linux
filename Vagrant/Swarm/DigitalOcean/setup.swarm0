@@ -7,11 +7,8 @@ for x in m0;do
  curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/$x/Vagrantfile -O;
  sed -i s/token_do/$token_do/ Vagrantfile;
  vagrant up --parallel;
- token_manager=$(vagrant ssh -c "sudo docker swarm join-token manager"|awk '/token/{print $2}'|awk '{print $1}');
- token_worker=$(vagrant ssh -c "sudo docker swarm join-token worker"|awk '/token/{print $2}'|awk '{print $1}');
- ip=$(vagrant ssh -c "sudo docker swarm join-token manager|grep -v add|awk '/:/{print \$1}'");
- echo "sudo docker swarm join --token $token_manager $ip" 1>../token_manager;
- echo "sudo docker swarm join --token $token_worker  $ip" 1>../token_worker;
+ vagrant ssh -c "docker swarm join-token manager"|grep token 1>../token_manager;
+ vagrant ssh -c "docker swarm join-token worker"|grep token 1>../token_worker;
  cd -;
  done
 for x in mX;do
@@ -33,5 +30,5 @@ for x in w0X;do
 cd m0;
 vagrant ssh m0 -c "for x in \$(sudo docker node ls -q -f name=m);do sudo docker node update --availability drain \$x;done";
 vagrant ssh m0 -c "curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/stack0.yml -O";
-vagrant ssh m0 -c "sudo docker stack deploy -c stack0.yml my";
+vagrant ssh m0 -c "docker stack deploy -c stack0.yml my";
 cd -;
