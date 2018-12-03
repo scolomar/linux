@@ -1,0 +1,13 @@
+#!/bin/sh
+service=my_php;
+M=252;
+x=1;
+while[ $x -lt $M ];do
+ x=$((1+$x));
+ echo "scaling $service to $x ..."
+ docker service scale $service=$x;
+ until $(docker stack services my|grep -q $x/$x);do
+  sleep 1;
+  done;
+ done
+ 
