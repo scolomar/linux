@@ -1,5 +1,4 @@
 #!/bin/sh
-vagrant plugin install vagrant-digitalocean;
 token_do=$(cat token_do);
 for x in w1X;do
  mkdir $x;
