@@ -9,14 +9,6 @@ for x in w2X;do
  vagrant up --parallel;
  cd -;
  done
-for x in w2X;do
- cd $x;
- for y in $(vagrant status|awk '/digital_ocean/{print $1}');do
-  ip=$(vagrant ssh $y -c "ip route|grep eth0|grep -v /16|grep -v default|awk '{print \$9}'");
-  echo $ip 1>>../list_IPs;
-  done;
- cd -;
- done;
 cd m0;
 vagrant ssh m0 -c "curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/stack2.yml -O";
 vagrant ssh m0 -c "sudo docker stack deploy -c stack2.yml my";
