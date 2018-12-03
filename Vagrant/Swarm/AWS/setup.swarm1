@@ -1,0 +1,14 @@
+#!/bin/sh
+token_do=$(cat token_do);
+for x in w1X;do
+ mkdir $x;
+ cd $x;
+ curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/$x/Vagrantfile -O;
+ sed -i s/token_do/$token_do/ Vagrantfile;
+ vagrant up --parallel;
+ cd -;
+ done
+cd m0;
+vagrant ssh m0 -c "curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/stack1.yml -O";
+vagrant ssh m0 -c "docker stack deploy -c stack1.yml my";
+cd -;
