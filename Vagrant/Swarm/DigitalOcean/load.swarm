@@ -2,7 +2,7 @@
 service=my_php;
 M=252;
 x=1;
-while[ $x -lt $M ];do
+while [ $x -lt $M ];do
  x=$((1+$x));
  echo "scaling $service to $x ..."
  docker service scale $service=$x;
