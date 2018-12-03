@@ -7,8 +7,11 @@ for x in m0;do
  curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/$x/Vagrantfile -O;
  sed -i s/token_do/$token_do/ Vagrantfile;
  vagrant up --parallel;
- vagrant ssh -c "docker swarm join-token manager"|grep token 1>../token_manager;
- vagrant ssh -c "docker swarm join-token worker"|grep token 1>../token_worker;
+ ip=$(vagrant ssh -c "docker swarm join-token manager"|awk /token/'{print $6}'|cut -d':' -f1);
+ token_manager=$(vagrant ssh -c "docker swarm join-token manager"|awk /token/'{print $5}');
+ token_worker=$(vagrant ssh -c "docker swarm join-token worker"|awk /token/'{print $5}');
+ echo "docker swarm join --token $token_manager $ip:2377" 1>../token_manager;
+ echo "docker swarm join --token $token_worker $ip:2377" 1>../token_worker;
  cd -;
  done
 for x in mX;do
