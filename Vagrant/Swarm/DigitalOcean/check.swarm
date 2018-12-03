@@ -1,0 +1,9 @@
+#!/bin/sh
+while true;do
+ for x in {0..2};do
+  cd w${x}X;
+  for y in {0..2};do
+   vagrant ssh w$x$y -c "free -m";
+   done;
+  cd ..;
+  done;
