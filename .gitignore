@@ -1,1 +1,2 @@
-Vagrant/Swarm/DigitalOcean/token
+.gitignore
+Vagrant/Swarm/DigitalOcean/token*
