@@ -11,5 +11,5 @@ for x in w2X;do
  done
 cd m0;
 vagrant ssh m0 -c "curl https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/stack2.yml -O";
-vagrant ssh m0 -c "sudo docker stack deploy -c stack2.yml my";
+vagrant ssh m0 -c "docker stack deploy -c stack2.yml my";
 cd -;
