@@ -3,5 +3,3 @@ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce
 yum -y install docker-ce
 systemctl enable docker
 systemctl start docker
-public_ip=$(ip route|grep eth0|grep -v /16|grep -v default|awk '{print $9}')
-docker swarm init --advertise-addr $public_ip
