@@ -1,6 +1,6 @@
 #!/bin/sh
 vagrant plugin install vagrant-digitalocean;
-token_vagrant=$(cat token);
+token_vagrant=$(cat token_vagrant);
 for x in m0;do
  mkdir $x;
  cd $x;
@@ -10,8 +10,8 @@ for x in m0;do
  token_manager=$(vagrant ssh -c "sudo docker swarm join-token manager"|awk '/token/{print $2}'|awk '{print $1}');
  token_worker=$(vagrant ssh -c "sudo docker swarm join-token worker"|awk '/token/{print $2}'|awk '{print $1}');
  ip=$(vagrant ssh -c "sudo docker swarm join-token manager|grep -v add|awk '/:/{print \$1}'");
- echo "sudo docker swarm join --token $token_manager $ip" 1>../join-manager;
- echo "sudo docker swarm join --token $token_worker  $ip" 1>../join-worker;
+ echo "sudo docker swarm join --token $token_manager $ip" 1>../token_manager;
+ echo "sudo docker swarm join --token $token_worker  $ip" 1>../token_worker;
  cd -;
  done
 for x in mX;do
