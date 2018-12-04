@@ -1,6 +1,6 @@
 #!/bin/sh
 vagrant plugin install vagrant-digitalocean;
-token_vagrant=$(cat token);
+token_vagrant=$(cat token_vagrant);
 for x in Siege;do
  mkdir $x;
  cd $x;
