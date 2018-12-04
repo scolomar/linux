@@ -1,0 +1,5 @@
+#!/bin/sh
+service=my_php;
+cd m0;
+vagrant ssh -c 'for x in 00 01 02;do echo -n "w$x: ";docker stack ps my_php|grep Running.*Running|grep w$x|wc -l;done';
+cd ..;
