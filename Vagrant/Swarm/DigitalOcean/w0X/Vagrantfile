@@ -6,6 +6,7 @@ Vagrant.configure("2") do |config|
       d.region = "ams3"
       d.size = "s-1vcpu-1gb"
       d.monitoring = true
+      d.tags = "php-worker"
       d.private_networking = false
     end
     m.ssh.private_key_path = "~/.ssh/id_rsa"
@@ -24,6 +25,7 @@ Vagrant.configure("2") do |config|
       d.region = "fra1"
       d.size = "s-1vcpu-1gb"
       d.monitoring = true
+      d.tags = "php-worker"
       d.private_networking = false
     end
     m.ssh.private_key_path = "~/.ssh/id_rsa"
@@ -42,6 +44,7 @@ Vagrant.configure("2") do |config|
       d.region = "lon1"
       d.size = "s-1vcpu-1gb"
       d.monitoring = true
+      d.tags = "php-worker"
       d.private_networking = false
     end
     m.ssh.private_key_path = "~/.ssh/id_rsa"
