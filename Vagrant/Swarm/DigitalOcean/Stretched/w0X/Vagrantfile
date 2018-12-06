@@ -1,11 +1,12 @@
 Vagrant.configure("2") do |config|
-  config.vm.define "w10" do |m|
+  config.vm.define "w00" do |m|
     m.vm.provider "digital_ocean" do |d|
       d.token = "token_do"
       d.image = "centos-7-x64"
       d.region = "ams3"
       d.size = "s-1vcpu-1gb"
       d.monitoring = true
+      d.tags = "php-worker"
       d.private_networking = false
     end
     m.ssh.private_key_path = "~/.ssh/id_rsa"
@@ -13,17 +14,18 @@ Vagrant.configure("2") do |config|
     m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
     m.vm.synced_folder ".", "/vagrant", disabled: true
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/setup.docker"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Stretched/setup.docker"
     m.vm.provision "shell",
-      path: "../token_worker"    
+      path: "../token_worker"
   end
-  config.vm.define "w11" do |m|
+  config.vm.define "w01" do |m|
     m.vm.provider "digital_ocean" do |d|
       d.token = "token_do"
       d.image = "centos-7-x64"
       d.region = "fra1"
       d.size = "s-1vcpu-1gb"
       d.monitoring = true
+      d.tags = "php-worker"
       d.private_networking = false
     end
     m.ssh.private_key_path = "~/.ssh/id_rsa"
@@ -31,17 +33,18 @@ Vagrant.configure("2") do |config|
     m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
     m.vm.synced_folder ".", "/vagrant", disabled: true
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/setup.docker"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Stretched/setup.docker"
     m.vm.provision "shell",
-      path: "../token_worker"    
+      path: "../token_worker"
   end
-  config.vm.define "w12" do |m|
+  config.vm.define "w02" do |m|
     m.vm.provider "digital_ocean" do |d|
       d.token = "token_do"
       d.image = "centos-7-x64"
       d.region = "lon1"
       d.size = "s-1vcpu-1gb"
       d.monitoring = true
+      d.tags = "php-worker"
       d.private_networking = false
     end
     m.ssh.private_key_path = "~/.ssh/id_rsa"
@@ -49,8 +52,8 @@ Vagrant.configure("2") do |config|
     m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
     m.vm.synced_folder ".", "/vagrant", disabled: true
     m.vm.provision "shell",
-      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/setup.docker"
+      path: "https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Stretched/setup.docker"
     m.vm.provision "shell",
-      path: "../token_worker"    
+      path: "../token_worker"
   end
 end
