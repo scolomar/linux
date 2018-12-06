@@ -1,4 +1,4 @@
 #!/bin/sh
 cd m0;
-vagrant ssh -c 'for x in {0..0};do for y in {0..2};do echo -n "w$x$y: ";docker stack ps my_php|grep Running.*Running|grep w$x$y|wc -l;done;done';
+vagrant ssh -c 'for x in {0..0};do for y in {0..2};do echo -n "w$x$y: ";docker stack ps my|grep Running.*Running|grep w$x$y|wc -l;done;done';
 cd ..;
