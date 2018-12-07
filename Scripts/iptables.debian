@@ -11,8 +11,6 @@ net=$(ipcalc -n $ip/$cdr|awk '/Network/{print $2}');
 me=${ip:-0.0.0.0};
 mynet=${net:-0.0.0.0};
 
-you=0.0.0.0;
-
 for x in filter nat mangle raw;
  do
   for y in F X Z;
@@ -46,20 +44,20 @@ for x in INPUT OUTPUT;
 iptables -A OUTPUT -s $me     -d 8.8.8.8 -p icmp -j ACCEPT;
 iptables -A INPUT  -s 8.8.8.8 -d $me     -p icmp -j ACCEPT;
 
-iptables -A INPUT  -s $you -d $me  -p tcp -m tcp --dport 22 -j ACCEPT;
-iptables -A OUTPUT -s $me  -d $you -p tcp -m tcp --sport 22 -m state --state RELATED,ESTABLISHED -j ACCEPT;
+iptables -A INPUT  -d $me -p tcp -m tcp --dport 22 -j ACCEPT;
+iptables -A OUTPUT -s $me -p tcp -m tcp --sport 22 -m state --state RELATED,ESTABLISHED -j ACCEPT;
 
 for y in $me;
  do
   for x in 22 37 53 80 123 443;
    do
     iptables -A OUTPUT -s $y -p tcp -m tcp --dport $x -j ACCEPT;
-    iptables -A INPUT -d $y -p tcp -m tcp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
+    iptables -A INPUT  -d $y -p tcp -m tcp --sport $x -j ACCEPT -m state --state RELATED,ESTABLISHED;
    done;
   for x in 53 67 68 123;
    do
     iptables -A OUTPUT -s $y -p udp -m udp --dport $x -j ACCEPT;
-    iptables -A INPUT -d $y -p udp -m udp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
+    iptables -A INPUT  -d $y -p udp -m udp --sport $x -j ACCEPT -m state --state RELATED,ESTABLISHED;
    done;
  done;
 
