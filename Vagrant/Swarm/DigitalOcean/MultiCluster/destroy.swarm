@@ -1,0 +1,8 @@
+#!/bin/sh
+for x in m* w* Siege;do
+ cd $x;
+ vagrant destroy -f;
+ cd -;
+ rm -rf $x;
+ done;
+rm join-* setup* -f;

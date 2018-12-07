@@ -1,0 +1,13 @@
+If you are using Linux then open a terminal and execute the following commands:
+  curl -O https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Stretched/setup.swarm0
+  source setup.swarm0
+  
+These commands will start a Docker swarm with the services specified in the file stack0.yml
+
+If you want to increase the swarm and deploy more replicas as specified in the file stack1.yml then you need to run the following commands:
+  curl -O https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Stretched/setup.swarm1
+  source setup.swarm1
+
+If you want to increase the swarm and deploy more replicas as specified in the file stack2.yml then you need to run the following commands:
+  curl -O https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Stretched/setup.swarm2
+  source setup.swarm2
