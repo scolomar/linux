@@ -1,0 +1,6 @@
+#!/bin/sh
+for x in m* w* Siege;do
+ cd $x;
+ vagrant destroy -f;
+ cd -;
+ done;

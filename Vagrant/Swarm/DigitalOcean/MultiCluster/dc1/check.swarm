@@ -1,0 +1,10 @@
+#!/bin/sh
+#while true;do
+ for x in {0..0};do
+  cd w${x}X;
+  for y in {0..2};do
+   vagrant ssh w$x$y -c "top -b -n1|head -5";
+   done;
+  cd ..;
+  done;
+ #done;
