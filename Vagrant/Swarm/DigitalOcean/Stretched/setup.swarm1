@@ -4,6 +4,8 @@ for x in w1X;do
  mkdir $x;
  cd $x;
  sed s/token_do/$token_do/ Vagrantfile.pre 1>Vagrantfile;
+ sed -i s/location1/$location1/ Vagrantfile;
+ sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
  vagrant up --parallel;
  cd -;
  done

@@ -1,10 +1,16 @@
 #!/bin/sh
 #vagrant plugin install vagrant-digitalocean;
+export location1=ams3;
+export location2=fra1;
+export location3=lon1;
+export SSH_KEY_NAME=Vagrant;
 token_do=$(cat token_do);
 for x in m0;do
  mkdir $x;
  cd $x;
  sed s/token_do/$token_do/ Vagrantfile.pre 1>Vagrantfile;
+ sed -i s/location1/$location1/ Vagrantfile;
+ sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
  vagrant up --parallel;
  vagrant ssh -c "docker swarm join-token manager"|grep token 1>../token_manager;
  vagrant ssh -c "docker swarm join-token worker"|grep token 1>../token_worker;
@@ -14,6 +20,8 @@ for x in mX;do
  mkdir $x;
  cd $x;
  sed s/token_do/$token_do/ Vagrantfile.pre 1>Vagrantfile;
+ sed -i s/location1/$location1/ Vagrantfile;
+ sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
  vagrant up --parallel;
  cd -;
  done
@@ -21,6 +29,8 @@ for x in w0X;do
  mkdir $x;
  cd $x;
  sed s/token_do/$token_do/ Vagrantfile.pre 1>Vagrantfile;
+ sed -i s/location1/$location1/ Vagrantfile;
+ sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
  vagrant up --parallel;
  cd -;
  done
