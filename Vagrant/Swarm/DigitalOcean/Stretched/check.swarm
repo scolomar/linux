@@ -1,5 +1,5 @@
 #!/bin/sh
-while true;do
+#while true;do
  for x in {0..0};do
   cd w${x}X;
   for y in {0..2};do
@@ -7,4 +7,4 @@ while true;do
    done;
   cd ..;
   done;
- done;
+# done;
