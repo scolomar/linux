@@ -10,5 +10,7 @@ services:
           condition: on-failure
       ports:
         - 80:80
+      labels:
+        - "com.docker.lb.sticky_session_cookie=session"
 networks:
     frontend:
