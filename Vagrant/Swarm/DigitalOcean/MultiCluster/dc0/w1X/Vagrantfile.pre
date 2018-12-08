@@ -1,9 +1,9 @@
 Vagrant.configure("2") do |config|
-  config.vm.define "w00" do |m|
+  config.vm.define "w10" do |m|
     m.vm.provider "digital_ocean" do |d|
       d.token = "token_do"
       d.image = "centos-7-x64"
-      d.region = "nyc3"
+      d.region = "location"
       d.size = "s-1vcpu-1gb"
       d.monitoring = true
       d.private_networking = false
@@ -15,13 +15,13 @@ Vagrant.configure("2") do |config|
     m.vm.provision "shell",
       path: "../setup.docker"
     m.vm.provision "shell",
-      path: "../token_worker"
+      path: "../token_worker"    
   end
-  config.vm.define "w01" do |m|
+  config.vm.define "w11" do |m|
     m.vm.provider "digital_ocean" do |d|
       d.token = "token_do"
       d.image = "centos-7-x64"
-      d.region = "nyc3"
+      d.region = "location"
       d.size = "s-1vcpu-1gb"
       d.monitoring = true
       d.private_networking = false
@@ -33,13 +33,13 @@ Vagrant.configure("2") do |config|
     m.vm.provision "shell",
       path: "../setup.docker"
     m.vm.provision "shell",
-      path: "../token_worker"
+      path: "../token_worker"    
   end
-  config.vm.define "w02" do |m|
+  config.vm.define "w12" do |m|
     m.vm.provider "digital_ocean" do |d|
       d.token = "token_do"
       d.image = "centos-7-x64"
-      d.region = "nyc3"
+      d.region = "location"
       d.size = "s-1vcpu-1gb"
       d.monitoring = true
       d.private_networking = false
@@ -51,6 +51,6 @@ Vagrant.configure("2") do |config|
     m.vm.provision "shell",
       path: "../setup.docker"
     m.vm.provision "shell",
-      path: "../token_worker"
+      path: "../token_worker"    
   end
 end
