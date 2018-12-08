@@ -31,6 +31,6 @@ for x in w0X;do
  cd -;
  done
 cd m0;
-vagrant ssh m0 -c "for x in \$(sudo docker node ls -q -f name=m);do sudo docker node update --availability drain \$x;done";
-vagrant ssh m0 -c "docker stack deploy -c stack0.yml my";
+vagrant ssh -c "for x in \$(sudo docker node ls -q -f name=m);do sudo docker node update --availability drain \$x;done";
+vagrant ssh -c "docker stack deploy -c stack0.yml my";
 cd -;
