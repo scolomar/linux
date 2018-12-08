@@ -16,5 +16,8 @@ Vagrant.configure("2") do |config|
       path: "../setup.docker"
     m.vm.provision "shell",
       path: "../setup.leader"
+    m.vm.provision "file",
+      source: "../stack0.yml",
+      destination: "stack0.yml"
   end
 end
