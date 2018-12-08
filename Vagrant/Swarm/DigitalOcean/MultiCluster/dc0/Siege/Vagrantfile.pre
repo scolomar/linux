@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
       d.region = "ams3"
       d.size = "1gb"
       d.monitoring = true
-      d.private_networking = false
+      d.private_networking = true
     end
     m.ssh.private_key_path = "~/.ssh/id_rsa"
     m.vm.box = "digital_ocean"
