@@ -3,7 +3,7 @@ Vagrant.configure("2") do |config|
     m.vm.provider "digital_ocean" do |d|
       d.token = "token_do"
       d.image = "centos-7-x64"
-      d.region = "fra1"
+      d.region = "nyc3"
       d.size = "s-1vcpu-1gb"
       d.monitoring = true
       d.private_networking = false
@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
     m.vm.provider "digital_ocean" do |d|
       d.token = "token_do"
       d.image = "centos-7-x64"
-      d.region = "lon1"
+      d.region = "nyc3"
       d.size = "s-1vcpu-1gb"
       d.monitoring = true
       d.private_networking = false
