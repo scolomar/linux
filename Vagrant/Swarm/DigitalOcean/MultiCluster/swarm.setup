@@ -1,6 +1,6 @@
 #!/bin/sh
 #vagrant plugin install vagrant-digitalocean;
-source ../token_do;
+source ../../token_do;
 for x in m0;do
  mkdir $x;
  cd $x;
