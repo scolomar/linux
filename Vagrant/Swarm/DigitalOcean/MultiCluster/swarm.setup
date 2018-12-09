@@ -1,5 +1,5 @@
 #!/bin/sh
-#vagrant plugin install vagrant-digitalocean;
+vagrant plugin install vagrant-digitalocean;
 source ../../token_do;
 source swarm.conf;
 for x in m1;do
