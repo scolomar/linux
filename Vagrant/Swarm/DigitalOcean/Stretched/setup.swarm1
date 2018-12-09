@@ -9,5 +9,3 @@ for x in w1X;do
  vagrant up --parallel;
  cd -;
  done
-cd m0;
-cd -;
