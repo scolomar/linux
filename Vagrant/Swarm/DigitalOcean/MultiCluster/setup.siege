@@ -5,6 +5,7 @@ for x in Siege;do
  mkdir $x;
  cd $x;
  sed s/token_do/$token_do/ Vagrantfile.pre 1>Vagrantfile;
+ sed -i s/.dc/.$dc/ Vagrantfile;
  vagrant up --parallel;
  cd -;
  done;

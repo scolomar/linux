@@ -1,3 +1,0 @@
-#!/bin/sh
-ip=$(ip route|grep eth1|awk '{print $9}')
-docker swarm init --advertise-addr $ip
