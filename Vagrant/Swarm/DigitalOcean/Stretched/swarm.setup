@@ -1,10 +1,7 @@
 #!/bin/sh
 #vagrant plugin install vagrant-digitalocean;
-export location1=ams3;
-export location2=fra1;
-export location3=lon1;
-export SSH_KEY_NAME=Vagrant;
-token_do=$(cat token_do);
+source ../token_do;
+source swarm.locate;
 for x in m0;do
  mkdir $x;
  cd $x;
@@ -42,5 +39,5 @@ for x in w0X;do
  done
 cd m0;
 #vagrant ssh -c "for x in \$(sudo docker node ls -q -f name=m);do sudo docker node update --availability drain \$x;done";
-vagrant ssh -c "docker stack deploy -c stack0.yml my";
+vagrant ssh -c "docker stack deploy -c stack.yml my";
 cd -;
