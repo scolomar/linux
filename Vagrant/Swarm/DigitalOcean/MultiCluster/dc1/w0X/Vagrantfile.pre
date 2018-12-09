@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
     m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
     m.vm.synced_folder ".", "/vagrant", disabled: true
     m.vm.provision "shell",
-      path: "../setup.docker"
+      path: "../../setup.docker"
     m.vm.provision "shell",
       path: "../token_worker"
   end
@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
     m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
     m.vm.synced_folder ".", "/vagrant", disabled: true
     m.vm.provision "shell",
-      path: "../setup.docker"
+      path: "../../setup.docker"
     m.vm.provision "shell",
       path: "../token_worker"
   end
@@ -55,7 +55,7 @@ Vagrant.configure("2") do |config|
     m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
     m.vm.synced_folder ".", "/vagrant", disabled: true
     m.vm.provision "shell",
-      path: "../setup.docker"
+      path: "../../setup.docker"
     m.vm.provision "shell",
       path: "../token_worker"
   end

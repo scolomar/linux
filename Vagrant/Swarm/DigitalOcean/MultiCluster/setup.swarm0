@@ -1,6 +1,7 @@
 #!/bin/sh
 #vagrant plugin install vagrant-digitalocean;
-#token_do=$(cat token_do);
+token_do=$(cat ../token_do);
+SSH_KEY_NAME=Vagrant;
 for x in m0;do
  mkdir $x;
  cd $x;

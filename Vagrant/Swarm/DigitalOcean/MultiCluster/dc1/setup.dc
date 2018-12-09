@@ -1,5 +1,4 @@
 #!/bin/sh
+export dc=dc1;
 export location=nyc1;
-export token_do=$(cat token_do);
-export SSH_KEY_NAME=Vagrant;
-source setup.swarm0;
+source ../setup.swarm0;
