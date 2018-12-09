@@ -2,11 +2,16 @@
 #vagrant plugin install vagrant-digitalocean;
 source ../../token_do;
 source swarm.conf;
+[ -d Deployment ]||mkdir Deployment;
 cd Deployment;
+mkdir $dc;
+cd $dc;
+cp ../../swarm.conf dc.conf;
+cp ../../swarm.destroy dc.destroy;
 for x in m1;do
  mkdir $x;
  cd $x;
- sed s/token_do/$token_do/ ../../../Vagrantfile/Vagrantfile.m1 1>Vagrantfile;
+ sed s/token_do/$token_do/ ../../../../Vagrantfile/Vagrantfile.m1 1>Vagrantfile;
  sed -i s/location/$location/ Vagrantfile;
  sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
  sed -i "s/dcX/$dc/" Vagrantfile;
@@ -18,7 +23,7 @@ for x in m1;do
 for x in mX;do
  mkdir $x;
  cd $x;
- sed s/token_do/$token_do/ ../../../Vagrantfile/Vagrantfile.mX 1>Vagrantfile;
+ sed s/token_do/$token_do/ ../../../../Vagrantfile/Vagrantfile.mX 1>Vagrantfile;
  sed -i s/location/$location/ Vagrantfile;
  sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
  sed -i "s/dcX/$dc/" Vagrantfile;
@@ -29,7 +34,7 @@ for x in mX;do
 for x in wX;do
  mkdir $x;
  cd $x;
- sed s/token_do/$token_do/ ../../../Vagrantfile/Vagrantfile.wX 1>Vagrantfile;
+ sed s/token_do/$token_do/ ../../../../Vagrantfile/Vagrantfile.wX 1>Vagrantfile;
  sed -i s/location/$location/ Vagrantfile;
  sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
  sed -i "s/dcX/$dc/" Vagrantfile;
