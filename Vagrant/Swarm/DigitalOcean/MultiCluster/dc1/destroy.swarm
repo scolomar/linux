@@ -1,5 +1,5 @@
 #!/bin/sh
-for x in m* w* Siege;do
+for x in m* w*;do
  cd $x;
  vagrant destroy -f;
  cd -;
