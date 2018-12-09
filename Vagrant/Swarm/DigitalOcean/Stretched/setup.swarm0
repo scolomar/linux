@@ -10,6 +10,8 @@ for x in m0;do
  cd $x;
  sed s/token_do/$token_do/ Vagrantfile.pre 1>Vagrantfile;
  sed -i s/location1/$location1/ Vagrantfile;
+ sed -i s/location2/$location2/ Vagrantfile;
+ sed -i s/location3/$location3/ Vagrantfile;
  sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
  vagrant up --parallel;
  vagrant ssh -c "docker swarm join-token manager"|grep token 1>../token_manager;
@@ -21,6 +23,8 @@ for x in mX;do
  cd $x;
  sed s/token_do/$token_do/ Vagrantfile.pre 1>Vagrantfile;
  sed -i s/location1/$location1/ Vagrantfile;
+ sed -i s/location2/$location2/ Vagrantfile;
+ sed -i s/location3/$location3/ Vagrantfile;
  sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
  vagrant up --parallel;
  cd -;
@@ -30,11 +34,13 @@ for x in w0X;do
  cd $x;
  sed s/token_do/$token_do/ Vagrantfile.pre 1>Vagrantfile;
  sed -i s/location1/$location1/ Vagrantfile;
+ sed -i s/location2/$location2/ Vagrantfile;
+ sed -i s/location3/$location3/ Vagrantfile;
  sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
  vagrant up --parallel;
  cd -;
  done
 cd m0;
-vagrant ssh -c "for x in \$(sudo docker node ls -q -f name=m);do sudo docker node update --availability drain \$x;done";
+#vagrant ssh -c "for x in \$(sudo docker node ls -q -f name=m);do sudo docker node update --availability drain \$x;done";
 vagrant ssh -c "docker stack deploy -c stack0.yml my";
 cd -;
