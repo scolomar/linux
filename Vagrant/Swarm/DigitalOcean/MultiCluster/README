@@ -1,13 +1,21 @@
-If you are using Linux then open a terminal and execute the following commands:
-  curl -O https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Stretched/setup.swarm0
-  source setup.swarm0
-  
+This project is to run a MultiCluster environment.
+
+There are two folders: dc0 and dc1 for the two cloned enviroments.
+
+You can configure the location and name of the environment in the file setup.dc that is located in each folder.
+
+To run the first environment:
+  cd dc0
+  source ../setup.dc
+
+To run the second environment:
+  cd dc1
+  source ../setup.dc
+
 These commands will start a Docker swarm with the services specified in the file stack0.yml
 
-If you want to increase the swarm and deploy more replicas as specified in the file stack1.yml then you need to run the following commands:
-  curl -O https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Stretched/setup.swarm1
-  source setup.swarm1
+If you want to increase the swarm and deploy more replicas as specified in the file stack1.yml then you need to uncomment the following line in the file setup.dc: 
+  source ../setup.swarm1
 
-If you want to increase the swarm and deploy more replicas as specified in the file stack2.yml then you need to run the following commands:
-  curl -O https://raw.githubusercontent.com/secobau/linux/master/Vagrant/Swarm/DigitalOcean/Stretched/setup.swarm2
-  source setup.swarm2
+If you want to increase the swarm and deploy more replicas as specified in the file stack2.yml then you need to uncomment the following line in the file setup.dc: 
+  source ../setup.swarm2
