@@ -3,4 +3,5 @@ for x in m* w*;do
  cd $x;
  vagrant destroy -f;
  cd -;
+ rm -rf $x;
  done;

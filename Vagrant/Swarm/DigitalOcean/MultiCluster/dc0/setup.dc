@@ -1,5 +1,0 @@
-#!/bin/sh
-source swarm.locate;
-source ../swarm.setup;
-#source ../setup.swarm1;
-#source ../setup.swarm2;
