@@ -1,6 +1,7 @@
 #!/bin/sh
 #vagrant plugin install vagrant-digitalocean;
 source ../../token_do;
+source swarm.conf;
 for x in m1;do
  cd $x;
  sed s/token_do/$token_do/ Vagrantfile.pre 1>Vagrantfile;
