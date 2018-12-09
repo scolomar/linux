@@ -1,0 +1,58 @@
+version: '3.3'
+networks:
+  mm-fuera:
+    internal: false
+  mm-out:
+    internal: true
+services:
+  php:
+    image: secobau/php:apache
+    networks:
+      - mm-out
+    deploy:
+      replicas: 1
+      labels:
+        - "traefik.backend.loadbalancer.sticky=true"
+        - "traefik.backend.loadbalancer.swarm=true"
+        - "traefik.backend=mmphp"
+        - "traefik.docker.network=mm_mm-out"
+        - "traefik.entrypoints=http"
+        - "traefik.frontend.passHostHeader=true"
+        - "traefik.frontend.rule=Host:php.workers.gotdns.org"
+        - "traefik.port=80"
+      restart_policy:
+        condition: on-failure
+  app:
+    image: nginx
+    networks:
+      - mm-out
+    deploy:
+      replicas: 1
+      labels:
+        - "traefik.backend.loadbalancer.sticky=true"
+        - "traefik.backend.loadbalancer.swarm=true"
+        - "traefik.backend=mmapp"
+        - "traefik.docker.network=mm_mm-out"
+        - "traefik.entrypoints=http"
+        - "traefik.frontend.passHostHeader=true"
+        - "traefik.frontend.rule=Host:app.workers.gotdns.org"
+        - "traefik.port=80"
+      restart_policy:
+        condition: on-failure
+  web:
+    image: traefik
+    ports:
+      - "80:80"
+      - "8080:8080"
+    networks:
+      - mm-out
+      - mm-fuera
+    command: --web --docker --docker.swarmmode --logLevel=DEBUG
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      restart_policy:
+       condition: on-failure
+      placement:
+       constraints:
+        - node.role == manager
