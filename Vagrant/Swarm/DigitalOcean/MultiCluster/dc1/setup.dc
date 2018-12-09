@@ -2,5 +2,5 @@
 export dc=dc1;
 export location=nyc1;
 source ../setup.swarm0;
-#source ../setup.swarm1;
-#source ../setup.swarm2;
+source ../setup.swarm1;
+source ../setup.swarm2;
