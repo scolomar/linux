@@ -5,7 +5,7 @@ services:
     networks:
       - frontend
     deploy:
-      replicas: 3
+      replicas: 4
       restart_policy:
         condition: any
       placement:
@@ -13,11 +13,11 @@ services:
           - node.role == worker
       resources:
         limits:
-          cpus: "0.50"
-          memory: 512M
+          cpus: "0.06"
+          memory: 60M
         reservations:
-          cpus: "0.25"
-          memory: 256M
+          cpus: "0.02"
+          memory: 20M          
     ports:
       - "8080:80"
 networks:
