@@ -1,11 +1,12 @@
 #!/bin/sh
 service=my_php;
-maximum=33; # 116 for 3w; 246 for 6w; 252 for 9w (this is a limit of the /24 mask)
+maximum=8;
 step=3;
 replicas=3;
-cd m0;
+source swarm.conf;
+cd Deployment/$dc/m1;
 while [ $replicas -lt $maximum ];do
  replicas=$(($step+$replicas));
  vagrant ssh -c "docker service scale $service=$replicas";
  done;
-cd ..;
+cd -;
