@@ -1,21 +1,21 @@
 This project is to run a MultiCluster environment.
 
-There are two folders: dc0 and dc1 for the two cloned enviroments.
+In the "Stack" folder you will find:
+- the "stack.yml" file with the stack configuration
+- the configuration of the data centers: "dc1.conf" and "dc2.conf"
+- the configuration of the swarm: "swarm.conf"
 
-You can configure the location and name of the environment in the file setup.dc that is located in each folder.
+Once configured the swarm then you will go to the "Swarm" folder and run the following command:
+$ source swarm.launch
 
-To run the first environment:
-  cd dc0
-  source ../setup.dc
+This will create a "Deployment" folder with a subfolder named "dc1" or "dc2" (as desired).
 
-To run the second environment:
-  cd dc1
-  source ../setup.dc
+In this last subfolder there will be three more subfolders:
+- "m1" with the Vagrantfile of the swarm leader
+- "mX" with the Vagrantfile of the rest of the managers
+- "wX" with the Vagrantfile of the workers
 
-These commands will start a Docker swarm with the services specified in the file stack0.yml
+From any of these subfolders you can access the corresponding nodes with the command (for example to access the 3rd manager from DC1):
+$ vagrant status
+$ vagrant ssh m3.dc1 -c "docker node ls"
 
-If you want to increase the swarm and deploy more replicas as specified in the file stack1.yml then you need to uncomment the following line in the file setup.dc: 
-  source ../setup.swarm1
-
-If you want to increase the swarm and deploy more replicas as specified in the file stack2.yml then you need to uncomment the following line in the file setup.dc: 
-  source ../setup.swarm2
