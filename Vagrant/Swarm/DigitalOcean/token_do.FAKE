@@ -1,0 +1,3 @@
+# This file should be name "token_do" instead of "token_do.FAKE"
+token_do=0ab7399b1931d8e6dc40626dc7e53dd8 # FAKE DIGITALOCEAN API_KEY
+SSH_KEY_NAME=VagrantXXX # Put here the name you like
