@@ -19,3 +19,4 @@ From any of these subfolders you can access the corresponding nodes with the com
 $ vagrant status
 $ vagrant ssh m3.dc1 -c "docker node ls"
 
+TO BE CONTINUED...
