@@ -19,4 +19,7 @@ From any of these subfolders you can access the corresponding nodes with the com
 $ vagrant status
 $ vagrant ssh m3.dc1 -c "docker node ls"
 
+You first need to fix the file token_do.FAKE that is in the parent folder: "../token_do.FAKE"
+Please follow the instructions reading the file.
+
 TO BE CONTINUED...
