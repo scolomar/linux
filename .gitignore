@@ -1,4 +1,4 @@
 **/*token*
 **/.vagrant
-**/Vagrantfile
 **/Swarm/Deployment/*
+**/Vagrantfile
