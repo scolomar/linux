@@ -3,5 +3,5 @@ while true;
  do 
   date=$(date +%F_%Hh%Mm%Ss);
   qrencode -o $(hostname).$date.png $date;
-  sleep 1;
+  sleep 10;
  done
