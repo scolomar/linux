@@ -1,7 +1,7 @@
 #!/bin/sh
 while true;
  do 
-  sleep 1;
+  sleep 10;
   for x in $(ls *.png);
    do
     [ -n "$x" ]&&zbarimg -q $x 1>${x%.png}.txt&&rm $x;
