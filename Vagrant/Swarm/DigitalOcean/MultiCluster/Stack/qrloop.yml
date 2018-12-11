@@ -2,6 +2,8 @@ version: "3.7"
 services:
  nginx:
   image: nginx
+  ports:
+   - "8080:80"
   volumes:
    - qrloop:/usr/share/nginx/html
   deploy:
