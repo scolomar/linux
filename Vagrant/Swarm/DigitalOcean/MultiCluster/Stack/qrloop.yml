@@ -3,7 +3,7 @@ services:
  encoder:
   image: secobau/qrencoder-loop
   volumes:
-   - qrloop:/var/local/qrloop
+   - qrloop:/var/local
   deploy:
    replicas: 2
    placement:
@@ -19,7 +19,7 @@ services:
  decoder:
   image: secobau/qrdecoder-loop
   volumes:
-   - qrloop:/var/local/qrloop
+   - qrloop:/var/local
   deploy:
    replicas: 2
    placement:
