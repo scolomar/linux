@@ -1,36 +1,21 @@
 version: "3.7"
 services:
- encoder:
-  image: secobau/qrencoder-loop
-  volumes:
-   - qrloop:/var/local/qrloop
-  deploy:
-   replicas: 2
-   placement:
-    constraints:
-     - node.role == worker
-     - node.labels.volume == qrloop
-   resources:
-    limits:
-     cpus: "0.06"
-     memory: 60M
-   restart_policy:
-    condition: any
- decoder:
-  image: secobau/qrdecoder-loop
-  volumes:
-   - qrloop:/var/local/qrloop
-  deploy:
-   replicas: 2
-   placement:
-    constraints:
-     - node.role == worker
-     - node.labels.volume == qrloop
-   resources:
-    limits:
-     cpus: "0.06"
-     memory: 60M
-   restart_policy:
-    condition: any
-volumes:
- qrloop:
+  php:
+    image: secobau/php:apache
+    networks:
+      - frontend
+    deploy:
+      replicas: 4
+      restart_policy:
+        condition: any
+      placement:
+        constraints:
+          - node.role == worker
+      resources:
+        limits:
+          cpus: "0.06"
+          memory: 60M
+    ports:
+      - "8080:80"
+networks:
+  frontend:
