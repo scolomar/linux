@@ -1,5 +1,23 @@
 version: "3.7"
 services:
+ nginx:
+  image: secobau/nginx-autoindex
+  ports:
+   - "8080:80"
+  volumes:
+   - qrloop:/usr/share/nginx/html
+  deploy:
+   replicas: 1
+   placement:
+    constraints:
+     - node.role == worker
+     - node.labels.volume == qrloop
+   resources:
+    limits:
+     cpus: "0.06"
+     memory: 60M
+   restart_policy:
+    condition: any
  encoder:
   image: secobau/qrencoder-loop
   volumes:
