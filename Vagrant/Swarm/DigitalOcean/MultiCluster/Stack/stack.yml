@@ -1,7 +1,7 @@
 version: "3.7"
 services:
  nginx:
-  image: nginx
+  image: secobau/nginx-autoindex
   ports:
    - "8080:80"
   volumes:
