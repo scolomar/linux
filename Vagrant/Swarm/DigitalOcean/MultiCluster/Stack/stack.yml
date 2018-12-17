@@ -1,58 +1,21 @@
 version: "3.7"
 services:
- nginx:
-<<<<<<< HEAD
-  image: nginx
-=======
-  image: secobau/nginx-autoindex
-  ports:
-   - "8080:80"
->>>>>>> c5bb80ca4184d54fe22a6259556ee4bff054e794
-  volumes:
-   - qrloop:/usr/share/nginx/html
-  deploy:
-   replicas: 1
-   placement:
-    constraints:
-     - node.role == worker
-     - node.labels.volume == qrloop
-   resources:
-    limits:
-     cpus: "0.06"
-     memory: 60M
-   restart_policy:
-    condition: any
- encoder:
-  image: secobau/qrencoder-loop
-  volumes:
-   - qrloop:/var/local
-  deploy:
-   replicas: 2
-   placement:
-    constraints:
-     - node.role == worker
-     - node.labels.volume == qrloop
-   resources:
-    limits:
-     cpus: "0.06"
-     memory: 60M
-   restart_policy:
-    condition: any
- decoder:
-  image: secobau/qrdecoder-loop
-  volumes:
-   - qrloop:/var/local
-  deploy:
-   replicas: 2
-   placement:
-    constraints:
-     - node.role == worker
-     - node.labels.volume == qrloop
-   resources:
-    limits:
-     cpus: "0.06"
-     memory: 60M
-   restart_policy:
-    condition: any
-volumes:
- qrloop:
+  php:
+    image: secobau/php:apache
+    networks:
+      - frontend
+    deploy:
+      replicas: 4
+      restart_policy:
+        condition: any
+      placement:
+        constraints:
+          - node.role == worker
+      resources:
+        limits:
+          cpus: "0.06"
+          memory: 60M
+    ports:
+      - "8080:80"
+networks:
+  frontend:
