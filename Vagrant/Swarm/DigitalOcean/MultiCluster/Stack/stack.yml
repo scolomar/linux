@@ -7,7 +7,7 @@ services:
   volumes:
    - qrloop:/usr/share/nginx/html
   deploy:
-   replicas: 1
+   replicas: 2
    placement:
     constraints:
      - node.role == worker
@@ -21,7 +21,7 @@ services:
  encoder:
   image: secobau/qrencoder-loop
   volumes:
-   - qrloop:/var/local
+   - qrloop:/var/local/qrloop
   deploy:
    replicas: 2
    placement:
@@ -37,7 +37,7 @@ services:
  decoder:
   image: secobau/qrdecoder-loop
   volumes:
-   - qrloop:/var/local
+   - qrloop:/var/local/qrloop
   deploy:
    replicas: 2
    placement:
