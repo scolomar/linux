@@ -1,5 +1,5 @@
 #!/bin/sh
-#vagrant plugin install vagrant-digitalocean;
+vagrant plugin install vagrant-digitalocean;
 source ../../token_do;
 source swarm.conf;
 [ -d Deployment ]||mkdir Deployment;
@@ -44,7 +44,6 @@ for x in wX;do
  done
 cd m1;
 vagrant ssh -c "for x in \$(sudo docker node ls -q -f name=m);do sudo docker node update --availability drain \$x;done";
-#vagrant ssh -c "docker node update --label-add volume=qrloop w2.dc1";
-#vagrant ssh -c "docker stack deploy -c stack.yml my";
+vagrant ssh -c "docker stack deploy -c stack.yml my";
 cd -;
 cd ..;

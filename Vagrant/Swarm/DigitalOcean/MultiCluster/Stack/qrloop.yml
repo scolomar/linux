@@ -11,7 +11,7 @@ services:
    placement:
     constraints:
      - node.role == worker
-     - node.labels.volume == qrloop
+       #- node.labels.volume == qrloop
    resources:
     limits:
      cpus: "0.06"
@@ -27,7 +27,7 @@ services:
    placement:
     constraints:
      - node.role == worker
-     - node.labels.volume == qrloop
+       #     - node.labels.volume == qrloop
    resources:
     limits:
      cpus: "0.06"
@@ -43,7 +43,7 @@ services:
    placement:
     constraints:
      - node.role == worker
-     - node.labels.volume == qrloop
+       #- node.labels.volume == qrloop
    resources:
     limits:
      cpus: "0.06"
