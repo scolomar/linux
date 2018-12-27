@@ -39,6 +39,7 @@ for x in wX;do
  sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
  sed -i "s/dcX/$dc/" Vagrantfile;
  sed -i "s/WorkersNumber/$WorkersNumber/" Vagrantfile;
+ sed -i s/SIZE/$SIZE/ Vagrantfile;
  vagrant up --parallel;
  cd -;
  done
