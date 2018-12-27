@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
       source: "../../../../../token_docker",
       destination: "/etc/yum/vars/dockerurl"
     m.vm.provision "shell",
-      path: "../../../../Shell/setup.docker"
+      path: "../../../../Shell/setup.DOCKER"
     m.vm.provision "shell",
       path: "../../../../Shell/setup.leader"
     m.vm.provision "file",
