@@ -15,6 +15,8 @@ for x in m1;do
  sed -i s/location/$location/ Vagrantfile;
  sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
  sed -i "s/dcX/$dc/" Vagrantfile;
+ sed -i s/SIZE/$SIZE/ Vagrantfile;
+ sed -i s/DOCKER/$DOCKER/ Vagrantfile;
  vagrant up --parallel;
  vagrant ssh -c "docker swarm join-token manager"|grep token 1>../token_manager;
  vagrant ssh -c "docker swarm join-token worker"|grep token 1>../token_worker;
@@ -28,6 +30,8 @@ for x in mX;do
  sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
  sed -i "s/dcX/$dc/" Vagrantfile;
  sed -i "s/ManagersNumber/$ManagersNumber/" Vagrantfile;
+ sed -i s/SIZE/$SIZE/ Vagrantfile;
+ sed -i s/DOCKER/$DOCKER/ Vagrantfile;
  vagrant up --parallel;
  cd -;
  done
@@ -40,6 +44,7 @@ for x in wX;do
  sed -i "s/dcX/$dc/" Vagrantfile;
  sed -i "s/WorkersNumber/$WorkersNumber/" Vagrantfile;
  sed -i s/SIZE/$SIZE/ Vagrantfile;
+ sed -i s/DOCKER/$DOCKER/ Vagrantfile;
  vagrant up --parallel;
  cd -;
  done
