@@ -1,5 +1,5 @@
 #!/bin/sh
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-yum -y install docker-ce
+yum-config-manager --add-repo "$(cat /etc/yum/vars/dockerurl)/centos/docker-ee.repo"
+yum -y install docker-ee
 systemctl enable docker
 systemctl start docker
