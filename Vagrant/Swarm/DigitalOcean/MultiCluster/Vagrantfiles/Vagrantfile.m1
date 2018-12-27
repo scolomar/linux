@@ -11,6 +11,9 @@ Vagrant.configure("2") do |config|
     m.vm.provision "file",
       source: "../../../../Stack/stack.yml",
       destination: "stack.yml"
+    m.vm.provision "file",
+      source: "../../../../../token_docker",
+      destination: "/etc/yum/vars/dockerurl"
     m.vm.provider "digital_ocean" do |d|
       d.token = "token_do"
       d.image = "centos-7-x64"
