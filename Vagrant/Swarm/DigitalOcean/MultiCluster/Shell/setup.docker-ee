@@ -1,5 +1,8 @@
 #!/bin/sh
+F=/etc/yum.repos.d/docker-ee.repo
 yum-config-manager --add-repo "$(cat /etc/yum/vars/dockerurl)/centos/docker-ee.repo"
+sed -i /enabled/s/1/0/ $F
+sed -i $(awk 'BEGIN{x=0}/\[docker-ee-stable\]/{x=1;next}/enabled=0/{if(x==1)print NR;x=0}' $F)s/0/1/ $F
 yum -y install docker-ee
 systemctl enable docker
 systemctl start docker
