@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e;
 for x in m* w*;do
  cd $x;
  vagrant destroy -f;
@@ -7,3 +8,4 @@ for x in m* w*;do
 source dc.conf;
 cd ..;
 rm -rf $dc;
+set +e;
