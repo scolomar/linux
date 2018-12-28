@@ -11,7 +11,7 @@ cp ../../swarm.destroy dc.destroy;
 for x in m1;do
  mkdir $x;
  cd $x;
- sed s/token_do/$token_do/ ../../../../Vagrantfiles/Vagrantfile.m1 1>Vagrantfile;
+ sed s/TOKEN_DO/$TOKEN_DO/ ../../../../Vagrantfiles/Vagrantfile.m1 1>Vagrantfile;
  sed -i s/location/$location/ Vagrantfile;
  sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
  sed -i "s/dcX/$dc/" Vagrantfile;
@@ -25,7 +25,7 @@ for x in m1;do
 for x in mX;do
  mkdir $x;
  cd $x;
- sed s/token_do/$token_do/ ../../../../Vagrantfiles/Vagrantfile.mX 1>Vagrantfile;
+ sed s/TOKEN_DO/$TOKEN_DO/ ../../../../Vagrantfiles/Vagrantfile.mX 1>Vagrantfile;
  sed -i s/location/$location/ Vagrantfile;
  sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
  sed -i "s/dcX/$dc/" Vagrantfile;
@@ -38,7 +38,7 @@ for x in mX;do
 for x in wX;do
  mkdir $x;
  cd $x;
- sed s/token_do/$token_do/ ../../../../Vagrantfiles/Vagrantfile.wX 1>Vagrantfile;
+ sed s/TOKEN_DO/$TOKEN_DO/ ../../../../Vagrantfiles/Vagrantfile.wX 1>Vagrantfile;
  sed -i s/location/$location/ Vagrantfile;
  sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
  sed -i "s/dcX/$dc/" Vagrantfile;
