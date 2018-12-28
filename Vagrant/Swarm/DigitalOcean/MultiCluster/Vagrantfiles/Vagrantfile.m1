@@ -1,28 +1,28 @@
 Vagrant.configure("2") do |config|
-  config.vm.define "m1.dcX" do |m|
-    m.ssh.private_key_path = "~/.ssh/id_rsa"
-    m.vm.box = "digital_ocean"
-    m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
-    m.vm.synced_folder ".", "/vagrant", disabled: true
-    m.vm.provision "file",
-      source: "../../../../../token_docker",
-      destination: "/etc/yum/vars/dockerurl"
-    m.vm.provision "shell",
-      path: "../../../../Shell/setup.DOCKER"
-    m.vm.provision "shell",
-      path: "../../../../Shell/setup.leader"
-    m.vm.provision "file",
-      source: "../../../../Stack/stack.yml",
-      destination: "stack.yml"
-    m.vm.provider "digital_ocean" do |d|
-      d.token = "TOKEN_DO"
-      d.image = "centos-7-x64"
-      d.region = "location"
-      d.size = "SIZE"
-      d.monitoring = true
-      d.private_networking = true
-      d.tags = [ "manager", "leader" ]
-      d.ssh_key_name = "SSH_KEY_NAME"
-    end
+ config.vm.define "m1.dcX" do |m|
+  m.ssh.private_key_path = "~/.ssh/id_rsa"
+  m.vm.box = "digital_ocean"
+  m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
+  m.vm.synced_folder ".", "/vagrant", disabled: true
+  m.vm.provision "file",
+   source: "../../../../../token_docker",
+   destination: "/etc/yum/vars/dockerurl"
+  m.vm.provision "shell",
+   path: "../../../../Shell/setup.DOCKER"
+  m.vm.provision "shell",
+   path: "../../../../Shell/setup.leader"
+  m.vm.provision "file",
+   source: "../../../../Stack/stack.yml",
+   destination: "stack.yml"
+  m.vm.provider "digital_ocean" do |d|
+   d.token = "TOKEN_DO"
+   d.image = "centos-7-x64"
+   d.region = "location"
+   d.size = "SIZE"
+   d.monitoring = true
+   d.private_networking = true
+   d.tags = [ "manager", "leader" ]
+   d.ssh_key_name = "SSH_KEY_NAME"
   end
+ end
 end
