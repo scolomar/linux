@@ -2,6 +2,9 @@
 vagrant plugin install vagrant-digitalocean;
 source ../../token_do;
 source swarm.conf;
+SIZE=s-1vcpu-1gb;
+DOCKER=docker-ce;
+LEADER=leader-ce;
 [ -d Deployment ]||mkdir Deployment;
 cd Deployment;
 mkdir $dc;
@@ -32,6 +35,7 @@ for x in mX;do
  sed -i "s/ManagersNumber/$ManagersNumber/" Vagrantfile;
  sed -i s/SIZE/$SIZE/ Vagrantfile;
  sed -i s/DOCKER/$DOCKER/ Vagrantfile;
+ sed -i s/LEADER/$LEADER/ Vagrantfile;
  vagrant up --parallel;
  cd -;
  done
