@@ -14,6 +14,13 @@ services:
   secrets:
    - xwiki-db-username
    - xwiki-db-password
+  deploy:
+   replicas: 1
+   restart_policy:
+    condition: any
+   placement:
+    constraints:
+     - node.role == worker
  db:
   image: "mysql:5.7"
   volumes:
@@ -27,6 +34,13 @@ services:
    - xwiki-db-username
    - xwiki-db-password
    - xwiki-db-root-password
+  deploy:
+   replicas: 1
+   restart_policy:
+    condition: any
+   placement:
+    constraints:
+     - node.role == worker
   #configs: 
    #- source: mysql-config
    #- target: /etc/mysql/conf.d/xwiki.cnf
