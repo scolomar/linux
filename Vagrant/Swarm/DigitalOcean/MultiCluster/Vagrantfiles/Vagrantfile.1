@@ -11,9 +11,6 @@ Vagrant.configure("2") do |config|
    path: "../../../../Shell/setup.DOCKER"
   m.vm.provision "shell",
    path: "../../../../Shell/setup.leader"
-  m.vm.provision "file",
-   source: "../../../../Stack/stack.yml",
-   destination: "stack.yml"
   m.vm.provider "digital_ocean" do |d|
    d.token = "TOKEN_DO"
    d.image = "centos-7-x64"
