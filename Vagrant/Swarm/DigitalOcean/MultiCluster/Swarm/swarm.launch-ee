@@ -1,6 +1,7 @@
 #!/bin/sh
 vagrant plugin install vagrant-digitalocean;
 source ../../token_do;
+source ../../token_docker;
 source swarm.conf;
 SIZE=s-4vcpu-8gb;
 DOCKER=docker-ee;
@@ -11,6 +12,7 @@ mkdir $dc;
 cd $dc;
 cp ../../swarm.conf dc.conf;
 cp ../../swarm.destroy dc.destroy;
+sed s/DOCKERURL/$DOCKERURL/ ../../../Shell/setup.$DOCKER 1>setup.$DOCKER;
 for x in m1;do
  mkdir $x;
  cd $x;
