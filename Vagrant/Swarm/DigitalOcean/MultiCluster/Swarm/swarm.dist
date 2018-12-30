@@ -1,5 +1,5 @@
 #!/bin/sh
 source swarm.conf;
-cd Deployment/$dc/m1;
+cd Deployment/$DOMAIN/m1;
 vagrant ssh -c 'for x in {0..0};do for y in {0..2};do echo -n "w$y: ";docker stack ps my|grep Running.*Running|grep w$y|wc -l;done;done';
 cd -;

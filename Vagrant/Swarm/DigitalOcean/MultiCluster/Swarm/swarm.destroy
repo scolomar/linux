@@ -6,4 +6,4 @@ for x in 1 X;do
  done;
 source dc.conf;
 cd ..;
-vagrant -v&&rm -rf $dc;
+vagrant -v&&rm -rf $DOMAIN;

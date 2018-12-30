@@ -4,8 +4,8 @@ source ../../token_do;
 source swarm.conf;
 [ -d Deployment ]||mkdir Deployment;
 cd Deployment;
-mkdir $dc;
-cd $dc;
+mkdir $DOMAIN;
+cd $DOMAIN;
 cp ../../swarm.conf dc.conf;
 cp ../../swarm.destroy dc.destroy;
 for x in 1;do
@@ -14,7 +14,7 @@ for x in 1;do
  sed s/TOKEN_DO/$TOKEN_DO/ ../../../../Vagrantfiles/Vagrantfile.$x 1>Vagrantfile;
  sed -i s/LOCATION/$location/ Vagrantfile;
  sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
- sed -i "s/dcX/$dc/" Vagrantfile;
+ sed -i "s/DOMAIN/$DOMAIN/" Vagrantfile;
  sed -i s/SIZE/$SIZE/ Vagrantfile;
  sed -i s/DOCKER/docker-$DOCKER/ Vagrantfile;
  vagrant up --parallel;
@@ -28,7 +28,7 @@ for x in X;do
  sed s/TOKEN_DO/$TOKEN_DO/ ../../../../Vagrantfiles/Vagrantfile.$x 1>Vagrantfile;
  sed -i s/LOCATION/$location/ Vagrantfile;
  sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
- sed -i "s/dcX/$dc/" Vagrantfile;
+ sed -i "s/DOMAIN/$DOMAIN/" Vagrantfile;
  sed -i "s/ManagersNumber/$ManagersNumber/" Vagrantfile;
  sed -i "s/WorkersNumber/$WorkersNumber/" Vagrantfile;
  sed -i s/SIZE/$SIZE/ Vagrantfile;

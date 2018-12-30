@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
  (2..ManagersNumber).each do |x|
-  config.vm.define "m#{x}.dcX" do |m|
+  config.vm.define "m#{x}.DOMAIN" do |m|
    m.ssh.private_key_path = "~/.ssh/id_rsa"
    m.vm.box = "digital_ocean"
    m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
   end
  end
  (1..WorkersNumber).each do |x|
-  config.vm.define "w#{x}.dcX" do |m|
+  config.vm.define "w#{x}.DOMAIN" do |m|
    m.ssh.private_key_path = "~/.ssh/id_rsa"
    m.vm.box = "digital_ocean"
    m.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"

@@ -4,7 +4,7 @@ maximum=8;
 step=3;
 replicas=3;
 source swarm.conf;
-cd Deployment/$dc/m1;
+cd Deployment/$DOMAIN/m1;
 while [ $replicas -lt $maximum ];do
  replicas=$(($step+$replicas));
  vagrant ssh -c "docker service scale $service=$replicas";
