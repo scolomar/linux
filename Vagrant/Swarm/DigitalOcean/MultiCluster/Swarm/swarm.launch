@@ -2,9 +2,6 @@
 vagrant plugin list|grep -q digitalocean||vagrant plugin install vagrant-digitalocean;
 source ../../token_do;
 source swarm.conf;
-SIZE=s-4vcpu-8gb;
-DOCKER=ee;
-UCP=yes;
 [ -d Deployment ]||mkdir Deployment;
 cd Deployment;
 mkdir $dc;
