@@ -1,2 +1,0 @@
-#!/bin/sh
-#echo "export public_ip=$(ip route|grep eth0|grep -v /16|grep -v default|awk '{print $9}')" 1>public_ip;
