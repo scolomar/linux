@@ -11,7 +11,7 @@ for x in 1;do
  mkdir $x;
  cd $x;
  sed s/TOKEN_DO/$TOKEN_DO/ ../../../../Vagrantfiles/Vagrantfile.$x 1>Vagrantfile;
- sed -i s/LOCATION/$location/ Vagrantfile;
+ sed -i s/LOCATION/$LOCATION/ Vagrantfile;
  sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
  sed -i "s/DOMAIN/$DOMAIN/" Vagrantfile;
  sed -i s/SIZE/$SIZE/ Vagrantfile;
@@ -25,7 +25,7 @@ for x in X;do
  mkdir $x;
  cd $x;
  sed s/TOKEN_DO/$TOKEN_DO/ ../../../../Vagrantfiles/Vagrantfile.$x 1>Vagrantfile;
- sed -i s/LOCATION/$location/ Vagrantfile;
+ sed -i s/LOCATION/$LOCATION/ Vagrantfile;
  sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
  sed -i "s/DOMAIN/$DOMAIN/" Vagrantfile;
  sed -i "s/ManagersNumber/$ManagersNumber/" Vagrantfile;
@@ -45,4 +45,3 @@ for x in 1;do
   fi;
  cd -;
  done;
-cd ..;
