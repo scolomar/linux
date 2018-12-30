@@ -1,5 +1,5 @@
 #!/bin/sh
-vagrant plugin install vagrant-digitalocean;
+vagrant plugin list|grep -q digitalocean||vagrant plugin install vagrant-digitalocean;
 source ../../token_do;
 source swarm.conf;
 SIZE=s-4vcpu-8gb;
