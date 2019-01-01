@@ -21,6 +21,7 @@ services:
    placement:
     constraints:
      - node.role == worker
+     - node.labels.volume == xwiki-data
  db:
   image: "mysql:5.7"
   volumes:
@@ -41,6 +42,7 @@ services:
    placement:
     constraints:
      - node.role == worker
+     - node.labels.volume == mysql-data
   #configs: 
    #- source: mysql-config
    #- target: /etc/mysql/conf.d/xwiki.cnf
