@@ -1,1 +1,0 @@
-#vagrant ssh -c "docker node update --label-add volume=qrloop w2.dc1";
