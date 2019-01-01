@@ -2,4 +2,6 @@ cd ../Swarm/Deployment/$DOMAIN/1;
 vagrant ssh -c "echo ${MY_XWIKI_USER:-xwiki}|docker secret create xwiki-db-username -"
 vagrant ssh -c "echo $(openssl rand -base64 32|tr -d '+=/'|fold -w 16|head -1)|docker secret create xwiki-db-password -"
 vagrant ssh -c "echo $(openssl rand -base64 32|tr -d '+=/'|fold -w 16|head -1)|docker secret create xwiki-db-root-password -"
+vagrant ssh -c "docker node update --label-add volume=xwiki-data w2.$DOMAIN";
+vagrant ssh -c "docker node update --label-add volume=mysql-data w2.$DOMAIN";
 cd -;
