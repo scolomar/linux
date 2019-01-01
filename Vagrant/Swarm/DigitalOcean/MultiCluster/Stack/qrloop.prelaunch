@@ -1,0 +1,3 @@
+cd ../Swarm/Deployment/$DOMAIN/1;
+vagrant ssh -c "docker node update --label-add volume=qrloop w1.$DOMAIN";
+cd -;
