@@ -1,7 +1,6 @@
 vagrant plugin list|grep -q vagrant-scp||vagrant plugin install vagrant-scp;
-source stack.conf;
 source $STACK.prelaunch;
 cd ../Swarm/Deployment/$DOMAIN/1;
 vagrant scp ../../../../Stack/$STACK.yml $STACK.yml;
 vagrant ssh -c "docker stack deploy -c $STACK.yml $STACK";
-cd ..;
+cd -;
