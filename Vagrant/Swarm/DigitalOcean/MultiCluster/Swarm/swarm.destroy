@@ -4,6 +4,6 @@ for x in 1 X;do
  vagrant destroy -f;
  cd -;
  done;
-source dc.conf;
+./dc.conf;
 cd ..;
 vagrant -v&&rm -rf $DOMAIN;
