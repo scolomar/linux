@@ -1,0 +1,153 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>Lanch Docker Swarm in Digital Ocean</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>DOMAIN</name>
+          <description></description>
+          <defaultValue>AMS3</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>LOCATION</name>
+          <description>Amsterdam 3                    ams3
+Bangalore 1                    blr1
+Frankfurt 1                    fra1
+London 1                       lon1
+New York 1                     nyc1
+New York 3                     nyc3
+San Francisco 2                sfo2
+Singapore 1                    sgp1
+Toronto 1                      tor1</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>ams3</string>
+              <string>blr1</string>
+              <string>fra1</string>
+              <string>lon1</string>
+              <string>nyc1</string>
+              <string>nyc3</string>
+              <string>sfo2</string>
+              <string>sgp1</string>
+              <string>tor1</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>UCP</name>
+          <description>Docker Universal Control Panel</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>yes</string>
+              <string>no</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>DOCKER</name>
+          <description>Community Edition (ce)
+Enterprise Edition (ee)</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>ce</string>
+              <string>ee</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>SIZE</name>
+          <description>512MB           1               512mb
+1024MB          1               s-1vcpu-1gb
+1024MB          1               1gb
+2048MB          1               s-1vcpu-2gb
+3072MB          1               s-1vcpu-3gb
+2048MB          2               s-2vcpu-2gb
+1024MB          3               s-3vcpu-1gb
+2048MB          2               2gb
+4096MB          2               s-2vcpu-4gb
+4096MB          2               4gb
+4096MB          2               c-2
+8192MB          4               s-4vcpu-8gb
+8192MB          4               8gb
+8192MB          4               c-4
+16384MB         6               s-6vcpu-16gb
+16384MB         8               16gb
+16384MB         8               c-8</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>512mb</string>
+              <string>s-1vcpu-1gb</string>
+              <string>1gb</string>
+              <string>s-1vcpu-2gb</string>
+              <string>s-1vcpu-3gb</string>
+              <string>s-2vcpu-2gb</string>
+              <string>s-3vcpu-1gb</string>
+              <string>2gb</string>
+              <string>s-2vcpu-4gb</string>
+              <string>4gb</string>
+              <string>c-2</string>
+              <string>s-4vcpu-8gb</string>
+              <string>8gb</string>
+              <string>c-4</string>
+              <string>s-6vcpu-16gb</string>
+              <string>16gb</string>
+              <string>c-8</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>ManagersNumber</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>3</string>
+              <string>5</string>
+              <string>7</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>WorkersNumber</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>2</string>
+              <string>3</string>
+              <string>4</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>cd $HOME/linux/Vagrant/Swarm/DigitalOcean/MultiCluster/Swarm
+git pull
+f=swarm.conf
+echo &quot;#!/bin/sh&quot; 1&gt;$f
+echo &quot;export DOMAIN=$DOMAIN;&quot; 1&gt;&gt;$f
+echo &quot;export LOCATION=$LOCATION;&quot; 1&gt;&gt;$f
+echo &quot;export UCP=$UCP;&quot; 1&gt;&gt;$f
+echo &quot;export DOCKER=$DOCKER;&quot; 1&gt;&gt;$f
+echo &quot;export SIZE=$SIZE;&quot; 1&gt;&gt;$f
+echo &quot;export ManagersNumber=$ManagersNumber;&quot; 1&gt;&gt;$f
+echo &quot;export WorkersNumber=$WorkersNumber;&quot; 1&gt;&gt;$f
+./swarm.launch
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>
