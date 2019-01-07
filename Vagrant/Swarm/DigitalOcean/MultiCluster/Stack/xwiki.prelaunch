@@ -1,3 +1,4 @@
+#!/bin/sh
 cd ../Swarm/Deployment/$DOMAIN/1;
 vagrant ssh -c "echo ${MY_XWIKI_USER:-xwiki}|docker secret create xwiki-db-username -"
 vagrant ssh -c "echo $(openssl rand -base64 32|tr -d '+=/'|fold -w 16|head -1)|docker secret create xwiki-db-password -"
