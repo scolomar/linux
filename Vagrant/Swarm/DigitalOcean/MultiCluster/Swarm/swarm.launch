@@ -1,6 +1,7 @@
 vagrant plugin list|grep -q vagrant-digitalocean||vagrant plugin install vagrant-digitalocean;
-sh 0< ../../token_do;
-sh 0< swarm.conf;
+f=../../token_do;
+export SSH_KEY_NAME=$(awk -F= /SSH_KEY_NAME/'{print $2}' $f);
+export TOKEN_DO=$(awk -F= /TOKEN_DO/'{print $2}' $f);
 [ -d Deployment ]||mkdir Deployment;
 cd Deployment;
 mkdir $DOMAIN;
