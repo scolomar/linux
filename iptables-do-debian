@@ -1,0 +1,94 @@
+#!/bin/sh
+
+ip=$( ip a|grep "inet.*lo$"|cut -d/ -f1|awk '{print $2}');
+cdr=$(ip a|grep "inet.*lo$"|cut -d/ -f2|awk '{print $1}');
+net=$(ipcalc -n $ip/$cdr|awk '/Network/{print $2}');
+localnet=${net:-127.0.0.0};
+
+ip=$( ip a|grep "inet.*eth0$"|cut -d/ -f1|awk '{print $2}');
+cdr=$(ip a|grep "inet.*eth0$"|cut -d/ -f2|awk '{print $1}');
+net=$(ipcalc -n $ip/$cdr|awk '/Network/{print $2}');
+me_out=${ip:-0.0.0.0};
+mynet_out=${net:-0.0.0.0};
+
+ip=$( ip a|grep "inet.*eth1$"|cut -d/ -f1|awk '{print $2}');
+cdr=$(ip a|grep "inet.*eth1$"|cut -d/ -f2|awk '{print $1}');
+net=$(ipcalc -n $ip/$cdr|awk '/Network/{print $2}');
+me_int=${ip:-0.0.0.0};
+mynet_int=${net:-0.0.0.0};
+
+ip=$( ip a|grep "inet.*eth0.1$"|cut -d/ -f1|awk '{print $2}');
+cdr=$(ip a|grep "inet.*eth0.1$"|cut -d/ -f2|awk '{print $1}');
+net=$(ipcalc -n $ip/$cdr|awk '/Network/{print $2}');
+dc_int=${ip:-0.0.0.0};
+dcnet_int=${net:-0.0.0.0};
+
+dc=x.x.x.x/32;
+google=8.8.8.8;
+
+for x in filter nat mangle raw;
+ do
+  for y in F X Z;
+   do
+    iptables -t $x -$y;
+   done;
+ done;
+
+case $1
+ in
+  stop)
+   for x in INPUT OUTPUT FORWARD;
+    do
+     iptables -P $x    ACCEPT;
+     iptables -A $x -j ACCEPT;
+    done;
+   exit 0
+   ;;
+ esac;
+
+for x in INPUT OUTPUT FORWARD;
+ do
+  iptables -P $x DROP;
+ done;
+
+for x in INPUT OUTPUT;
+ do
+  iptables -A $x -s $localnet  -d $localnet  -j ACCEPT;
+  iptables -A $x -s $dcnet_int -d $dcnet_int -j LOG;
+  iptables -A $x -s $dcnet_int -d $dcnet_int -j ACCEPT;
+ done;
+
+for me in $me_out $me_int;
+ do
+  iptables -A INPUT  -d $me -s $dc -p tcp -m tcp --dport 3128 -j ACCEPT;
+  iptables -A OUTPUT -s $me -d $dc -p tcp -m tcp --sport 3128 -j ACCEPT;
+  iptables -A OUTPUT -s $me -d $google -p icmp -j ACCEPT;
+  iptables -A INPUT  -d $me -s $google -p icmp -j ACCEPT;
+  for x in 22 80 8080;
+   do
+    iptables -A INPUT  -d $me -p tcp -m tcp --dport $x -j ACCEPT;
+    iptables -A OUTPUT -s $me -p tcp -m tcp --sport $x -j ACCEPT -m state --state RELATED,ESTABLISHED;
+   done;
+ for x in 53 67 68 123;
+  do
+   iptables -A OUTPUT -s $me -p udp -m udp --dport $x -j ACCEPT;
+   iptables -A INPUT  -d $me -p udp -m udp --sport $x -j ACCEPT -m state --state RELATED,ESTABLISHED;
+  done;
+ for x in 22 37 43 53 80 123 443;
+  do
+   iptables -A OUTPUT -s $me -p tcp -m tcp --dport $x -j ACCEPT;
+   iptables -A INPUT  -d $me -p tcp -m tcp --sport $x -j ACCEPT -m state --state RELATED,ESTABLISHED;
+  done;
+ done;
+
+#for x in LOG DROP;
+for x in DROP;
+ do
+  for y in INPUT OUTPUT FORWARD;
+   do
+    iptables -A $y -j $x;
+   done;
+ done;
+
+#Restart docker in order to restore its IPTables configuration
+#service docker restart;
