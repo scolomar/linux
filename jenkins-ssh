@@ -1,0 +1,18 @@
+openssl genrsa -out jenkins.gotdns.org.key
+openssl req -new -key jenkins.gotdns.org.key -out jenkins.gotdns.org.csr
+openssl pkcs12 -export -out jenkins.gotdns.org.p12 -inkey jenkins.gotdns.org.key -in jenkins.gotdns.org.crt -name jenkins.gotdns.org
+keytool -importkeystore -srckeystore jenkins.gotdns.org.p12 -srcstoretype PKCS12 -srcalias jenkins.gotdns.org -deststoretype JKS -destkeystore jenkins.gotdns.org.jks -destalias jenkins.gotdns.org
+sudo cp jenkins.gotdns.org.jks /var/lib/jenkins/secrets/
+
+echo "HTTP_PORT=-1"|sudo tee -a /etc/default/jenkins
+echo "HTTPS_PORT=8443"|sudo tee -a /etc/default/jenkins
+echo "HTTPS_KeyStore=/var/lib/jenkins/secrets/jenkins.gotdns.org.jks"|sudo tee -a /etc/default/jenkins
+echo "HTTPS_KeyStorePassword=xxx"|sudo tee -a /etc/default/jenkins
+echo "HTTPS_HOST=x.x.x.x"|sudo tee -a /etc/default/jenkins
+echo 'JENKINS_ARGS="$JENKINS_ARGS --httpsPort=$HTTPS_PORT"'|sudo tee -a /etc/default/jenkins
+echo 'JENKINS_ARGS="$JENKINS_ARGS --httpsListenAddress=$HTTPS_HOST"'|sudo tee -a /etc/default/jenkins
+echo 'JENKINS_ARGS="$JENKINS_ARGS --httpsKeyStore=$HTTPS_KeyStore"'|sudo tee -a /etc/default/jenkins
+echo 'JENKINS_ARGS="$JENKINS_ARGS --httpsKeyStorePassword=$HTTPS_KeyStorePassword"'|sudo tee -a /etc/default/jenkins
+
+sudo sysctl net.ipv4.ip_forward=1;
+sudo iptables -t nat -A PREROUTING -i eth0 -d x.x.x.x -p tcp --dport 443 -j DNAT --to-destination x.x.x.x:8443
