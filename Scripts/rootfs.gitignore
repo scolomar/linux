@@ -7,5 +7,6 @@ mnt/
 media/
 lost+found/
 home/
+root/
 dev/
 .cache/
