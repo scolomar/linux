@@ -1,5 +1,11 @@
 This project is to run a MultiCluster environment.
 
+1. $ vi Swarm/swarm.conf
+2. $ cd Swarm
+3. $ source swarm.launch
+
+################## old README
+Then 
 In the "Stack" folder you will find:
 - the "stack.yml" file with the stack configuration
 - the configuration of the data centers: "dc1.conf" and "dc2.conf"
