@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -x
 vagrant plugin list|grep -q vagrant-digitalocean||vagrant plugin install vagrant-digitalocean;
 f=../../token_do;
 export SSH_KEY_NAME=$(awk -F= /SSH_KEY_NAME/'{print $2}' $f);
