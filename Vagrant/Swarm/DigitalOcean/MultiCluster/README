@@ -12,6 +12,7 @@ This project is to run a MultiCluster environment.
 12. $ vi Stack/xwiki.conf
 13. $ cd Stack && source xwiki.conf
 14. $ cd Stack && source stack.launch
+15. $ cd Swarm/Deployment/$DOMAIN && source dc.destroy
 
 ################## old README
 Then 
