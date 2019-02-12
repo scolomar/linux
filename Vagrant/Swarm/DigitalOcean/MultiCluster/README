@@ -2,7 +2,8 @@ This project is to run a MultiCluster environment.
 
 1. $ vi Swarm/swarm.conf
 2. $ cd Swarm
-3. $ source swarm.launch
+3. $ source swarm.conf
+4. $ source swarm.launch
 
 ################## old README
 Then 
