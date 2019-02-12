@@ -1,8 +1,18 @@
 This project is to run a MultiCluster environment.
 
-1. $ vi Swarm/swarm.conf
-2. $ cd Swarm
-3. $ source swarm.launch
+01. $ vi Swarm/swarm.conf
+02. $ cd Swarm && source swarm.conf
+04. $ cd Swarm && source swarm.launch
+05. $ vi Stack/php.conf
+06. $ cd Stack && source php.conf
+08. $ cd Stack && source stack.launch
+09. $ vi Stack/qrloop.conf
+10. $ cd Stack && source qrloop.conf
+11. $ cd Stack && source stack.launch
+12. $ vi Stack/xwiki.conf
+13. $ cd Stack && source xwiki.conf
+14. $ cd Stack && source stack.launch
+15. $ cd Swarm/Deployment/$DOMAIN && source dc.destroy
 
 ################## old README
 Then 
