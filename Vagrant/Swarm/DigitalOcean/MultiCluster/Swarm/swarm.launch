@@ -31,6 +31,7 @@ for x in X;do
  sed -i s/SSH_KEY_NAME/$SSH_KEY_NAME/ Vagrantfile;
  sed -i "s/DOMAIN/$DOMAIN/" Vagrantfile;
  sed -i "s/ManagersNumber/$ManagersNumber/" Vagrantfile;
+ sed -i "s/DTRNumber/$DTRNumber/" Vagrantfile;
  sed -i "s/WorkersNumber/$WorkersNumber/" Vagrantfile;
  sed -i s/SIZE/$SIZE/ Vagrantfile;
  sed -i s/DOCKER/docker-$DOCKER/ Vagrantfile;
