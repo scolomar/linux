@@ -5,3 +5,4 @@
 **/builds
 **/nextBuildNumber
 **/Jenkins/*/last*
+**/*.lic
