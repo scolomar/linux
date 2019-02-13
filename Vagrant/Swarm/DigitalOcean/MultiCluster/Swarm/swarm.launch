@@ -51,7 +51,7 @@ for x in 1;do
   echo UCP_ADMIN_PASSWORD = $UCP_ADMIN_PASSWORD;
   fi;
  if [ $DTR = yes ];then
-  vagrant ssh -c "IP=\$(ip route|grep eth1|awk '{print \$9}');docker container run --rm -i --name dtr -v /var/run/docker.sock:/var/run/docker.sock docker/dtr install --ucp-url      \$IP --ucp-username   $UCP_ADMIN_USERNAME --ucp-password   $UCP_ADMIN_PASSWORD --ucp-node	r1 --ucp-insecure-tls";
+  vagrant ssh -c "IP=\$(ip route|grep eth1|awk '{print \$9}');docker container run --rm -i --name dtr -v /var/run/docker.sock:/var/run/docker.sock docker/dtr install --ucp-url      \$IP --ucp-username   $UCP_ADMIN_USERNAME --ucp-password   $UCP_ADMIN_PASSWORD --ucp-node	r1.$DOMAIN --ucp-insecure-tls";
   fi;
  cd -;
  done;
