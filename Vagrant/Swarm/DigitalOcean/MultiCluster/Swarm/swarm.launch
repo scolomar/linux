@@ -46,7 +46,7 @@ for x in 1;do
   f=../token_ucp;
   export UCP_ADMIN_USERNAME=$(awk -F= /UCP_ADMIN_USERNAME/'{print $2}' $f);
   export UCP_ADMIN_PASSWORD=$(awk -F= /UCP_ADMIN_PASSWORD/'{print $2}' $f);
-  vagrant ssh -c "IP=\$(ip route|grep eth1|awk '{print \$9}');docker container run --rm -i --name ucp -v /var/run/docker.sock:/var/run/docker.sock docker/ucp install --host-address \$IP --admin-username $UCP_ADMIN_USERNAME --admin-password $UCP_ADMIN_PASSWORD --force-minimums -v /root/docker_subscription.lic:/config/docker_subscription.lic";
+  vagrant ssh -c "IP=\$(ip route|grep eth1|awk '{print \$9}');docker container run --rm -i --name ucp -v /root/docker_subscription.lic:/config/docker_subscription.lic -v /var/run/docker.sock:/var/run/docker.sock docker/ucp install --host-address \$IP --admin-username $UCP_ADMIN_USERNAME --admin-password $UCP_ADMIN_PASSWORD --force-minimums";
   echo UCP_ADMIN_USERNAME = $UCP_ADMIN_USERNAME;
   echo UCP_ADMIN_PASSWORD = $UCP_ADMIN_PASSWORD;
   fi;
