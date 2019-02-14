@@ -51,7 +51,12 @@ for x in 1;do
   echo UCP_ADMIN_PASSWORD = $UCP_ADMIN_PASSWORD;
   fi;
  if [ $DTR = yes ];then
-  vagrant ssh -c "IP=\$(ip route|grep eth1|awk '{print \$9}');docker container run --rm -i --name dtr -v /var/run/docker.sock:/var/run/docker.sock docker/dtr install --ucp-url      \$IP --ucp-username   $UCP_ADMIN_USERNAME --ucp-password   $UCP_ADMIN_PASSWORD --ucp-node  r1.$DOMAIN --ucp-insecure-tls --dtr-external-url https://206.189.243.247";
+  dtr_external_url=""
+  #dtr_external_url="--dtr-external-url https://dtr.gotdns.org"
+  ucp_url="--ucp-url \$IP"
+  #ucp_url="--ucp-url https://ucp.gotdns.org"
+  # TENGO QUE CREAR DOS NGINX PARA QUE SEAN LB DE UCP Y DTR RESPECTIVAMENTE
+  vagrant ssh -c "IP=\$(ip route|grep eth1|awk '{print \$9}');docker container run --rm -i --name dtr -v /var/run/docker.sock:/var/run/docker.sock docker/dtr install --ucp-username $UCP_ADMIN_USERNAME --ucp-password $UCP_ADMIN_PASSWORD --ucp-node  r1.$DOMAIN --ucp-insecure-tls $dtr_external_url $ucp_url";
   echo UCP_ADMIN_USERNAME = $UCP_ADMIN_USERNAME;
   echo UCP_ADMIN_PASSWORD = $UCP_ADMIN_PASSWORD;
   fi;
