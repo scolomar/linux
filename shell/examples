@@ -1,0 +1,110 @@
+which ls
+file /usr/bin/ls
+type ls
+which cd
+file /usr/bin/cd
+type cd
+help type
+type -a cd
+ps
+file /usr/bin/bash
+man ps
+man bash
+ls
+/usr/bin/ls
+echo $PATH
+cd
+/usr/bin/cd
+
+echo "a\nb"
+echo -e "a\nb";echo -e a\nb
+echo a;echo b
+echo -n a;echo b
+echo -e "\\hola\nhola\thola"
+
+ls /usr/bin/z*;ls /usr/bin/*z
+ls /usr/bin/*.?;ls /usr/bin/????.*
+ls /usr/bin/r[a-m][as]*;ls /usr/bin/r[a-m][as]*[!l]
+
+ls /usr/bin/rpm?(db)
+help shopt
+shopt -p
+shopt -p extglob
+man bash
+shopt -s extglob
+ls /usr/bin/rpm?(db)
+ls /usr/bin/zdi*(f)
+ls /usr/bin/rpm?(db);ls /usr/bin/rpm+(db)
+ls /usr/bin/z?(e|f)grep;ls /usr/bin/z+(e|f)grep
+ls /usr/bin/xz@(less|more);ls /usr/bin/xz!(less|more)
+
+set -x;ls /usr/bin/*.??;set +x
+
+ls /usr/bin/*.??>salida;ls *.?? 2>errores;date>>salida
+cat salida;cat<salida;cat errores
+
+find / -name passwd 2>/dev/null
+find / -name passwd>salida 2>errores
+cat salida;cat<salida
+head errores;tail errores
+head<errores;tail<errores
+
+cat
+cat>salida
+cat<salida
+
+dd status=none
+dd status=none>salida
+dd status=none<salida
+
+find /etc -name passwd>salida 2>errores;cat salida;cat errores
+find /etc -name passwd>todo 2>&1;cat todo
+
+cat>texto1 <<FIN
+hola
+adios
+FIN
+
+cat>texto2 <<-FIN
+hola
+adios
+  FIN
+  
+date|cut -c1-3
+cut -c1-3
+
+tail /etc/passwd|cut -d\: -f1
+cut -d\: -f1
+
+echo "a:b:c:d"|cut -d\: -f1,4
+cut -d\: -f1,4
+
+echo -e "a\nb\ncd"|wc -l
+wc -l
+
+date>fecha
+date>>fecha
+date|tee -a fecha
+cat fecha
+
+find /etc -name passwd 2>&1|tee todo
+
+date;ls>salida1;cat salida1
+(date;ls)>salida2;cat salida2
+
+pwd>salida1;(cd /tmp;pwd)>salida2;pwd>salida3;cat salida?
+pwd>salida1;{ cd /tmp;pwd; }>salida2;pwd>salida3;cat salida?
+
+sleep 10
+sleep 10&
+
+fecha=$(date +%F);x=nombre
+echo $x-$fecha
+echo $x.$fecha
+echo $x_$fecha
+echo ${x}_$fecha
+
+saludo=hola;echo ${saludo:-adios};unset saludo;echo ${saludo:-adios};echo $saludo
+saludo=hola;echo ${saludo:=adios};unset saludo;echo ${saludo:=adios};echo $saludo
+saludo=hola;echo ${saludo:+adios};unset saludo;echo ${saludo:+adios};echo $saludo
+saludo=hola;echo ${saludo:?adios};unset saludo;echo ${saludo:?adios};echo $saludo
