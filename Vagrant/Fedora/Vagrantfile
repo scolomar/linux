@@ -1,0 +1,10 @@
+Vagrant.configure("2") do |config|
+  config.vm.define "fedora" do |x|
+    x.vm.box = "fedora/29-cloud-base"
+    x.vm.provider "virtualbox" do |v|
+      v.name = "vagrant_fedora"
+      v.linked_clone = true
+    end
+  end
+end
+      
