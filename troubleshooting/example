@@ -1,5 +1,5 @@
 top -u ec2-user
-ps -p $(pidof exe)      -wwo vsz,user,uid,tt,start,s,ruser,ruid,rsz,psr,pri,ppid,pid,pcpu,ni,min_flt,maj_flt,cmd
+ps -p $(pidof exe) -wwo vsz,user,uid,tt,start,s,ruser,ruid,rsz,psr,pri,ppid,pid,pcpu,ni,min_flt,maj_flt,cmd
 lsof -p $(pidof exe) -n -P
 strings /proc/$(pidof exe)/cmdline
 ls -l /proc/$(pidof exe)/cwd
