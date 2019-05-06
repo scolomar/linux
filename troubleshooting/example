@@ -42,3 +42,5 @@ vmstat -s
 vmstat -D
 vmstat 1 6
 vmstat -d 1 6
+df
+df -i
