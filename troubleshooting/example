@@ -24,3 +24,21 @@ echo -1000|sudo tee /proc/$(pidof exe)/oom_score_adj
 ls -l /proc/$(pidof exe)/root
 strings /proc/$(pidof exe)/smaps|less
 strings /proc/$(pidof exe)/status|more
+lspci -k
+strings /proc/cmdline
+lscpu
+dmesg
+uptime
+free
+strings /proc/meminfo
+lsmod
+findmnt
+sudo ss -ltnp
+arp
+ip route
+sudo sysctl -a
+uname -a
+vmstat -s
+vmstat -D
+vmstat 1 6
+vmstat -d 1 6
