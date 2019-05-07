@@ -1,5 +1,6 @@
 [Unit]
 Description=Raise network interfaces
+After=multi-user.target
 
 [Service]
 Type=oneshot
@@ -8,4 +9,4 @@ ExecStart=/usr/local/sbin/networking start
 ExecStop=/usr/local/sbin/networking stop
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=graphical.target
