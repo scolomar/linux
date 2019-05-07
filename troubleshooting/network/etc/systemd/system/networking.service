@@ -1,5 +1,5 @@
 [Unit]
-Description=Raise network interfaces
+Description=Raise network interface
 After=multi-user.target
 
 [Service]
