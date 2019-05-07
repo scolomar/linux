@@ -44,3 +44,6 @@ vmstat 1 6
 vmstat -d 1 6
 df
 df -i
+swapon --show
+sudo sysctl vm.swappiness=0
+sudo swapoff -a && sudo swapon -a
