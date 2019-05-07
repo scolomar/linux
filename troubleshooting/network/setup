@@ -1,0 +1,4 @@
+chmod +x /usr/local/sbin/networking
+systemctl daemon-reload
+systemctl enable networking.service
+systemctl start networking.service
