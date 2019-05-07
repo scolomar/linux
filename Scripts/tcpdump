@@ -13,13 +13,12 @@ T=$($D +%F.%Hh%Mm)
 N="$T.pcap"
 O="-i $I -C $S -z $Z -w $F/$N"
 
-case "$1" 
-	in 
-		stop) 
-			killall tcpdump;
-			exit 0
-			;;
-	esac
+case "$1" in 
+	stop) 
+		killall tcpdump;
+		exit 0
+		;;
+esac
 
 [ -d $F ]||mkdir -p $F;
 
