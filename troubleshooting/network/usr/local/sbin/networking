@@ -1,0 +1,18 @@
+#!/bin/sh
+
+case $1 in 
+   start)
+      ip link set dev eno1 up
+      ip addr add 192.168.2.102/24 dev eno1
+      ip route add 192.168.2.0/24 dev eno1
+      ip route add default via 192.168.2.1
+      echo "nameserver 8.8.8.8" 1>/etc/resolv.conf
+      ;;
+  stop)
+     ip link set dev eno1 down
+     ;;
+  *)
+     echo WRONG COMMAND && exit 1
+     ;;
+esac
+exit 0
