@@ -29,7 +29,7 @@ function setup_firewall
   for x in $list
    do 
     scp firewall.sh firewall.functions firewall.service $x:
-    ssh $x "sudo cp firewall.sh /usr/local/sbin"
+    ssh $x "sudo cp firewall.minions /usr/local/sbin/firewall.sh"
     ssh $x "$command4 && $command5 && $command6 && $command7 && $command8 && $command9 && $commandA && sudo init 6" 
    done
   sudo cp firewall.mgmt /usr/local/sbin/firewall.sh
