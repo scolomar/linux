@@ -8,8 +8,8 @@ function deploy_key
   sudo cp hosts /etc/hosts
   for x in $list
    do
-    scp .ssh/id_rsa.pub $x:
-    ssh $x 'cat id_rsa.pub 1>>.ssh/authorized_keys'
+    scp $HOME/.ssh/id_rsa.pub $x:mgmt.pub
+    ssh $x 'cat mgmt.pub 1>>.ssh/authorized_keys'
    done
  }
 
