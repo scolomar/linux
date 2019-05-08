@@ -1,8 +1,8 @@
 127.0.0.1   localhost localhost.localdomain
-192.168.x.x client
-192.168.x.x httpd
-192.168.x.x httpd-php
-192.168.x.x mgmt
-192.168.x.x mysql
-192.168.x.x nginx
-192.168.x.x php-fpm
+10.255.255.9 client
+10.255.255.11 httpd
+10.255.255.8 httpd-php
+10.255.255.2 mgmt
+10.255.255.10 mysql
+10.255.255.4 nginx
+10.255.255.6 php-fpm
