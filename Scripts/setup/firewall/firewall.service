@@ -5,8 +5,8 @@ After=network.target
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/local/sbin/firewall
-ExecStop=/usr/local/sbin/firewall stop
+ExecStart=/usr/local/sbin/firewall.sh
+ExecStop=/usr/local/sbin/firewall.sh stop
 
 [Install]
 WantedBy=multi-user.target

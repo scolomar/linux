@@ -5,8 +5,8 @@ After=multi-user.target
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/local/sbin/networking start
-ExecStop=/usr/local/sbin/networking stop
+ExecStart=/usr/local/sbin/networking.sh start
+ExecStop=/usr/local/sbin/networking.sh stop
 
 [Install]
 WantedBy=graphical.target
