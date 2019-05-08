@@ -2,6 +2,15 @@
 
 list="$(cat list)"
 
+function deploy_key
+ {
+  for x in $list
+   do
+    scp .ssh/id_rsa.pub $x:
+    ssh $x 'cat id_rsa.pub 1>>.ssh/authorized_keys'
+   done
+ }
+
 function setup_git
  {
   command0='sudo yum update -y'
@@ -37,5 +46,6 @@ function setup_firewall
  }
 
 sudo cp hosts /etc/hosts
+deploy_key
 setup_git
 setup_firewall  
