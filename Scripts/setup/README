@@ -1,0 +1,2 @@
+This folder has a script "setup.sh" to configure a group of machines to be accessed from a MGMT machine.
+The configuration includes the initialization of a GIT repository for the root filesystem and a firewall based on IPTABLES.
