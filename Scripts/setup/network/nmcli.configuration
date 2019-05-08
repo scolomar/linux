@@ -1,0 +1,25 @@
+# NET1
+sudo nmcli connection show
+
+sudo nmcli connection modify uuid fe985ad8-3562-3a33-a521-14e27cce8dae ipv4.never-default TRUE
+sudo nmcli connection modify uuid fe985ad8-3562-3a33-a521-14e27cce8dae ipv4.address 192.168.1.1/24
+sudo nmcli connection modify uuid fe985ad8-3562-3a33-a521-14e27cce8dae ipv4.method manual
+sudo nmcli connection modify uuid fe985ad8-3562-3a33-a521-14e27cce8dae ipv6.method ignore
+
+sudo nmcli connection modify uuid 5d3c5a57-b6c6-3ff5-9981-70e833ee0cd1 ipv4.never-default TRUE
+sudo nmcli connection modify uuid 5d3c5a57-b6c6-3ff5-9981-70e833ee0cd1 ipv4.address 192.168.2.1/24
+sudo nmcli connection modify uuid 5d3c5a57-b6c6-3ff5-9981-70e833ee0cd1 ipv4.method manual
+sudo nmcli connection modify uuid 5d3c5a57-b6c6-3ff5-9981-70e833ee0cd1 ipv6.method ignore
+
+# NET2
+sudo nmcli connection show
+
+sudo nmcli connection modify uuid cc7dd4fb-c709-3d88-9cbd-6e533486fb5b ipv4.never-default TRUE
+sudo nmcli connection modify uuid cc7dd4fb-c709-3d88-9cbd-6e533486fb5b ipv4.address 192.168.1.2/24
+sudo nmcli connection modify uuid cc7dd4fb-c709-3d88-9cbd-6e533486fb5b ipv4.method manual
+sudo nmcli connection modify uuid cc7dd4fb-c709-3d88-9cbd-6e533486fb5b ipv6.method ignore
+
+sudo nmcli connection modify uuid c641e08a-b93d-392d-87de-e11cce61b9f1 ipv4.never-default TRUE
+sudo nmcli connection modify uuid c641e08a-b93d-392d-87de-e11cce61b9f1 ipv4.address 192.168.2.2/24
+sudo nmcli connection modify uuid c641e08a-b93d-392d-87de-e11cce61b9f1 ipv4.method manual
+sudo nmcli connection modify uuid c641e08a-b93d-392d-87de-e11cce61b9f1 ipv6.method ignore
