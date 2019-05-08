@@ -1,0 +1,11 @@
+Vagrant.configure("2") do |config|
+  config.vm.define "mgmt" do |mgmt|
+    mgmt.vm.provider "virtualbox" do |v|
+      v.name = "vagrant_mgmt"
+      v.linked_clone = true
+    end
+    mgmt.vm.box = "fedora/29-cloud-base"
+    mgmt.vm.network "private_network",
+      virtualbox__intnet: "mgmt_net"
+  end
+end
