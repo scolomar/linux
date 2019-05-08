@@ -1,0 +1,8 @@
+127.0.0.1   localhost localhost.localdomain
+192.168.x.x client
+192.168.x.x httpd
+192.168.x.x httpd-php
+192.168.x.x mgmt
+192.168.x.x mysql
+192.168.x.x nginx
+192.168.x.x php-fpm
