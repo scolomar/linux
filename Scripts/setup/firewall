@@ -17,6 +17,8 @@ service_proto="tcp";
 
 routing=0;
 
+source firewall.functions;
+
 flush_all;
 accept_all_if_stop;
 enable_routing_policy;
@@ -27,4 +29,5 @@ allow_service;
 allow_standard_traffic;
 log_everything;
 drop_everything;
+
 #systemctl restart docker;
