@@ -47,6 +47,6 @@ function setup_firewall
   $command4 && $command5 && $command6 && $command7 && $command8 && $command9 && $commandA && sudo init 6
  }
 
-#deploy_key
+deploy_key
 setup_git
 setup_firewall  
