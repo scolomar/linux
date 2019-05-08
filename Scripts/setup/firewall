@@ -48,12 +48,7 @@ for x in INPUT OUTPUT;
   iptables -A $x -s $me -d $me -j ACCEPT;
   iptables -A $x -s $dcnet -d $dcnet -j ACCEPT;
   iptables -A $x -s $mynet -d $mynet -p icmp -j ACCEPT;
-  #iptables -A $x -s $dcnet_int -d $dcnet_int -j LOG;
-  #iptables -A $x -s $dcnet_int -d $dcnet_int -j ACCEPT;
  done;
-
-#iptables -A INPUT  -d $me -s $dc -p tcp -m tcp --dport 3128 -j ACCEPT;
-#iptables -A OUTPUT -s $me -d $dc -p tcp -m tcp --sport 3128 -j ACCEPT;
 
 for x in $google;
  do
