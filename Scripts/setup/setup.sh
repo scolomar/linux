@@ -18,21 +18,22 @@ function setup_git
  
 function setup_firewall
  {
-  command4='sudo cp firewall.service /etc/systemd/system'
-  command5='sudo chmod +x /usr/local/sbin/firewall'
-  command6='sudo chown root. /usr/local/sbin/firewall'
-  command7='sudo chown root. /etc/systemd/system/firewall.service'
-  command8='sudo systemctl daemon-reload'
-  command9='sudo systemctl enable firewall.service'
+  command4='sudo cp firewall.functions /usr/local/sbin'
+  command5='sudo cp firewall.service /etc/systemd/system'
+  command6='sudo chmod +x /usr/local/sbin/firewall.sh'
+  command7='sudo chown root. /usr/local/sbin/firewall.sh /usr/local/sbin/firewall.functions'
+  command8='sudo chown root. /etc/systemd/system/firewall.service'
+  command9='sudo systemctl daemon-reload'
+  commandA='sudo systemctl enable firewall.service'
 
   for x in $list
    do 
-    scp firewall firewall.service $x:
-    ssh $x "sudo cp firewall /usr/local/sbin"
-    ssh $x "$command4 && $command5 && $command6 && $command7 && $command8 && $command9 && sudo init 6" 
+    scp firewall.sh firewall.functions firewall.service $x:
+    ssh $x "sudo cp firewall.sh /usr/local/sbin"
+    ssh $x "$command4 && $command5 && $command6 && $command7 && $command8 && $command9 && $commandA && sudo init 6" 
    done
-  sudo cp firewall.mgmt /usr/local/sbin/firewall
-  $command4 && $command5 && $command6 && $command7 && $command8 && $command9 && sudo init 6
+  sudo cp firewall.mgmt /usr/local/sbin/firewall.sh
+  $command4 && $command5 && $command6 && $command7 && $command8 && $command9 && $commandA && sudo init 6
  }
 
 sudo cp hosts /etc/hosts
