@@ -23,25 +23,25 @@ Vagrant.configure("2") do |config|
       netmask: "255.255.255.0",
       nic_type: "virtio"
   end
-  config.vm.define "php-fpm" do |php-fpm|
-    php-fpm.vm.provider "virtualbox" do |v|
-      v.name = "vagrant_php-fpm"
+  config.vm.define "php_fpm" do |php_fpm|
+    php_fpm.vm.provider "virtualbox" do |v|
+      v.name = "vagrant_php_fpm"
       v.linked_clone = true
     end
-    php-fpm.vm.box = "centos/6"
-    php-fpm.vm.network "private_network",
+    php_fpm.vm.box = "centos/6"
+    php_fpm.vm.network "private_network",
       virtualbox__intnet: "mgmt_net",
       ip: "10.255.255.6",
       netmask: "255.255.255.0",
       nic_type: "virtio"
   end
-  config.vm.define "httpd-php" do |httpd-php|
-    httpd-php.vm.provider "virtualbox" do |v|
-      v.name = "vagrant_httpd-php"
+  config.vm.define "httpd_php" do |httpd_php|
+    httpd_php.vm.provider "virtualbox" do |v|
+      v.name = "vagrant_httpd_php"
       v.linked_clone = true
     end
-    httpd-php.vm.box = "centos/6"
-    httpd-php.vm.network "private_network",
+    httpd_php.vm.box = "centos/6"
+    httpd_php.vm.network "private_network",
       virtualbox__intnet: "mgmt_net",
       ip: "10.255.255.8",
       netmask: "255.255.255.0",
