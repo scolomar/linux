@@ -15,6 +15,8 @@ service_net="$external";
 service_ports="22";
 service_proto="tcp";
 
+routing=0;
+
 source firewall.functions;
 
 flush_all;
