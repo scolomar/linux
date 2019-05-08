@@ -4,6 +4,8 @@ list="$(cat list)"
 
 function deploy_key
  {
+  ssh-keygen
+  sudo cp hosts /etc/hosts
   for x in $list
    do
     scp .ssh/id_rsa.pub $x:
@@ -45,7 +47,6 @@ function setup_firewall
   $command4 && $command5 && $command6 && $command7 && $command8 && $command9 && $commandA && sudo init 6
  }
 
-sudo cp hosts /etc/hosts
 deploy_key
 setup_git
 setup_firewall  
