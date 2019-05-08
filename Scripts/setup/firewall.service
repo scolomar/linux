@@ -1,0 +1,12 @@
+[Unit]
+Description=IP tables Firewall
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/sbin/firewall
+ExecStop=/usr/local/sbin/firewall stop
+
+[Install]
+WantedBy=multi-user.target
