@@ -1,0 +1,4 @@
+#!/bin/bash -x
+
+sudo yum update -y&&sudo yum install git -y&&cd /&&sudo curl -o .gitignore https://raw.githubusercontent.com/secobau/linux/master/Scripts/rootfs.gitignore&&sudo git init&&sudo git add .&&sudo git commit -m "Initial commit"&&sudo cp hosts /etc/hosts
+for x in $(grep . list.not_me);do ssh $x 'sudo yum update -y&&sudo yum install git -y&&cd /&&sudo curl -o .gitignore https://raw.githubusercontent.com/secobau/linux/master/Scripts/rootfs.gitignore&&sudo git init&&sudo git add .';done;
