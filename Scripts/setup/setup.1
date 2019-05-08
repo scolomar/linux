@@ -1,0 +1,8 @@
+#!/bin/bash -x
+
+for x in $(grep . list.me);do ssh $x 'sudo yum update -y&&sudo yum install docker -y';done
+for x in $(grep . list.me);do ssh $x 'sudo yum install git -y&&cd /&&sudo curl -o .gitignore https://raw.githubusercontent.com/secobau/linux/master/Scripts/rootfs.gitignore&&sudo git init&&sudo git add .&&sudo git commit -m "Initial commit"';done
+for x in $(grep . list.me);do sudo scp hosts $x:/etc/hosts;done
+for x in $(grep . list.not_me);do echo $x;scp firewall firewall.service $x:;ssh $x 'sudo chown root. firewall*;sudo chmod +x firewall;sudo mv firewall /usr/local/sbin;sudo mv firewall.service /etc/systemd/system;sudo systemctl daemon-reload;sudo systemctl enable firewall.service;sudo init 6';done
+sudo cp firewall.me /usr/local/sbin/firewall;sudo chown root. /usr/local/sbin/firewall;sudo cp firewall.service /etc/systemd/system;sudo chown root. /etc/systemd/system/firewall.service;sudo chmod 755 /usr/local/sbin/firewall;sudo chmod 644 /etc/systemd/system/firewall.service;sudo systemctl daemon-reload;sudo systemctl enable firewall.service;sudo init 6
+#for x in mysql;do ssh $x 'sudo yum install -y mariadb-server&&sudo systemctl enable mariadb&&sudo systemctl start mariadb';done
