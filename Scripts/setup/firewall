@@ -16,136 +16,15 @@ service_ports="22";
 service_proto="tcp";
 
 routing=0;
-policy=DROP;
 
-function flush_all
- {
-  for x in filter nat mangle raw;
-   do
-    for y in F X Z;
-     do
-      iptables -t $x -$y;
-     done;
-   done;
- }
-flush_all
-
-function accept_all_if_stop
- {
-  case $1
-   in
-    stop)
-     for x in INPUT OUTPUT FORWARD;
-      do
-       iptables -P $x ACCEPT;
-       iptables -A $x -j ACCEPT;
-      done;
-     exit 0
-     ;;
-  esac;
- }
-accept_all_if_stop
-
-function enable_routing_policy
- {
-  sysctl net.ipv4.ip_forward=$routing;
- }
-enable_routing_policy
-
-function enable_firewall_policy
- {
-  for x in INPUT OUTPUT FORWARD;
-   do
-    iptables -P $x $policy;
-   done;
- }
-enable_firewall_policy
-
-function allow_local
- {
-  for x in INPUT OUTPUT;
-   do
-    iptables -A $x -s $localnet -d $localnet -j ACCEPT;
-    iptables -A $x -s $me -d $me -j ACCEPT;
-    iptables -A $x -s $dcnet -d $dcnet -j ACCEPT;
-    iptables -A $x -s $mynet -d $mynet -p icmp -j ACCEPT;
-   done;
-  }
-allow_local
-
-function google_icmp
- {
-  for x in $google;
-   do
-    iptables -A OUTPUT -s $me -d $x -p icmp -j ACCEPT;
-    iptables -A INPUT  -d $me -s $x -p icmp -j ACCEPT;
-   done
- }
-google_icmp
-
-function allow_service
- {
-  if [ -n "$service_ports" ];
-   then
-    for x in $service_proto;
-     do
-      for y in $service_ports;
-       do
-        for z in $service_net;
-         do
-          iptables -A INPUT -s $z -p $x -m $x --dport $y -j ACCEPT;
-          iptables -A OUTPUT -d $z -p $x -m $x --sport $y -m state --state RELATED,ESTABLISHED -j ACCEPT;
-         done;
-       done;
-     done;
-   fi;
- }
-allow_service
-
-function allow_standard_traffic
- {
-  local tcp="22 37 43 53 80 123 443";
-  local udp="53 67 68 123";
-  
-  for y in $me;
-   do
-    for x in $tcp;
-     do
-      iptables -A OUTPUT -s $y -p tcp -m tcp --dport $x -j ACCEPT;
-      iptables -A INPUT -d $y -p tcp -m tcp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
-     done;
-    for x in $udp;
-     do
-      iptables -A OUTPUT -s $y -p udp -m udp --dport $x -j ACCEPT;
-      iptables -A INPUT -d $y -p udp -m udp --sport $x -m state --state RELATED,ESTABLISHED -j ACCEPT;
-     done;
-   done;
- }
-allow_standard_traffic
-
-function log_everything
-{
-  for x in LOG;
-   do
-    for y in INPUT OUTPUT FORWARD;
-     do
-      iptables -A $y -j $x;
-     done;
-   done;
- }
-log_everything
-
-function drop_everything
-{
-  for x in DROP;
-   do
-    for y in INPUT OUTPUT FORWARD;
-     do
-      iptables -A $y -j $x;
-     done;
-   done;
- }
-drop_everything
-
-#Restart docker in order to restore its IPTables configuration
-#service docker restart;
+flush_all;
+accept_all_if_stop;
+enable_routing_policy;
+enable_firewall_policy;
+allow_local;
+google_icmp;
+allow_service;
+allow_standard_traffic;
+log_everything;
+drop_everything;
+#systemctl restart docker;
