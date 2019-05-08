@@ -4,11 +4,11 @@ set -e;
 
 external=0.0.0.0/0;
 
-dcnet=169.254.169.0/24;
+dcnet=169.254.0.0/16;
 google="8.8.8.8/32 8.8.4.4/32";
 localnet=127.0.0.0/8;
-me=$(ip route|awk '{print $9}');
-mynet=$(ip route|awk '/link/{print $1}');
+me=$(ip route|awk '/eth1/{print $9}');
+mynet=$(ip route|awk '/eth1.*kernel.*link/{print $1}');
 
 service_net="$external";
 service_ports="22";
