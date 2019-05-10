@@ -1,0 +1,8 @@
+sudo sysctl vm.dirty_background_ratio=80
+sudo sysctl vm.dirty_ratio=90
+sudo sysctl vm.swappiness=0
+for x in /proc/[0-9]*;do pid=$(basename $x)&&sudo taskset -pc 1 $pid;done
+for x in $(ps -e -o psr,comm,pid,ni|grep 0\ [a-z] |awk '{print $2}'|cut -d/ -f1);do sudo service $x restart;done
+$pnp/bin/exe 1>$pnp/salida 2>$pnp/errores&
+pid=$!&&sudo renice -n -20 -p $pid&&taskset -pc 0 $pid
+echo -1000|sudo tee /proc/$pid/oom_score_adj
