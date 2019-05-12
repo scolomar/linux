@@ -2,7 +2,7 @@
 cd xxx/sites/default
 database=$(drush status|grep "Database name"|cut -d":" -f2|awk '{print $1}')
 backup=$database.sql
-drush sql-dump --result-file=$backup
+drush -v sql-dump --result-file=$backup
 gzip ../../$backup
 
 # PARA RECUPERAR UN BACKUP DE LA BASE DE DATOS
@@ -10,5 +10,5 @@ cd xxx/sites/default
 database=$(drush status|grep "Database name"|cut -d":" -f2|awk '{print $1}')
 backup=$database.sql
 gunzip ../../$backup.gz
-drush sql-drop
-drush sql-cli 0<../../$backup
+drush -v sql-drop
+drush -v sql-cli 0<../../$backup
