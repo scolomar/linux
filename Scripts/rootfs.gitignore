@@ -1,12 +1,5 @@
-var/
 tmp/
 sys/
 run/
 proc/
-mnt/
-media/
-lost+found/
-home/
-root/
 dev/
-.cache/
